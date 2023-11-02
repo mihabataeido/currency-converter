@@ -1,38 +1,3 @@
-// Access to the HTML elements in the head area
-const infoButton = document.getElementById("info-button");
-const translationButton = document.getElementById("translation-button");
-const darkModeButton = document.getElementById("dark-mode");
-const lightModeButton = document.getElementById("light-mode");
-const languageSelector = document.getElementById("language");
-
-// Access to the HTML elements in the body area
-const fromCurrency = document.getElementById("from-currency-input");
-const toCurrency = document.getElementById("to-currency-input");
-const amount = document.getElementById("amount");
-const convertButton = document.getElementById("convert");
-const result = document.getElementById("result");
-
-// Access to info and translation sections
-const infoSection = document.getElementById("info");
-const translationSection = document.getElementById("translation");
-const shareButton = document.getElementById("share");
-const translatedInfo = document.getElementById("translated-info");
-
-// Access to the Dark Mode Button
-const checkbox = document.getElementById("custom-switch"); 
-const body_dark = document.getElementById("body.dark");
-const header_dark = document.getElementById("header.dark");
-
-// Access to elements for reversal and saving conversions
-const reverseConvertButton = document.getElementById("reverse-convert");
-const saveButton = document.getElementById("save");
-const savedConversionsList = document.getElementById("saved-conversions");
-
-// Access to elements for the like button
-const likeContainer = document.getElementById("like-container");
-const likedConversionsList = document.getElementById("liked-conversions");
-
-
 document.addEventListener("DOMContentLoaded", function () {
     // Create an empty array to store the saved conversions
     const savedConversions = [];
@@ -187,65 +152,13 @@ displaySavedConversions();
 });
 
 
-// Dark Mode Button 
-checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-        document.body.classList.add("dark");
-        document.querySelector("header").classList.add("dark");
-
-    } else {
-        document.body.classList.remove("dark");
-        document.querySelector("header").classList.remove("dark");
-    }
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const futureValueInput = document.getElementById("future-value");
-    const annualInterestRateInput = document.getElementById("annual-interest-rate");
-    const yearsInput = document.getElementById("years");
-    const calculateButton = document.getElementById("calculate-button-present");
-    const presentValueResult = document.getElementById("present-value-result");
-
-    calculateButton.addEventListener("click", function () {
-        const futureValue = parseFloat(futureValueInput.value);
-        const annualInterestRate = parseFloat(annualInterestRateInput.value) / 100;
-        const years = parseInt(yearsInput.value);
-
-        if (isNaN(futureValue) || isNaN(annualInterestRate) || isNaN(years)) {
-            presentValueResult.textContent = "Invalid input";
-        } else {
-            const presentValue = calculatePresentValue(futureValue, annualInterestRate, years);
-            presentValueResult.textContent = presentValue.toFixed(2);
-        }
-    });
-
-    function calculatePresentValue(futureValue, annualInterestRate, years) {
-        return futureValue / Math.pow(1 + annualInterestRate, years);
-    }
-});
 
 
 
-//Future_Value
-document.addEventListener("DOMContentLoaded", function () {
-    const calculatorForm = document.getElementById("calculator-future");
-    const calculateButton = document.getElementById("calculate-button-future");
-    const resultDiv = document.getElementById("result-future");    
 
-    calculateButton.addEventListener("click", function () {
-        const initialInvestment = parseFloat(document.getElementById("initial-investment").value);
-        const annualInterestRate = parseFloat(document.getElementById("annual-interest-rate").value);
-        const years = parseInt(document.getElementById("years").value);
 
-        const futureValue = calculateFutureValue(initialInvestment, annualInterestRate, years);
-        resultDiv.textContent = `Future Value: $${futureValue.toFixed(2)}`;
-    });
 
-    function calculateFutureValue(initialInvestment, annualInterestRate, years) {
-        const monthlyInterestRate = annualInterestRate / 12 / 100;
-        const months = years * 12;
-        return initialInvestment * Math.pow(1 + monthlyInterestRate, months);
-    }
-});
+
+
+
 
