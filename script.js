@@ -33,7 +33,6 @@ const likeContainer = document.getElementById("like-container");
 const likedConversionsList = document.getElementById("liked-conversions");
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
     // Create an empty array to store the saved conversions
     const savedConversions = [];
