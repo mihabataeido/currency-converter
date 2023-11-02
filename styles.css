@@ -1,0 +1,360 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+}
+
+body.dark {
+    background-color: #1a1717;
+    color: #fff;
+}
+
+header {
+    background-color: rgb(10, 6, 119);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header.dark {
+  background-color:  rgb(6, 5, 29);
+  color: #fff;
+}
+
+.tab-container {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  background-color:  rgb(10, 6, 119);
+  color: #fff;
+}
+
+.tab-container li {
+  padding: 5px;
+}
+
+.tab-content section {
+  display: none;
+  padding: 20px;
+}
+
+.tab-content section:target {
+  display: block;
+}
+
+.tab-content h2 {
+  margin: 0;
+}
+
+#logo {
+    font-size: 24px;
+    margin-right: auto;
+}
+
+/* Footer */
+footer {
+  background-color:  rgb(10, 6, 119);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+
+.info-button {
+  position: fixed;
+  bottom: 20px;
+  padding: auto;
+
+}
+
+/*here is the style for header */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: right;
+}
+
+nav ul li {
+    color: #fff;
+    margin: 10px;
+    font-weight: bold;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*App Box style*/
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px;
+
+}
+
+.currency-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 7px;
+}
+
+.currency-input input{
+  width: 340px;
+}
+
+.conversion-container {
+  display: flex;
+  align-items: center;
+}
+
+.result {
+  text-align: left ;
+  margin: 6px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: left;
+  margin: -7px;
+}
+
+.amount-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+}
+
+.amount-container input,
+.amount-container button {
+  margin: 3px;
+}
+
+/*Saved style*/
+h3 {
+  background-color: rgb(177, 176, 209);
+  width: 30%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+
+}
+.li {
+  margin: 30px;
+}
+
+/*switch settings*/
+.ui-switch {
+    /* switch */
+    --switch-bg: rgb(135, 150, 165);
+    --switch-width: 55px;
+    --switch-height: 24px;
+    /* circle */
+    --circle-diameter: 32px;
+    --circle-bg: rgb(58, 62, 68);
+    --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
+  }
+  
+  .ui-switch input {
+    display: none;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    background: var(--switch-bg);
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .slider .circle {
+    top: calc(var(--circle-inset) * -1);
+    left: 0;
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    position: absolute;
+    background: var(--circle-bg);
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    -o-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+  }
+  
+  .slider .circle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: inherit;
+    -webkit-transition: all 500ms;
+    -o-transition: all 500ms;
+    transition: all 500ms;
+    opacity: 0;
+  }
+  
+  /* actions */
+  .ui-switch input:checked+.slider .circle {
+    left: calc(100% - var(--circle-diameter));
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");
+  }
+  
+  .ui-switch input:active+.slider .circle::before {
+    -webkit-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
+    opacity: 1;
+    width: 0;
+    height: 0;
+  }
+
+/* Currency converter styles App */
+.converter {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.mode-switch {
+    text-align: left;
+}
+
+button {
+    background-color: rgb(10, 6, 119);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid transparent;
+    outline: none;
+    overflow: hidden;
+    background-color: #efecec;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+
+select, input:hover,
+select, input:focus {
+  border: 3px solid  rgb(10, 6, 119);
+  box-shadow: 0px 0px 0px 7px rgba(62, 151, 234, 0.2);
+  background-color: white;
+}
+
+
+#result {
+    font-size: 20px;
+    font-weight: bold;
+    color:  rgb(10, 6, 119);
+}
+
+.result button {
+    background-color: rgb(10, 6, 119);
+}
+
+/* Informationen*/
+#info {
+    display: none;
+    background-color: #1a1717;
+    border: 1px solid #d4d2d2;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#info p {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#menu ul {
+    list-style: none;
+    text-align: right;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+
+#menu li {
+    display: inline;
+    margin: 0 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* Style the custom checkboxes */
+#saved-conversions-container p input {
+  display: none; /* Hide the default rectangular checkbox */
+}
+
+/* Style the label text and SVG */
+#saved-conversions-container p label {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Style the custom SVG icon (star icon) */
+#saved-conversions-container p svg {
+  fill: #666;
+  height: 30px;
+  width: 30px;
+  vertical-align: middle; /* Align the SVG vertically in the middle of the line */
+  margin-right: 5px; /* Add spacing between the SVG and text (adjust as needed) */
+  padding-left: 30px;
+}
+
+/* Change the SVG icon color when checked */
+#saved-conversions-container p input:checked + label svg {
+  fill: #ffeb49;
+}
+
+/*Calculator Style*/  
+
+#result-future {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+#result-present {
+margin: 20px 0;
+font-weight: bold;
+}
+
+#present-value {
+color: black;
+
+}
