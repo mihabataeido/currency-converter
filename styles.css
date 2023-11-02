@@ -50,6 +50,12 @@ header.dark {
   color: #fff;
 }
 
+.tab-container a {
+  color: white;
+  text-decoration: none; /* Optionally, remove underlines */
+}
+
+
 .tab-container li {
   padding: 5px;
 }
