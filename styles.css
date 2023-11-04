@@ -4,6 +4,8 @@ body {
     margin: 0;
     padding: 0;
     overflow: scroll;
+    padding-top: 60px;
+    margin-bottom: 90px;
 }
 
 body.dark {
@@ -21,6 +23,12 @@ h2 {
 
 /*Head*/
 header {
+    position: fixed;
+    top: 0;
+    left: 50;
+    right: 50;
+    width: 100%;
+    height: 60px;
     background-color: rgb(10, 6, 119);
     color: #fff;
     display: flex;
@@ -41,6 +49,12 @@ header.dark {
   background-color:  rgb(10, 6, 119);
   color: #fff;
 }
+
+.tab-container a {
+  color: white;
+  text-decoration: none; /* Optionally, remove underlines */
+}
+
 
 .tab-container li {
   padding: 5px;
@@ -70,7 +84,7 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: static;
+  position: fixed;
   bottom: 0;
   width: 100%;
   left: 0;
@@ -192,6 +206,7 @@ h3 {
     border-radius: 999px;
     position: relative;
     cursor: pointer;
+    left: -30px; 
   }
   
   .slider .circle {

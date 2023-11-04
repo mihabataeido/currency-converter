@@ -31,7 +31,7 @@ const savedConversionsList = document.getElementById("saved-conversions");
 // Access to elements for the like button
 const likeContainer = document.getElementById("like-container");
 const likedConversionsList = document.getElementById("liked-conversions");
-// document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Create an empty array to store the saved conversions
