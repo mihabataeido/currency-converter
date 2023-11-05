@@ -506,3 +506,43 @@ color: black;
   box-shadow: 0 0 0 10px white;
   color: #fff;
 }
+
+/* Calculator Style */
+#calculator-future {
+  width: 30%;
+  padding: 2px;
+  margin: 0 auto; /* This centers the calculator horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This centers the calculator vertically */
+  align-items: center; /* This centers the calculator horizontally and vertically */
+}
+
+#calculator-future div {
+  display: flex;
+  align-items: center;
+}
+
+#calculator-future label {
+  margin-right: 10px;
+}
+
+#calculator-future input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* CSS for radio buttons and input elements */
+.radio-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.radio-buttons label {
+  margin-right: 10px;
+}
+
+.radio-buttons input[type="radio"] {
+  margin-right: 5px;
+}
+
+
