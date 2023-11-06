@@ -28,10 +28,6 @@ const reverseConvertButton = document.getElementById("reverse-convert");
 const saveButton = document.getElementById("save");
 const savedConversionsList = document.getElementById("saved-conversions");
 
-// Access to elements for the like button
-const likeContainer = document.getElementById("like-container");
-const likedConversionsList = document.getElementById("liked-conversions");
-
 // Dark Mode Button 
 checkbox.addEventListener('change', () => {
     if (checkbox.checked) {

@@ -118,13 +118,6 @@ nav ul li a {
     color: #fff;
 }
 
-/*App Box style*/
-#app {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 50px;
-
-}
 
 .currency-input {
   display: flex;
@@ -137,10 +130,6 @@ nav ul li a {
   width: 340px;
 }
 
-.conversion-container {
-  display: flex;
-  align-items: center;
-}
 
 .result {
   text-align: left ;
@@ -153,19 +142,6 @@ nav ul li a {
   margin: -7px;
 }
 
-
-
-.amount-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3px;
-}
-
-.amount-container input,
-.amount-container button {
-  margin: 3px;
-}
 
 /*Saved style*/
 h3 {
@@ -308,7 +284,7 @@ select, input {
     transition: all 0.5s;
 }
 
-select, input:hover,
+select , input:hover,
 select, input:focus {
   border: 3px solid  rgb(10, 6, 119);
   box-shadow: 0px 0px 0px 7px rgba(62, 151, 234, 0.2);
@@ -395,57 +371,6 @@ font-weight: bold;
 color: black;
 }
 
-/*Input Feld Currency*/
-.input-container {
-  position: relative;
-  margin: 10px;
-  width: 360px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.input-container from-currency-input [type="text"] {
-  font-size: 20px;
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  padding: 10px 0;
-  background-color: transparent;
-  outline: none;
-  
-}
-
-.input-container .label {
-  position: absolute;
-  top: 19px;
-  left: 5px;
-  color: #ccc;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.input-container input[type="text"]:focus ~ .label,
-.input-container input[type="text"]:valid ~ .label {
-  top: -20px;
-  font-size: 16px;
-  color: #333;
-}
-
-.input-container .underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: #333;
-  transform: scaleX(0);
-  transition: all 0.3s ease;
-}
-
-.input-container input[type="text"]:focus ~ .underline,
-.input-container input[type="text"]:valid ~ .underline {
-  transform: scaleX(1);
-}
 
 /*Input Feld Betrag eingeben*/
 .amount-container {
@@ -496,16 +421,140 @@ color: black;
   transform: scaleX(1);
 }
 
-.reverse-convert {
-  background-color: white;
-  color: #fff;
+/*Währungumrechnung*/
+
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+
+.wrapper {
+  width: 800px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.01);
+  align-items: center;
+  justify-content: center;
 }
 
-.reverse-convert:hover {
-  background-color: white;
-  box-shadow: 0 0 0 10px white;
-  color: #fff;
+.wrapper form {
+  margin: 50px 0 20px 0;
 }
+
+.wrapper form input,
+.wrapper form select {
+  width: 900%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.wrapper form p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.wrapper form input {
+  height: 50px;
+  padding: 0 15px;
+  border: 1px solid #999;
+  font-size: 17px;
+  width: 300px;
+}
+
+.wrapper form input:focus {
+  border: 2px solid  rgb(10, 6, 119);
+  padding: 0 14px;
+}
+
+.wrapper form .drop-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.wrapper form .drop-list .select-box {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 45px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.wrapper form .drop-list .select-box img {
+  max-width: 45px;
+  padding-right: 30px;
+}
+
+.wrapper form .drop-list .select-box select .Select {
+  width: 200px;
+  font-size: 16px;
+  background: none;
+  margin: 0 -5px 0 50px;
+}
+
+.wrapper form .drop-list .select-box select::-webkit-scrollbar {
+  width: 8px;
+}
+
+.wrapper form .drop-list .select-box select::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.wrapper form .drop-list .select-box select::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+  border-right: 2px solid #fff;
+}
+
+.wrapper .drop-list .reverse-convert {
+  font-size: 22px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.wrapper form .exchange_rate {
+  font-size: 16px;
+  margin: 20px 0 30px;
+}
+
+.wrapper form button {
+  height: 52px;
+  background: rgb(10, 6, 119);
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wrapper form button:hover {
+  background: transparent;
+  color:  rgb(10, 6, 119);
+  border: 2px solid rgb(63, 59, 204);
+}
+
+
+.amount-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 35px;
+}
+
+.amount-container input,
+.amount-container button {
+  margin: 3px;
+}
+
+
+
+
+
 
 /* Calculator Style */
 #calculator-future {

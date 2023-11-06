@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Währungsumrechner</title>
     <link rel="stylesheet" href="styles.css">
+        <!--font awesome-->
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
 </head>
 <body>
     <header>
@@ -32,52 +37,46 @@
         </section>
 
         <section id="currency-conversion">
-            <h2>Währungsumrechnung</h2>
-            <div id="app" class="flex-container">
-                <div class="conversion-container">
-                    <div class="input-container">
-                        <input type="text" id="from-currency-input" list="from-currency-list" required="">
-                        <label for="input" class="label">Von Währung</label>
-                        <datalist id="from-currency-list">
-                            <option value="EUR">Euro</option>
-                            <option value="USD">US-Dollar</option>
-                            <option value="GBP">Britisches Pfund</option>
-                            <option value="JPY">Japanischer Yen</option>
-                            <option value="CHF">Schweizer Franken</option>
-                            <option value="CAD">Kanadischer Dollar</option>
-                        </datalist>
+            <div class="wrapper">
+                <h2>Währungumrechnung</h2>
+                <form action="#">
+                  <div class="drop-list">
+                    <div class="from">
+                      <p>Von Währung</p>
+                      <div class="select-box">
+                        <img src="https://flagcdn.com/48x36/us.png" alt="" />
+                        <select name="" id="">
+                          <!--options will be added using JS-->
+                        </select>
+                      </div>
                     </div>
-                    <button class="reverse-convert" id="reverse-convert">Wechsel 
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.0503 12.0498L21 16.9996L16.0503 21.9493L14.636 20.5351L17.172 17.9988L4 17.9996V15.9996L17.172 15.9988L14.636 13.464L16.0503 12.0498ZM7.94975 2.0498L9.36396 3.46402L6.828 5.9988L20 5.99955V7.99955L6.828 7.9988L9.36396 10.5351L7.94975 11.9493L3 6.99955L7.94975 2.0498Z"></path></svg>
-                        </div>                    
-                    </button>
-                    <div class="input-container">
-                        <input type="text" id="to-currency-input" list="to-currency-list" required="">
-                        <label for="input" class="label">In Währung</label>
-                        <datalist id="to-currency-list">
-                            <option value="EUR">Euro</option>
-                            <option value="USD">US-Dollar</option>
-                            <option value="GBP">Britisches Pfund</option>
-                            <option value="JPY">Japanischer Yen</option>
-                            <option value="CHF">Schweizer Franken</option>
-                            <option value="CAD">Kanadischer Dollar</option>
-                        </datalist>
+                    <div class="reverse-convert"><i class="fas fa-exchange-alt"></i></div> <!--icon-->
+                    <div class="to">
+                      <p>In Währung</p>
+                      <div class="select-box">
+                        <img src="https://flagcdn.com/48x36/in.png" alt="" />
+                        <select name="" id="">
+                          <!--options will be added using JS-->
+                        </select>
+                      </div>
                     </div>
-                </div>
+                  </div>
 
-                <div class="amount-container">
-                    <input type="number" id="amount" required="">
-                    <label for="input" class="label">Betrag eingeben</label>
-                    <button id="convert">Umrechnen</button>
-                </div>    
-                <div class="result">
-                    <p>Ergebnis: <span id="result">0.00</span></p>
+                    <div class="amount-container">
+                        <input type="number" id="amount" required="">
+                        <label for="input" class="label">Betrag eingeben</label> <!--amount-->
+                        <button id="convert">Umrechnen</button>
+                    </div>    
+
+                    <div class="result">
+                        <p>Ergebnis: <span id="result">0.00</span></p>
+                    </div>
+                    
                     <div class="buttons-container">
                         <button id="save">Speichern</button>
                         <button id="share">Teilen</button>
                     </div>
-                </div>
+                </form>
             </div>
             <div id="saved-conversions-container">
                 <p id="saved-conversions"></p>
@@ -90,7 +89,7 @@
                 <label for="future-value">Future Value:</label>
                 <input type="number" id="future-value" step="0.01">
         
-                <label for "annual-interest-rate-present">Annual Interest Rate (%):</label>
+                <label for="annual-interest-rate-present">Annual Interest Rate (%):</label>
                 <input type="number" id="annual-interest-rate-present" step="0.01">
         
                 <label for="years-present">Number of Years:</label>
@@ -161,9 +160,10 @@
         <p id="current-date">Datum: 2023</p>
     </footer>
 </body>
-<script src="script_allgemein_home.js"></script>
+<script scr="country_list.js"></script>
 <script src="script_currency.js"></script>
 <script src="script_present.js"></script>
 <script src="script_future.js"></script>
+<script src="script_allgemein_home.js"></script>
 </html>
 
