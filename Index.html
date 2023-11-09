@@ -38,7 +38,7 @@
 
         <section id="currency-conversion">
             <div class="wrapper">
-                <h2>Währungumrechnung</h2>
+                <h2>Währungsumrechnung</h2>
                 <form action="#">
                   <div class="drop-list">
                     <div class="from">
@@ -50,7 +50,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="reverse-convert"><i class="fas fa-exchange-alt"></i></div> <!--icon-->
+                    <div class="reverse-convert"><i class="fas fa-exchange-alt"></i></div>
                     <div class="to">
                       <p>In Währung</p>
                       <div class="select-box">
@@ -63,26 +63,31 @@
                   </div>
 
                     <div class="amount-container">
-                        <input type="number" id="amount" required="">
-                        <label for="input" class="label">Betrag eingeben</label> <!--amount-->
-                        <button id="convert">Umrechnen</button>
-                    </div>    
-
-                    <div class="result">
-                        <p>Ergebnis: <span id="result">0.00</span></p>
+                        <input type="number" id="amount" required="">                    
+                        <label for="input" class="label">Betrag eingeben</label> 
+                        <button class="convert">Umrechnen</button>
                     </div>
                     
-                    <div class="buttons-container">
-                        <button id="save">Speichern</button>
-                        <button id="share">Teilen</button>
-                    </div>
+                    <div class="result">
+                        <div class="result_content">
+                          <p class="result_text">Ergebnis:</p>
+                          <div class="exchange_rate">Getting exchange rate...</div>
+                        </div>
+                        <div class="button-row">
+                          <button id="save">Speichern</button>
+                          <button id="share">Teilen</button>
+                        </div>
+                      </div>
+
                 </form>
-            </div>
-            <div id="saved-conversions-container">
-                <p id="saved-conversions"></p>
+              </div>
+
+            <div class="saved-conversions-container">
+                <p class="saved-conversions"></p>
             </div>
         </section>
 
+        
         <section id="present-value">
             <h2>Present Value of Future Money</h2>
             <div id="calculator-present">
@@ -160,7 +165,7 @@
         <p id="current-date">Datum: 2023</p>
     </footer>
 </body>
-<script scr="country_list.js"></script>
+<script src="country_list.js"></script>
 <script src="script_currency.js"></script>
 <script src="script_present.js"></script>
 <script src="script_future.js"></script>
