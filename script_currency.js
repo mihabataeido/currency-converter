@@ -6,10 +6,9 @@ let icon = document.querySelector(".reverse-convert");
 let exchangeTxt = document.querySelector(".exchange_rate");
 let getBtn = document.querySelector(".convert");
 
-// save resul 
-const saveButton = document.getElementById("save");
-const savedConversionsList = document.getElementById("saved-conversions-list");
-const savedConversions = [];
+
+
+
 //adding options tag
 
 for (let i = 0; i < dropList.length; i++) {
@@ -84,4 +83,70 @@ icon.addEventListener("click", () => {
   loadFlag(toCurrency);
   getExchangeValue();
 });
+
+
+
+
+
+
+
+// ... bestehender JS-Code ...
+
+// save result
+const saveButton = document.querySelector(".save");
+const savedConversionsList = document.querySelector(".saved-conversions-list");
+
+saveButton.addEventListener("click", () => {
+    const resultText = exchangeTxt.innerText;
+    if (resultText !== "Getting exchange rate...") {
+        // create a checkbox element
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = false; // Setze den Ausgangszustand auf nicht markiert
+
+        // create a label element
+        const label = document.createElement("label");
+        label.appendChild(document.createTextNode(resultText));
+
+        // create a list item element
+        const listItem = document.createElement("li");
+        listItem.appendChild(checkbox);
+        listItem.appendChild(label);
+
+        // append the list item to the saved conversions list
+        savedConversionsList.appendChild(listItem);
+
+        // save the result to localStorage with the initial checked status
+        const savedConversions = JSON.parse(localStorage.getItem("savedConversions")) || [];
+        savedConversions.push({ result: resultText, checked: checkbox.checked });
+        localStorage.setItem("savedConversions", JSON.stringify(savedConversions));
+
+        // clear the exchange rate text
+        exchangeTxt.innerText = "Getting exchange rate...";
+    }
+});
+
+// load saved conversions from localStorage on page load
+window.addEventListener("load", () => {
+    const savedConversions = JSON.parse(localStorage.getItem("savedConversions")) || [];
+    savedConversions.forEach(({ result, checked }) => {
+        // create a checkbox element
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = checked; // Setze den Status basierend auf der gespeicherten Information
+
+        // create a label element
+        const label = document.createElement("label");
+        label.appendChild(document.createTextNode(result));
+
+        // create a list item element
+        const listItem = document.createElement("li");
+        listItem.appendChild(checkbox);
+        listItem.appendChild(label);
+
+        // append the list item to the saved conversions list
+        savedConversionsList.appendChild(listItem);
+    });
+});
+
 
