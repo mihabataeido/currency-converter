@@ -107,10 +107,11 @@ icon.addEventListener("click", () => {
 });
 
 // save result// Neue Funktion zum Anzeigen der gespeicherten Konvertierungen unter saved-conversions-container
-function createCheckbox(i) {
+function createCheckbox(i, isVisible) {
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.id = `conversion-${i}`;
+  checkbox.style.display = isVisible ? "block" : "none"; // Setze die Anzeige basierend auf dem isVisible-Parameter
 
   const label = document.createElement("label");
   label.setAttribute("for", `conversion-${i}`);
@@ -128,6 +129,7 @@ function createCheckbox(i) {
 
   return { checkbox, label };
 }
+
 
 function displaySavedConversions() {
   const savedConversions = JSON.parse(localStorage.getItem("savedConversions")) || [];

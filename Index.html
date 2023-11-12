@@ -94,6 +94,7 @@
 
         
         <section id="present-value">
+            <div class="wrapper">
             <h2>Present Value of Future Money</h2>
             <div id="calculator-present">
                 <label for="future-value">Future Value:</label>
@@ -118,42 +119,40 @@
             <div id="saved-conversions-container">
                 <p id="saved-conversions"></p>
             </div>
+        </div>
         </section>
         
 
         <section id="future-prediction">
-            <h2>Future Value Calculator</h2>
-            <form id="calculator-future">
-                <label for="initial-investment">Initial Investment ($):</label>
-                <input type="number" id="initial-investment" step="0.01" required>
-        
-                <label>Annual Interest Rate:</label>
-                <div id="interest-rate-input">
-                    <input type="radio" id="manual-interest-rate" name="interest-rate-type" checked>
-                    <label for="manual-interest-rate">Manual Input:</label>
-                    <input type="number" id="annual-interest-rate-manual" step="0.01">
-                    <input type="radio" id="automatic-interest-rate" name="interest-rate-type">
-                    <label for="automatic-interest-rate">Automatic Input:</label>
-                    <select id="automatic-interest-rate-select">
-                        <!-- You can add options here for automatic interest rates if needed -->
-                        <option value="1">1%</option>
-                        <option value="2">2%</option>
-                        <option value="3">3%</option>
-                        <!-- Add more options as needed -->
-                    </select>
-                </div>
+                <h2>Future Value Calculator</h2>
+                <form id="calculator-future">
+                    <label for="initial-investment">Initial Investment ($):</label>
+                    <input type="number" id="initial-investment" step="0.01" required>
+            
+                    <label>Annual Interest Rate:</label>
+                    <div id="interest-rate-input">
+                        <input type="radio" id="manual-interest-rate" name="interest-rate-type" checked>
+                        <label for="manual-interest-rate">Manual Input:</label>
+                        <input type="number" id="annual-interest-rate-manual" step="0.01">
+                        <input type="radio" id="automatic-interest-rate" name="interest-rate-type">
+                        <label for="automatic-interest-rate">Automatic Input:</label>
+                        <select id="automatic-interest-rate-select">
+                            <!-- You can add options here for automatic interest rates if needed -->
+                            <option value="1">1%</option>
+                            <option value="2">2%</option>
+                            <option value="3">3%</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <label for="years">Number of Years:</label>
+                    <input type="number" id="years" required>
+            
+                    <button type="button" id="calculate-button-future">Calculate</button>
+                </form>
 
-                
-        
-                <label for="years">Number of Years:</label>
-                <input type="number" id="years" required>
-        
-                <button type="button" id="calculate-button-future">Calculate</button>
-            </form>
-        
-            <div id="result-future">
-                Future Value: <span id="result-future">0.00</span>
-            </div>
+                <div id="result-future">
+                    Future Value: <span id="result-future">0.00</span>
+                </div>
         </section>        
             
         </section>
