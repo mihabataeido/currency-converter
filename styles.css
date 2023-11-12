@@ -314,65 +314,32 @@ select, input:focus {
 }
 
 
-/* Style the custom checkboxes */
-.saved-conversions-container p input {
-  display: none; /* Hide the default rectangular checkbox */
+/* CSS */
+.saved-conversions-list input {
+  display: inline-block;
 }
 
-/* Style the label text and SVG */
-.saved-conversions-container p label {
+.saved-conversions-list label {
   position: relative;
   cursor: pointer;
   font-size: 19px;
 }
 
-/* Style the custom SVG icon (star icon) */
-.saved-conversions-container p svg {
+.saved-conversions-list svg {
   fill: #666;
   height: 30px;
   width: 30px;
-  vertical-align: middle; /* Align the SVG vertically in the middle of the line */
-  margin-right: 5px; /* Add spacing between the SVG and text (adjust as needed) */
+  vertical-align: middle;
+  margin-right: 5px;
   padding-left: 30px;
 }
 
-/* Change the SVG icon color when checked */
-.saved-conversions-container p input:checked + label svg {
+.saved-conversions-list input:checked + label svg {
   fill: #ffeb49;
 }
 
 
-/* Füge dies zu deiner CSS-Datei hinzu */
 
-/* Allgemeines Styling für Checkboxen */
-.saved-conversions-list input[type="checkbox"],
-.Favorit_conversions-list input[type="checkbox"] {
-    margin-right: -655px; /* Ändere den Wert nach Bedarf */
-    margin-left: -700px; /* Ändere den Wert nach Bedarf */
-    transform: scale(1.5); /* Ändere die Skalierung nach Bedarf */
-    color: black; /* Textfarbe der Checkbox */
-    font-weight: bold; /* Fettdruck für die Checkbox */
-}
-
-/* Styling für ausgewählte Checkboxen */
-.saved-conversions-list input[type="checkbox"]:checked + label,
-.Favorit_conversions-list input[type="checkbox"]:checked + label {
-    font-weight: bold;
-    color: #007bff; /* oder eine andere Farbe deiner Wahl */
-}
-
-/* Container für Checkbox und Text */
-.saved-conversions-list li,
-.Favorit_conversions-list li {
-    display: flex;
-    align-items: center;
-}
-
-/* Verschiebe den Text nach rechts */
-.saved-conversions-list label,
-.Favorit_conversions-list label {
-    margin-left: 5px; /* Ändere den Wert nach Bedarf */
-}
 
 
 /* favorit liste style 1 bei Miha Whats */
