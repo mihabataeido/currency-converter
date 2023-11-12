@@ -84,15 +84,13 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+
   left: 0;
 
 }
 
 .info-button {
-  position: fixed;
+
   bottom: 20px;
   padding: auto;
 
@@ -343,6 +341,62 @@ select, input:focus {
   fill: #ffeb49;
 }
 
+
+/* Füge dies zu deiner CSS-Datei hinzu */
+
+/* Allgemeines Styling für Checkboxen */
+.saved-conversions-list input[type="checkbox"],
+.Favorit_conversions-list input[type="checkbox"] {
+    margin-right: -655px; /* Ändere den Wert nach Bedarf */
+    margin-left: -700px; /* Ändere den Wert nach Bedarf */
+    transform: scale(1.5); /* Ändere die Skalierung nach Bedarf */
+    color: black; /* Textfarbe der Checkbox */
+    font-weight: bold; /* Fettdruck für die Checkbox */
+}
+
+/* Styling für ausgewählte Checkboxen */
+.saved-conversions-list input[type="checkbox"]:checked + label,
+.Favorit_conversions-list input[type="checkbox"]:checked + label {
+    font-weight: bold;
+    color: #007bff; /* oder eine andere Farbe deiner Wahl */
+}
+
+/* Container für Checkbox und Text */
+.saved-conversions-list li,
+.Favorit_conversions-list li {
+    display: flex;
+    align-items: center;
+}
+
+/* Verschiebe den Text nach rechts */
+.saved-conversions-list label,
+.Favorit_conversions-list label {
+    margin-left: 5px; /* Ändere den Wert nach Bedarf */
+}
+
+
+/* favorit liste style 1 bei Miha Whats */
+
+.Favorit_conversions-container {
+  display: none; /* Verstecke die Favoritenliste standardmäßig */
+  margin-top: 20px;
+}
+
+.Favorit_conversions-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.Favorit_conversions-list h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+.Favorit_conversions-list li {
+  margin-bottom: 8px; /* Abstand zwischen den Elementen */
+}
 
 
 /*Calculator Style*/  
