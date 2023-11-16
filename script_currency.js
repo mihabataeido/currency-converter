@@ -8,7 +8,7 @@ let getBtn = document.querySelector(".convert");
 const savedConversionsContainer = document.querySelector(".saved-conversions-container");
 const savedConversionsList = document.querySelector(".saved-conversions-list");
 const favoritButton = document.querySelector(".Favorit");
-
+const saveButton = document.querySelector(".save");
 
 
 
@@ -131,46 +131,83 @@ function createCheckbox(i, isVisible) {
 }
 
 
+// Function to save conversion in localStorage
+function saveConversion() {
+  const amount = document.querySelector("form input");
+  const amountVal = amount.value;
+
+  if (amountVal === "" || isNaN(amountVal) || parseFloat(amountVal) <= 0) {
+    alert("Please Enter a valid amount");
+    return;
+  }
+
+  const conversion = {
+    inputAmount: amountVal,
+    from: fromCurrency.value,
+    convertedAmount: exchangeTxt.innerText.split('=')[1].trim(),
+    checked: false, // You can set the default value based on your requirements
+  };
+
+  // Retrieve saved conversions from localStorage
+  const savedConversions = JSON.parse(localStorage.getItem("savedConversions")) || [];
+
+  // Add the new conversion to the array
+  savedConversions.push(conversion);
+
+  // Save the updated array back to localStorage
+  localStorage.setItem("savedConversions", JSON.stringify(savedConversions));
+
+  // Display the updated list of saved conversions
+  displaySavedConversions();
+}
+
+// Function to display saved conversions
 function displaySavedConversions() {
   const savedConversions = JSON.parse(localStorage.getItem("savedConversions")) || [];
-  savedConversionsList.innerHTML = ""; // Leere die vorhandene Liste
+  savedConversionsList.innerHTML = ""; // Clear the existing list
 
   if (savedConversions.length > 0) {
-      const heading = document.createElement("h3");
-      heading.textContent = "Deine Gespeicherten Konvertierungen";
-      savedConversionsList.appendChild(heading);
+    const heading = document.createElement("h3");
+    heading.textContent = "Deine Gespeicherten Konvertierungen";
+    savedConversionsList.appendChild(heading);
 
-      savedConversions.forEach((conversion, i) => {
-          const { checkbox, label } = createCheckbox(i);
+    savedConversions.forEach((conversion, i) => {
+      const { checkbox, label } = createCheckbox(i);
 
-          label.innerHTML += `${conversion.inputAmount} ${conversion.from} = ${conversion.convertedAmount} ${conversion.to}`;
+      label.innerHTML += `${conversion.inputAmount} ${conversion.from} = ${conversion.convertedAmount}`;
 
-          const listItem = document.createElement("li");
-          listItem.appendChild(checkbox);
-          listItem.appendChild(label);
-          savedConversionsList.appendChild(listItem);
+      const listItem = document.createElement("li");
+      listItem.appendChild(checkbox);
+      listItem.appendChild(label);
+      savedConversionsList.appendChild(listItem);
 
-          checkbox.checked = conversion.checked; // Setze den Status basierend auf der gespeicherten Information
+      checkbox.checked = conversion.checked; // Set the status based on the saved information
 
-          checkbox.addEventListener("click", () => {
-              updateLocalStorage(savedConversionsList);
-          });
+      checkbox.addEventListener("click", () => {
+        updateLocalStorage(savedConversionsList);
       });
+    });
 
-      savedConversionsList.style.display = "block";
+    savedConversionsList.style.display = "block";
   } else {
-      const heading = document.createElement("h3");
-      heading.textContent = "Dein Speicherliste ist leer";
-      savedConversionsList.appendChild(heading);
+    const heading = document.createElement("h3");
+    heading.textContent = "Dein Speicherliste ist leer";
+    savedConversionsList.appendChild(heading);
 
-      savedConversionsList.style.display = "none";
+    savedConversionsList.style.display = "none";
   }
 }
 
+// An event listener to call updateLocalStorage when the "Save" button is clicked
+saveButton.addEventListener("click", () => {
+  saveConversion();
+});
+
 // Anzeige der gespeicherten Konvertierungen beim Laden der Seite
 window.addEventListener("load", () => {
-    displaySavedConversions();
+  displaySavedConversions();
 });
+
 
 
 // Neue Funktion zum Anzeigen der ausgewählten Elemente unter Favorit_conversions-container
