@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     calculateButton.addEventListener("click", function () {
         const initialInvestment = parseFloat(document.getElementById("initial-investment").value);
         const years = parseInt(document.getElementById("years").value);
+        const periodic = parseInt(document.getElementById("periodic-deposit").value);
         let annualInterestRateFuture;
 
         if (document.getElementById("manual-interest-rate").checked) {
@@ -18,14 +19,20 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isNaN(initialInvestment) || isNaN(years) || isNaN(annualInterestRateFuture)) {
             resultDiv.textContent = "Invalid input";
         } else {
-            const futureValue = calculateFutureValue(initialInvestment, annualInterestRateFuture, years);
+            const futureValue = calculateFutureValue(initialInvestment, annualInterestRateFuture, years, periodic);
             resultDiv.textContent = `Future Value: $${futureValue.toFixed(2)}`;
         }
     });
 
-    function calculateFutureValue(initialInvestment, annualInterestRateFuture, years) {
-        const monthlyInterestRate = annualInterestRateFuture / 12 / 100;
-        const months = years * 12;
-        return initialInvestment * Math.pow(1 + monthlyInterestRate, months);
-    }
+    // DON'T FORGET TO FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC ANNUAL INTEREST RATE
+    function calculateFutureValue(initialInvestment, annualInterestRateFuture, years, periodic) {
+    const monthlyInterestRate = annualInterestRateFuture / 12 / 100;
+    const months = years * 12;
+    
+    // Calculate future value with periodic deposits
+    const futureValue = initialInvestment * Math.pow(1 + monthlyInterestRate, months) +
+        periodic * ((Math.pow(1 + monthlyInterestRate, months) - 1) / monthlyInterestRate);
+
+    return futureValue;
+}
 });
