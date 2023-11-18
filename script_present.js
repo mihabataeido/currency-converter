@@ -1,26 +1,32 @@
 //Present Value 
 document.addEventListener("DOMContentLoaded", function () {
     const futureValueInput = document.getElementById("future-value");
-    const annualInterestRateInput = document.getElementById("annual-interest-rate-present");
     const yearsInput = document.getElementById("years-present");
     const calculateButton = document.getElementById("calculate-button-present");
     const presentValueResult = document.getElementById("present-value-result");
 
     calculateButton.addEventListener("click", function () {
         const futureValue = parseFloat(futureValueInput.value);
-        const annualInterestRate = parseFloat(annualInterestRateInput.value) / 100;
         const years = parseInt(yearsInput.value);
+        let annualInterestRatePresent;
 
-        if (isNaN(futureValue) || isNaN(annualInterestRate) || isNaN(years)) {
+        if (document.getElementById("manual-interest-rate-present").checked) {
+            annualInterestRatePresent = parseFloat(document.getElementById("annual-interest-rate-manual-present").value);
+        } else {
+            // Handle automatic interest rate selection here
+            annualInterestRatePresent = parseFloat(document.getElementById("automatic-interest-rate-select-present").value);
+        }
+
+        if (isNaN(futureValue) || isNaN(annualInterestRatePresent) || isNaN(years)) {
             presentValueResult.textContent = "Invalid input";
         } else {
-            const presentValue = calculatePresentValue(futureValue, annualInterestRate, years);
+            const presentValue = calculatePresentValue(futureValue, annualInterestRatePresent, years);
             presentValueResult.textContent = presentValue.toFixed(2);
         }
     });
 
-    function calculatePresentValue(futureValue, annualInterestRate, years) {
-        return futureValue / Math.pow(1 + annualInterestRate, years);
+    function calculatePresentValue(futureValue, annualInterestRatePresent, years) {
+        return futureValue / Math.pow(1 + annualInterestRatePresent, years);
     }
 
     // Access to elements for reversal and saving conversions

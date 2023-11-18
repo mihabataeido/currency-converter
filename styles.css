@@ -361,25 +361,6 @@ select, input:focus {
   margin-bottom: 8px; /* Abstand zwischen den Elementen */
 }
 
-
-/*Calculator Style*/  
-
-#result-future {
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-#result-present {
-margin: 20px 0;
-font-weight: bold;
-}
-
-#present-value {
-color: black;
-}
-
-
 /*Input Feld Betrag eingeben*/
 .amount-container {
   position: relative;
@@ -620,7 +601,7 @@ button {
 
 /* Calculator Style */
 #calculator-future {
-  width: 30%;
+  width: 50%;
   padding: 2px;
   margin: 0 auto; /* This centers the calculator horizontally */
   display: flex;
@@ -642,6 +623,48 @@ button {
   margin-right: 5px;
 }
 
+
+#calculator-present {
+  width: 50%;
+  padding: 2px;
+  margin: 0 auto; /* This centers the calculator horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This centers the calculator vertically */
+  align-items: center; /* This centers the calculator horizontally and vertically */
+}
+
+#calculator-present div {
+  display: flex;
+  align-items: center;
+}
+
+#calculator-present label {
+  margin-right: 10px;
+}
+
+#calculator-present input[type="radio"] {
+  margin-right: 5px;
+}
+
+#result-future,
+#result-present {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left; /* Align text to the left */
+  margin-top: 20px;
+  margin-right: auto; /* Add right margin to move it to the left */
+  margin-left: 0; /* Set left margin to 0 to ensure it's aligned to the left */
+  line-height: 1;
+}
+
+#result-future span {
+  vertical-align: middle; /* Align the span content vertically */
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+
 /* CSS for radio buttons and input elements */
 .radio-buttons {
   display: flex;
@@ -655,4 +678,3 @@ button {
 .radio-buttons input[type="radio"] {
   margin-right: 5px;
 }
-
