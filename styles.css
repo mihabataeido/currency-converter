@@ -647,10 +647,10 @@ button {
   margin-right: 5px;
 }
 
-#interest-rate-input input[type="radio"] {
+#interest-rate-input input[type="radio"], #annual-interest-rate-present input[type="radio"] {
   margin-left: 3px; /* Adjust as needed to move the radio button closer to the label */
   margin-right: 0;
-  padding-left: 2px; /* Adjust as needed for additional spacing */
+  padding-left: 20px; /* Adjust as needed for additional spacing */
   padding-right: 2px;
   width: 100px; /* Adjust as needed to set the width of the radio button */
 }
