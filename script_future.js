@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const years = parseInt(document.getElementById("years").value);
         const periodic = parseInt(document.getElementById("periodic-deposit").value);
         let annualInterestRateFuture;
+        let compoundPeriod;
 
         if (document.getElementById("manual-interest-rate").checked) {
             annualInterestRateFuture = parseFloat(document.getElementById("annual-interest-rate-manual-future").value);
@@ -22,17 +23,30 @@ document.addEventListener("DOMContentLoaded", function () {
             const futureValue = calculateFutureValue(initialInvestment, annualInterestRateFuture, years, periodic);
             resultDiv.textContent = `Future Value: $${futureValue.toFixed(2)}`;
         }
+
+        if (document.getElementById("beginning-of-period").checked){
+            compoundPeriod = ;
+        } elif (document.getElementById("end-of-period").checked) {
+            compoundPeriod =  ;
+        }
+});
+
     });
 
-    // DON'T FORGET TO FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC ANNUAL INTEREST RATE
+    // FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC ANNUAL INTEREST RATE
     function calculateFutureValue(initialInvestment, annualInterestRateFuture, years, periodic) {
-    const monthlyInterestRate = annualInterestRateFuture / 12 / 100;
-    const months = years * 12;
-    
-    // Calculate future value with periodic deposits
-    const futureValue = initialInvestment * Math.pow(1 + monthlyInterestRate, months) +
-        periodic * ((Math.pow(1 + monthlyInterestRate, months) - 1) / monthlyInterestRate);
+        const monthlyInterestRate = annualInterestRateFuture / 12 / 100;
+        const months = years * 12;
+        
+        // Calculate future value with periodic deposits
+        let futureValue;
+        if (periodic === 0) {
+            futureValue = initialInvestment * Math.pow(1 + monthlyInterestRate, months);
+        } else {
+            futureValue = initialInvestment * Math.pow(1 + monthlyInterestRate, months) +
+                periodic * ((Math.pow(1 + monthlyInterestRate, months) - 1) / monthlyInterestRate);
+        }
 
-    return futureValue;
-}
+        return futureValue;
+    }
 });

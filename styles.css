@@ -601,7 +601,7 @@ button {
 
 /* Calculator Style */
 #calculator-future {
-  width: 50%;
+  width: 60%;
   padding: 2px;
   margin: 0 auto; /* This centers the calculator horizontally */
   display: flex;
@@ -645,6 +645,48 @@ button {
 
 #calculator-present input[type="radio"] {
   margin-right: 5px;
+}
+
+#interest-rate-input input[type="radio"] {
+  margin-left: 3px; /* Adjust as needed to move the radio button closer to the label */
+  margin-right: 0;
+  padding-left: 2px; /* Adjust as needed for additional spacing */
+  padding-right: 2px;
+  width: 100px; /* Adjust as needed to set the width of the radio button */
+}
+
+
+#compound-period {
+  display: flex;
+  align-items: center;
+}
+
+#compound-period label {
+  white-space: nowrap;
+  margin-bottom: 10px;
+  margin-left: 0;
+  font-weight: normal; /* Set default font weight to bold for the compound-period label */
+}
+
+#compound-period input[type="radio"] {
+  vertical-align: middle;
+  margin-right: 5px; /* Adjust as needed */
+  margin-bottom: 20px;
+}
+
+#end-of-period-label,
+#beginning-of-period-label {
+  font-weight: normal; /* Set default font weight to normal for radio button labels */
+}
+
+/* Set font weight to bold for radio button labels when checked */
+#end-of-period:checked ~ #end-of-period-label,
+#beginning-of-period:checked ~ #beginning-of-period-label,
+#manual-interest-rate:checked + label[for="manual-interest-rate"],
+#automatic-interest-rate:checked + label[for="automatic-interest-rate"],
+#manual-interest-rate-present:checked + label[for="manual-interest-rate-present"],
+#automatic-interest-rate-present:checked + label[for="automatic-interest-rate-present"] {
+  font-weight: bold;
 }
 
 #result-future,
