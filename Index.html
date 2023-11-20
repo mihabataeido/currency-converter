@@ -30,7 +30,7 @@
         </label>
     </header>
 
-    <div class="tab-content"> 
+    <div class="tab-content">
         <section id="home">
             <h2>Home</h2>
             <!-- Hier steht eine Große Lehre platz für eine Kurze Text  -->
@@ -168,32 +168,58 @@
                     <label for="years">Number of Years:</label>
                     <input type="number" id="years" required>
 
-                    <label for="periodic-deposit">Periodic Deposit (PMT):</label>
-                    <input type="number" id="periodic-deposit">
+                    
+                    <!-- Compound Interest section -->
+                    <div class="compound-checkbox">
+                        <label for="compound-checkbox">Add Compound Interest</label>
+                        <input type="checkbox" id="compound-checkbox" onclick="ShowAndHide()">
+                    </div>                    
 
-                    <div id="compound-period">
-                        <label>PMT made at the</label>
+                    <div id="compound-frequency-section" style="display: none;">
+                        <label for="compound-frequency">Compound Frequency:</label>
+                        <select id="compound-frequency">
+                            <option value="1">Annually</option>
+                            <option value="2">Semiannually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12">Monthly</option>
+                            <option value="52">Weekly</option>
+                            <option value="365">Daily</option>
+                        </select>
+                    </div>
+
+                    <div id="periodic-deposit-section" style="display: none;">
+                        <label for="periodic-deposit">Periodic Deposit (PMT):</label>
+                        <input type="number" id="periodic-deposit-input">
+                    </div>
+
+                    <div id="compound-period" style="display: none; white-space: nowrap;">
+                        <label style="display: inline-block;">PMT made at the: </label>
                         <input type="radio" id="beginning-of-period" name="period-type">
                         <label id="beginning-of-period-label" for="beginning-of-period">Beginning</label>
                         <input type="radio" id="end-of-period" name="period-type">
                         <label id="end-of-period-label" for="end-of-period">End</label>
-                        <label> of each compound period.</label>
-                      </div>
-                      
+                        <label style="display: inline-block;"> of each compound period.</label>
+                    </div>
 
-                    <label for="compound-frequency">Compound Frequency:</label>
-                    <select id="compound-frequency">
-                        <!-- You can add options here for compound frequency if needed -->
-                        <option value="1">Annually</option>
-                        <option value="2">Semiannually</option>
-                        <option value="4">Quarterly</option>
-                        <option value="12">Monthly</option>
-                        <option value="52">Weekly</option>
-                        <option value="365">Daily</option>
-                        <!-- Add more options as needed -->
-                    </select>
+                    <script type="text/javascript">
+                        function ShowAndHide() {
+                            var x = document.getElementById("compound-frequency-section");
+                            var y = document.getElementById("periodic-deposit-section");
+                            var z = document.getElementById("compound-period");
 
-            
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                                y.style.display = "block";
+                                z.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                                y.style.display = "none";
+                                z.style.display = "none";
+                            }
+                        }
+                    </script>
+                    <!-- End of Compound Interest section -->
+
                     <button type="button" id="calculate-button-future">Calculate</button>
                 </form>
 

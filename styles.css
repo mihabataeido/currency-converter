@@ -655,10 +655,30 @@ button {
   width: 100px; /* Adjust as needed to set the width of the radio button */
 }
 
+.compound-checkbox {
+  align-items: center;
+  margin-bottom: 10px;
+  width: 400px;
+}
+
+.compound-checkbox label {
+  width: 310px;
+  display: inline-block;
+  margin-left: 90px;
+}
+
+.compound-checkbox input[type="checkbox"] {
+  margin-right: 100px;
+  margin-left: 0;
+  padding: 0;
+  width: 50px; /* Adjust as needed to set the width of the checkbox */
+}
 
 #compound-period {
   display: flex;
   align-items: center;
+  width: 100px;
+  margin-right: 100%;
 }
 
 #compound-period label {
@@ -668,15 +688,19 @@ button {
   font-weight: normal; /* Set default font weight to bold for the compound-period label */
 }
 
-#compound-period input[type="radio"] {
-  vertical-align: middle;
-  margin-right: 5px; /* Adjust as needed */
-  margin-bottom: 20px;
+#beginning-of-period input[type="radio"],
+#end-of-period input[type="radio"] {
+  margin-left: 5px; /* Adjust the left margin to move the radio button closer to the label */
+  margin-right: 3px; /* Adjust the right margin for spacing between radio buttons and labels */
+  vertical-align: middle; /* Optional: Adjust vertical alignment as needed */
+  padding: 0; /* Optional: Adjust padding */
+  width: 5px; /* Adjust as needed to set the width of the radio button */
 }
 
 #end-of-period-label,
 #beginning-of-period-label {
   font-weight: normal; /* Set default font weight to normal for radio button labels */
+  display: inline-block;
 }
 
 /* Set font weight to bold for radio button labels when checked */

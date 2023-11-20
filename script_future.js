@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const calculateButton = document.getElementById("calculate-button-future");
     const resultDiv = document.getElementById("result-future");
-
+    
     calculateButton.addEventListener("click", function () {
         const initialInvestment = parseFloat(document.getElementById("initial-investment").value);
         const years = parseInt(document.getElementById("years").value);
