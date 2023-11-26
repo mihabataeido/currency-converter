@@ -5,16 +5,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const calculateButton = document.getElementById("calculate-button-present");
     const presentValueResult = document.getElementById("present-value-result");
 
+    // Function to validate and allow only non-negative numbers
+    function validateNonNegativeInput(inputElement) {
+        inputElement.addEventListener('input', function () {
+            let value = parseFloat(this.value);
+            if (isNaN(value) || value < 0) {
+                this.value = ''; // Clear the input if it's invalid
+            }
+        });
+    }
+
+    // Apply validation to futureValueInput and yearsInput
+    validateNonNegativeInput(futureValueInput);
+    validateNonNegativeInput(yearsInput);
+    
     calculateButton.addEventListener("click", function () {
         const futureValue = parseFloat(futureValueInput.value);
         const period = parseInt(yearsInput.value);
         let periodicInterestRatePresent;
 
-        if (document.getElementById("manual-interest-rate-present").checked) {
-            periodicInterestRatePresent = parseFloat(document.getElementById("periodic-interest-rate-manual-present").value);
+        if (document.getElementById("manual-inflation-rate").checked) {
+            periodicInterestRatePresent = parseFloat(document.getElementById("periodic-inflation-rate-manual-present").value/100);
         } else {
             // Handle automatic interest rate selection here
-            periodicInterestRatePresent = parseFloat(document.getElementById("automatic-interest-rate-select-present").value);
+            periodicInterestRatePresent = parseFloat(document.getElementById("automatic-inflation-rate-select-present").value);
         }
 
         if (isNaN(futureValue) || isNaN(periodicInterestRatePresent) || isNaN(period)) {
@@ -30,51 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return futureValue / Math.pow(1 + periodicInterestRatePresent/compoundFrequency, period*compoundFrequency);
     }
 
-    // Access to elements for reversal and saving conversions
-    const reverseConvertButton = document.getElementById("reverse-convert");
-    const saveButton = document.getElementById("save");
-    const savedConversionsList = document.getElementById("saved-conversions");
-    
+
+// Marked Conversions
     // Access to elements for the like button
     const likeContainer = document.getElementById("like-container");
     const likedConversionsList = document.getElementById("liked-conversions");
-
-    // Save button and saved conversions
-    saveButton.addEventListener("click", function () {
-        const from = fromCurrency.value;
-        const to = toCurrency.value;
-        const inputAmount = amount.value;
-        
-        // Finish the function if values are missing
-        if (!from || !to || !inputAmount) {
-            alert("Bitte wählen Sie Währungen aus und geben Sie einen Betrag ein.");
-            return; 
-        }
-        
-        // Get the converted amount
-        const convertedAmount = result.textContent;
-
-        // Create an object for the saved conversion
-        const savedConversion = {
-            from: from,
-            to: to,
-            inputAmount: inputAmount,
-            convertedAmount: convertedAmount,
-            checked: false 
-        };
-
-        // Add the conversion to the array
-        savedConversions.push(savedConversion);
-
-        // Zurücksetzen der Eingabefelder
-        //fromCurrency.value = "";
-        //toCurrency.value = "";
-        //amount.value = "";
-        //result.textContent = "";
-
-        // Refresh the display of the stored conversions
-        displaySavedConversions();        
-    });
 
     // Function for displaying the stored conversions
         function displaySavedConversions() {

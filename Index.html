@@ -112,15 +112,15 @@
                     </select>
                 </div>
         
-                <label>Periodic Interest Rate:</label>
-                    <div id="periodic-interest-rate-present">
-                        <input type="radio" id="manual-interest-rate-present" name="interest-rate-type-present">
-                        <label for="manual-interest-rate-present">Manual Input:</label>
-                        <input type="number" id="periodic-interest-rate-manual-present" step="0.01">
+                <label>Periodic Inflation Rate:</label>
+                    <div id="periodic-inflation-rate">
+                        <input type="radio" id="manual-inflation-rate" name="inflation-rate-type-present">
+                        <label for="manual-inflation-rate">Manual Input:</label>
+                        <input type="number" id="periodic-inflation-rate-manual-present" step="0.01">
                         <span class="input-symbol">%</span>
-                        <input type="radio" id="automatic-interest-rate-present" name="interest-rate-type-present">
-                        <label for="automatic-interest-rate-present">Automatic Input:</label>
-                        <select id="automatic-interest-rate-select-present">
+                        <input type="radio" id="automatic-inflation-rate" name="inflation-rate-type-present">
+                        <label for="automatic-inflation-rate">Automatic Input:</label>
+                        <select id="automatic-inflation-rate-select-present">
                             <!-- You can add options here for automatic interest rates if needed -->
                             <option value="1">1%</option>
                             <option value="2">2%</option>
@@ -136,7 +136,7 @@
                 <button type="button" id="calculate-button-present">Calculate</button>
         
                 <div id="result-present">
-                    Present Value: <span id="present-value-result">0.00</span>
+                    Present Value: <span id="present-value-result">...</span>
                 </div>
 
                 <!--MUSS NOCH BEARBEITEN-->
@@ -233,7 +233,7 @@
                 </form>
 
                 <div id="result-future">
-                    Future Value: <span id="result-future">0.00</span>
+                    Future Value: <span id="result-future">...</span>
                 </div>
         </section>        
             
