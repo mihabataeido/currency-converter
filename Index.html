@@ -99,12 +99,24 @@
             <div id="calculator-present">
                 <label for="future-value">Future Value:</label>
                 <input type="number" id="future-value" step="0.01">
+
+                <div id="compound-frequency-section-present">
+                    <label for="compound-frequency-present">Compound Frequency:</label>
+                    <select id="compound-frequency-present">
+                        <option value="1">Annually</option>
+                        <option value="2">Semiannually</option>
+                        <option value="4">Quarterly</option>
+                        <option value="12">Monthly</option>
+                        <option value="52">Weekly</option>
+                        <option value="365">Daily</option>
+                    </select>
+                </div>
         
-                <label>Annual Interest Rate:</label>
-                    <div id="annual-interest-rate-present">
+                <label>Periodic Interest Rate:</label>
+                    <div id="periodic-interest-rate-present">
                         <input type="radio" id="manual-interest-rate-present" name="interest-rate-type-present">
                         <label for="manual-interest-rate-present">Manual Input:</label>
-                        <input type="number" id="annual-interest-rate-manual-present" step="0.01">
+                        <input type="number" id="periodic-interest-rate-manual-present" step="0.01">
                         <span class="input-symbol">%</span>
                         <input type="radio" id="automatic-interest-rate-present" name="interest-rate-type-present">
                         <label for="automatic-interest-rate-present">Automatic Input:</label>
@@ -118,8 +130,8 @@
                     </div>
 
         
-                <label for="years-present">Number of Years:</label>
-                <input type="number" id="years-present">
+                <label for="period-present">Number of Period(s):</label>
+                <input type="number" id="period-present">
         
                 <button type="button" id="calculate-button-present">Calculate</button>
         
@@ -149,11 +161,23 @@
                     <label for="initial-investment">Initial Investment:</label>
                     <input type="number" id="initial-investment" step="0.01" required>
 
-                    <label>Annual Interest Rate:</label>
+                    <div id="compound-frequency-section-future">
+                        <label for="compound-frequency-future">Compound Frequency:</label>
+                        <select id="compound-frequency-future">
+                            <option value="1">Annually</option>
+                            <option value="2">Semiannually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12">Monthly</option>
+                            <option value="52">Weekly</option>
+                            <option value="365">Daily</option>
+                        </select>
+                    </div>
+
+                    <label>Periodic Interest Rate:</label>
                     <div id="interest-rate-input">
                         <input type="radio" id="manual-interest-rate" name="interest-rate-type">
                         <label for="manual-interest-rate">Manual Input:</label>
-                        <input type="number" id="annual-interest-rate-manual-future" step="0.01">
+                        <input type="number" id="periodic-interest-rate-manual-future" step="0.01">
                         <span class="input-symbol">%</span>
                         <input type="radio" id="automatic-interest-rate" name="interest-rate-type">
                         <label for="automatic-interest-rate">Automatic Input:</label>
@@ -165,8 +189,8 @@
                             <!-- Add more options as needed -->
                         </select>
                     </div>
-                    <label for="years">Number of Years:</label>
-                    <input type="number" id="years" required>
+                    <label for="period">Number of Period(s):</label>
+                    <input type="number" id="period" required>
 
                     
                     <!-- Compound Interest section -->
@@ -174,18 +198,6 @@
                         <label for="compound-checkbox">Add Compound Interest</label>
                         <input type="checkbox" id="compound-checkbox" onclick="ShowAndHide()">
                     </div>                    
-
-                    <div id="compound-frequency-section" style="display: none;">
-                        <label for="compound-frequency">Compound Frequency:</label>
-                        <select id="compound-frequency">
-                            <option value="1">Annually</option>
-                            <option value="2">Semiannually</option>
-                            <option value="4">Quarterly</option>
-                            <option value="12">Monthly</option>
-                            <option value="52">Weekly</option>
-                            <option value="365">Daily</option>
-                        </select>
-                    </div>
 
                     <div id="periodic-deposit-section" style="display: none;">
                         <label for="periodic-deposit">Periodic Deposit (PMT):</label>
@@ -203,18 +215,15 @@
 
                     <script type="text/javascript">
                         function ShowAndHide() {
-                            var x = document.getElementById("compound-frequency-section");
-                            var y = document.getElementById("periodic-deposit-section");
-                            var z = document.getElementById("compound-period");
+                            var x = document.getElementById("periodic-deposit-section");
+                            var y = document.getElementById("compound-period");
 
                             if (x.style.display === "none") {
                                 x.style.display = "block";
                                 y.style.display = "block";
-                                z.style.display = "block";
                             } else {
                                 x.style.display = "none";
                                 y.style.display = "none";
-                                z.style.display = "none";
                             }
                         }
                     </script>

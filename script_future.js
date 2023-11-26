@@ -5,48 +5,60 @@ document.addEventListener("DOMContentLoaded", function () {
     
     calculateButton.addEventListener("click", function () {
         const initialInvestment = parseFloat(document.getElementById("initial-investment").value);
-        const years = parseInt(document.getElementById("years").value);
-        const periodic = parseInt(document.getElementById("periodic-deposit").value);
-        let annualInterestRateFuture;
+        const period = parseInt(document.getElementById("period").value);
+        const periodicDeposit = parseInt(document.getElementById("periodic-deposit").value);
+        let periodicInterestRateFuture;
         let compoundPeriod;
 
         if (document.getElementById("manual-interest-rate").checked) {
-            annualInterestRateFuture = parseFloat(document.getElementById("annual-interest-rate-manual-future").value);
+            periodicInterestRateFuture = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value);
         } else {
             // Handle automatic interest rate selection here
-            annualInterestRateFuture = parseFloat(document.getElementById("automatic-interest-rate-select-future").value);
+            periodicInterestRateFuture = parseFloat(document.getElementById("automatic-interest-rate-select-future").value);
         }
 
-        if (isNaN(initialInvestment) || isNaN(years) || isNaN(annualInterestRateFuture)) {
+        if (isNaN(initialInvestment) || isNaN(period) || isNaN(periodicInterestRateFuture)) {
             resultDiv.textContent = "Invalid input";
         } else {
-            const futureValue = calculateFutureValue(initialInvestment, annualInterestRateFuture, years, periodic);
+            const futureValue = calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit);
             resultDiv.textContent = `Future Value: $${futureValue.toFixed(2)}`;
-        }
-
-        if (document.getElementById("beginning-of-period").checked){
-            compoundPeriod = ;
-        } elif (document.getElementById("end-of-period").checked) {
-            compoundPeriod =  ;
         }
 });
 
     });
 
-    // FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC ANNUAL INTEREST RATE
-    function calculateFutureValue(initialInvestment, annualInterestRateFuture, years, periodic) {
-        const monthlyInterestRate = annualInterestRateFuture / 12 / 100;
-        const months = years * 12;
+    // FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC periodic INTEREST RATE
+    function calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit) {
+        const compoundFrequency = parseFloat(document.getElementById("compound-frequency-present").value);
+        const periodicInterestRate = periodicInterestRateFuture / compoundFrequency;
+        const periodicTime = period * compoundFrequency;
+        const beginningPeriodicDeposit = document.getElementById("beginning-of-period").checked;
+        const endPeriodicDeposit = document.getElementById("end-of-period").checked;
+        const decrementPeriodicDepositEnd = period - 1;
+        const compoundCheckbox = document.getElementById("compound-checkbox").checked;
         
         // Calculate future value with periodic deposits
         let futureValue;
-        if (periodic === 0) {
-            futureValue = initialInvestment * Math.pow(1 + monthlyInterestRate, months);
+        if (compoundCheckbox) {
+            if (periodicDeposit > 0 && beginningPeriodicDeposit) {
+                futureValue = initialInvestment * Math.pow(1 + periodicInterestRate, periodicTime) + (periodicDeposit * (Math.pow(1 + periodicInterestRate, periodicTime) - 1)) / periodicInterestRate;
+            } else if (periodicDeposit > 0 && endPeriodicDeposit) {
+                futureValue = initialInvestment * Math.pow(1 + periodicInterestRate, periodicTime) + (decrementPeriodicDepositEnd * (Math.pow(1 + periodicInterestRate, periodicTime) - 1)) / periodicInterestRate + periodicDeposit;
+            }
+            else {
+                futureValue = initialInvestment * Math.pow(1 + periodicInterestRate, periodicTime);
+            }
         } else {
-            futureValue = initialInvestment * Math.pow(1 + monthlyInterestRate, months) +
-                periodic * ((Math.pow(1 + monthlyInterestRate, months) - 1) / monthlyInterestRate);
+            futureValue = initialInvestment * Math.pow(1 + periodicInterestRate, periodicTime);
         }
 
         return futureValue;
     }
 });
+
+
+
+
+
+
+

@@ -1,32 +1,33 @@
 //Present Value 
 document.addEventListener("DOMContentLoaded", function () {
     const futureValueInput = document.getElementById("future-value");
-    const yearsInput = document.getElementById("years-present");
+    const yearsInput = document.getElementById("period-present");
     const calculateButton = document.getElementById("calculate-button-present");
     const presentValueResult = document.getElementById("present-value-result");
 
     calculateButton.addEventListener("click", function () {
         const futureValue = parseFloat(futureValueInput.value);
-        const years = parseInt(yearsInput.value);
-        let annualInterestRatePresent;
+        const period = parseInt(yearsInput.value);
+        let periodicInterestRatePresent;
 
         if (document.getElementById("manual-interest-rate-present").checked) {
-            annualInterestRatePresent = parseFloat(document.getElementById("annual-interest-rate-manual-present").value);
+            periodicInterestRatePresent = parseFloat(document.getElementById("periodic-interest-rate-manual-present").value);
         } else {
             // Handle automatic interest rate selection here
-            annualInterestRatePresent = parseFloat(document.getElementById("automatic-interest-rate-select-present").value);
+            periodicInterestRatePresent = parseFloat(document.getElementById("automatic-interest-rate-select-present").value);
         }
 
-        if (isNaN(futureValue) || isNaN(annualInterestRatePresent) || isNaN(years)) {
+        if (isNaN(futureValue) || isNaN(periodicInterestRatePresent) || isNaN(period)) {
             presentValueResult.textContent = "Invalid input";
         } else {
-            const presentValue = calculatePresentValue(futureValue, annualInterestRatePresent, years);
+            const presentValue = calculatePresentValue(futureValue, periodicInterestRatePresent, period);
             presentValueResult.textContent = presentValue.toFixed(2);
         }
     });
 
-    function calculatePresentValue(futureValue, annualInterestRatePresent, years) {
-        return futureValue / Math.pow(1 + annualInterestRatePresent, years);
+    function calculatePresentValue(futureValue, periodicInterestRatePresent, period) {
+        const compoundFrequency = parseFloat(document.getElementById("compound-frequency-present").value);
+        return futureValue / Math.pow(1 + periodicInterestRatePresent/compoundFrequency, period*compoundFrequency);
     }
 
     // Access to elements for reversal and saving conversions
