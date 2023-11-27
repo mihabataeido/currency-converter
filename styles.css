@@ -698,7 +698,7 @@ button {
   margin-right: 5px;
 }
 
-#interest-rate-input input[type="radio"], #annual-interest-rate-present input[type="radio"] {
+#interest-rate-input input[type="radio"], #periodic-inflation-rate input[type="radio"] {
   margin-left: 3px; /* Adjust as needed to move the radio button closer to the label */
   margin-right: 0;
   padding-left: 20px; /* Adjust as needed for additional spacing */
@@ -759,8 +759,8 @@ button {
 #beginning-of-period:checked ~ #beginning-of-period-label,
 #manual-interest-rate:checked + label[for="manual-interest-rate"],
 #automatic-interest-rate:checked + label[for="automatic-interest-rate"],
-#manual-interest-rate-present:checked + label[for="manual-interest-rate-present"],
-#automatic-interest-rate-present:checked + label[for="automatic-interest-rate-present"] {
+#manual-inflation-rate:checked + label[for="manual-inflation-rate"],
+#automatic-inflation-rate:checked + label[for="automatic-inflation-rate"] {
   font-weight: bold;
 }
 
