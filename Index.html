@@ -120,49 +120,19 @@
                     </div>
             
                     <label>Periodic Inflation Rate:</label>
-                        <div id="periodic-inflation-rate">
-                            <input type="radio" id="manual-inflation-rate" name="inflation-rate-type-present">
-                            <label for="manual-inflation-rate">Manual Input:</label>
-                            <input type="number" id="periodic-inflation-rate-manual-present" step="0.01">
-                            <span class="input-symbol">%</span>
-                            <input type="radio" id="automatic-inflation-rate" name="inflation-rate-type-present">
-                            <label for="automatic-inflation-rate">Automatic Input (%):</label>
-                            <select id="automatic-inflation-rate-select-present"></select>
-                        </div>
+                    <div id="periodic-inflation-rate">
+                        <input type="radio" id="manual-inflation-rate" name="inflation-rate-type-present">
+                        <label for="manual-inflation-rate">Manual Input:</label>
+                        <input type="number" id="periodic-inflation-rate-manual-present" step="0.01">
+                        <span class="input-symbol">%</span>
+                        <input type="radio" id="automatic-inflation-rate" name="inflation-rate-type-present">
+                        <label for="automatic-inflation-rate">Automatic Input (%):</label>
+                        <select id="automatic-inflation-rate-select-present"></select>
+                    </div>
 
                     <label for="period-present">Number of Period(s):</label>
-                    
                     <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
 
-                    <script type="text/javascript">
-                        var apiUrl = 'https://www.statbureau.org/calculate-inflation-rate-jsonp?jsoncallback=?';
-                        const countries = ["belarus", "brazil", "canada", "european-union", "eurozone", "france", "germany", "greece", "india", "japan", "kazakhstan", "mexico", "russia", "spain", "turkey", "ukraine", "united-kingdom", "united-states"];
-        
-                        $('#automatic-inflation-rate').on('click', function () {
-                            // Clear previous results before populating the dropdown
-                            $('#automatic-inflation-rate-select-present').empty();
-        
-                            // Iterate through the countries array
-                            countries.forEach(function (country) {
-                                $.getJSON(apiUrl, {
-                                    country: country,
-                                    start: "2010/1/1",
-                                    end: "2010/12/31",	
-                                    format: true
-                                })
-                                .done(function (data) {
-                                    // Append country and inflation rate to the dropdown list
-                                    $('#automatic-inflation-rate-select-present').append($('<option>', {
-                                        value: data,
-                                        text: country + ': ' + data
-                                    }));
-                                })
-                                .fail(function (jqXHR, textStatus, errorThrown) {
-                                    console.error('Error fetching data for ' + country + ': ' + textStatus, errorThrown);
-                                });
-                            });
-                        });
-                    </script>
                     
                     <input type="number" id="period-present">
             

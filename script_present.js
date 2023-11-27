@@ -15,6 +15,35 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    var apiUrl = 'https://www.statbureau.org/calculate-inflation-rate-jsonp?jsoncallback=?';
+    const countries = ["belarus", "brazil", "canada", "european-union", "eurozone", "france", "germany", "greece", "india", "japan", "kazakhstan", "mexico", "russia", "spain", "turkey", "ukraine", "united-kingdom", "united-states"];
+
+    $('#automatic-inflation-rate').on('click', function () {
+        // Clear previous results before populating the dropdown
+        $('#automatic-inflation-rate-select-present').empty();
+
+        // Iterate through the countries array
+        countries.forEach(function (country) {
+            $.getJSON(apiUrl, {
+                country: country,
+                start: "2010/1/1",
+                end: "2010/12/31",
+                format: true
+            })
+            .done(function (data) {
+                // Append country and inflation rate to the dropdown list
+                $('#automatic-inflation-rate-select-present').append($('<option>', {
+                    value: data,
+                    text: country + ': ' + data
+                }));
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.error('Error fetching data for ' + country + ': ' + textStatus, errorThrown);
+            });
+        });
+    });
+
+
     // Apply validation to futureValueInput and yearsInput
     validateNonNegativeInput(futureValueInput);
     validateNonNegativeInput(yearsInput);
