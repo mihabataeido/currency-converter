@@ -31,11 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
             periodicInterestRateFuture = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value/100);
         } else {
             // Handle automatic interest rate selection here
-            periodicInterestRateFuture = parseFloat(document.getElementById("automatic-interest-rate-select-future").value);
+            periodicInterestRateFuture = parseFloat(document.getElementById("automatic-interest-rate-select-future").value/100);
         }
 
         if (isNaN(initialInvestment) || isNaN(period) || isNaN(periodicInterestRateFuture)) {
-            resultDiv.textContent = "Invalid input";
+            resultDiv.textContent = "Future Value: Invalid input";
+            alert("Invalid input. Please Enter a valid amount.");
         } else {
             const futureValue = calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit);
             resultDiv.textContent = `Future Value: ${futureValue.toFixed(2)}`;
@@ -68,6 +69,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return futureValue;
     }
+
+    // Marked Conversions
+    const saveButton = document.querySelector('.save-future');
+    const favoriteButton = document.querySelector('.favorit-future');
+    const shareButton = document.querySelector('.share-future');
+
+    // Event listener for the Save button
+    saveButton.addEventListener('click', function () {
+        // Save the result to local storage
+    });
+
+    // Event listener for the Favorite button
+    favoriteButton.addEventListener('click', function () {
+        // Add the result to the list of saved results
+        const futureValue = document.getElementById("result-future").textContent;
+        if (futureValue !== "Future Value: Invalid input") {
+            const savedResultsList = document.getElementById("results-list-future");
+            const newResult = document.createElement('li');
+            newResult.textContent = futureValue;
+            savedResultsList.appendChild(newResult);
+        } else {
+            alert("Cannot save invalid input.");
+        }
+    });
+
+    // Event listener for the Share button
+    shareButton.addEventListener('click', function () {
+        // Share to platforms
+    });
 });
 
 

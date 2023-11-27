@@ -90,66 +90,84 @@
             <div class="Favorit_conversions-container">
                 <ul class="Favorit_conversions-list"></ul>
             </div>
+            <div id="menu-present">
+                <ul>
+                    <li id="download-button-present">Download</li>
+                    <li id="info-button-present">Information</li>
+                </ul>   
+            </div>
         </section>
 
         
         <section id="present-value">
             <div class="wrapper">
-            <h2>Present Value of Future Money</h2>
-            <div id="calculator-present">
-                <label for="future-value">Future Value:</label>
-                <input type="number" id="future-value" step="0.01">
+                <h2>Present Value of Future Money</h2>
+                <br>
+                <div id="calculator-present">
+                    <label for="future-value">Future Value:</label>
+                    <input type="number" id="future-value" step="0.01">
 
-                <div id="compound-frequency-section-present">
-                    <label for="compound-frequency-present">Compound Frequency:</label>
-                    <select id="compound-frequency-present">
-                        <option value="1">Annually</option>
-                        <option value="2">Semiannually</option>
-                        <option value="4">Quarterly</option>
-                        <option value="12">Monthly</option>
-                        <option value="52">Weekly</option>
-                        <option value="365">Daily</option>
-                    </select>
-                </div>
-        
-                <label>Periodic Inflation Rate:</label>
-                    <div id="periodic-inflation-rate">
-                        <input type="radio" id="manual-inflation-rate" name="inflation-rate-type-present">
-                        <label for="manual-inflation-rate">Manual Input:</label>
-                        <input type="number" id="periodic-inflation-rate-manual-present" step="0.01">
-                        <span class="input-symbol">%</span>
-                        <input type="radio" id="automatic-inflation-rate" name="inflation-rate-type-present">
-                        <label for="automatic-inflation-rate">Automatic Input:</label>
-                        <select id="automatic-inflation-rate-select-present">
-                            <!-- You can add options here for automatic interest rates if needed -->
-                            <option value="1">1%</option>
-                            <option value="2">2%</option>
-                            <option value="3">3%</option>
-                            <!-- Add more options as needed -->
+                    <div id="compound-frequency-section-present">
+                        <label for="compound-frequency-present">Compound Frequency:</label>
+                        <select id="compound-frequency-present">
+                            <option value="1">Annually</option>
+                            <option value="2">Semiannually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12">Monthly</option>
+                            <option value="52">Weekly</option>
+                            <option value="365">Daily</option>
                         </select>
                     </div>
+            
+                    <label>Periodic Inflation Rate:</label>
+                        <div id="periodic-inflation-rate">
+                            <input type="radio" id="manual-inflation-rate" name="inflation-rate-type-present">
+                            <label for="manual-inflation-rate">Manual Input:</label>
+                            <input type="number" id="periodic-inflation-rate-manual-present" step="0.01">
+                            <span class="input-symbol">%</span>
+                            <input type="radio" id="automatic-inflation-rate" name="inflation-rate-type-present">
+                            <label for="automatic-inflation-rate">Automatic Input:</label>
+                            <select id="automatic-inflation-rate-select-present">
+                                <!-- You can add options here for automatic interest rates if needed -->
+                                <option value="1">1%</option>
+                                <option value="2">2%</option>
+                                <option value="3">3%</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
 
-        
-                <label for="period-present">Number of Period(s):</label>
-                <input type="number" id="period-present">
-        
-                <button type="button" id="calculate-button-present">Calculate</button>
-        
-                <div id="result-present">
-                    Present Value: <span id="present-value-result">...</span>
+                    <label for="period-present">Number of Period(s):</label>
+                    <input type="number" id="period-present">
+            
+                    <button type="button" id="calculate-button-present">Calculate</button>
+            
+                    <div id="result-present">
+                        Present Value: <span id="present-value-result">...</span>
+                    </div>
+
+                    <!--MUSS NOCH BEARBEITEN-->
+                    <div class="button-row-present">
+                        <button class="save-present">Save</button>
+                        <button class="favorit-present">Favorite</button>
+                        <button class="share-present">Share</button>
+                    </div>
                 </div>
 
-                <!--MUSS NOCH BEARBEITEN-->
-                <div class="button-row">
-                    <button class="save-present">Speichern</button>
-                    <button class="favorit-present">Favorit</button>
-                    <button class="share-present">Teilen</button>
+                <div id="saved-conversions-container-present">
+                    <p id="saved-conversions-present"></p>
                 </div>
             </div>
 
-            <div id="saved-conversions-container-present">
-                <p id="saved-conversions-present"></p>
+            <div id="saved-results-present">
+                <h3>Saved Results:</h3>
+                <ul id="results-list-present"></ul>
             </div>
+
+        <div id="menu-present">
+            <ul>
+                <li id="download-button-present">Download</li>
+                <li id="info-button-present">Information</li>
+            </ul>   
         </div>
         </section>
         
@@ -157,6 +175,7 @@
         <section id="future-prediction">
             <div class="wrapper">
                 <h2>Future Value Calculator</h2>
+                <br>
                 <div id="calculator-future">
                     <label for="initial-investment">Initial Investment:</label>
                     <input type="number" id="initial-investment" step="0.01" required>
@@ -189,6 +208,7 @@
                             <!-- Add more options as needed -->
                         </select>
                     </div>
+
                     <label for="period">Number of Period(s):</label>
                     <input type="number" id="period" required>
 
@@ -230,24 +250,39 @@
                     <!-- End of Compound Interest section -->
 
                     <button type="button" id="calculate-button-future">Calculate</button>
-                </form>
-
-                <div id="result-future">
-                    Future Value: <span id="result-future">...</span>
+                    <div id="result-future">
+                        Future Value: <span id="result-future">...</span>
+                    </div>
+    
+                    <!--MUSS NOCH BEARBEITEN-->
+                    <div class="button-row-future">
+                        <button class="save-future">Save</button>
+                        <button class="favorit-future">Favorite</button>
+                        <button class="share-future">Share</button>
+                    </div>
                 </div>
+
+
+            </div>
+
+            <div id="saved-results-future">
+                <h3>Saved Results:</h3>
+                <ul id="results-list-future"></ul>
+            </div>
+
+            <div id="menu-future">
+                <ul>
+                    <li id="download-button-future">Download</li>
+                    <li id="info-button-future">Information</li>
+                </ul>   
+            </div>
         </section>        
             
         </section>
-        <div id="menu">
-            <ul>
-                <li id="download-button">Download</li>
-                <li id="info-button">Information</li>
-            </ul>   
-        </div>
     </div>
 
     <footer>
-        <p>Autor: Mihabat Aeido, Vae Tiolamon, Tristan Hein</p>
+        <p>Autor: Mihabat Kheiri Aeido, Eunice Stacy Tiolamon, Tristan Erik Hein</p>
         <p id="current-date">Datum: 2023</p>
     </footer>
 </body>

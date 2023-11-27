@@ -89,7 +89,21 @@ footer {
 
 }
 
-.info-button {
+.info-button-currency {
+
+  bottom: 20px;
+  padding: auto;
+
+}
+
+.info-button-present {
+
+  bottom: 20px;
+  padding: auto;
+
+}
+
+.info-button-future {
 
   bottom: 20px;
   padding: auto;
@@ -295,20 +309,47 @@ select, input:focus {
     color: #fff;
 }
 
-#menu ul {
+#menu-currency ul {
     list-style: none;
     text-align: right;
     margin-top: 20px;
     padding-right: 20px;
 }
 
-#menu li {
+#menu-currency li {
     display: inline;
     margin: 0 10px;
     font-weight: bold;
     cursor: pointer;
 }
 
+#menu-present ul {
+  list-style: none;
+  text-align: right;
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+#menu-present li {
+  display: inline;
+  margin: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#menu-future ul {
+  list-style: none;
+  text-align: right;
+  margin-top: 20px;
+  padding-right: 20px;
+}
+
+#menu-future li {
+  display: inline;
+  margin: 0 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 /* CSS */
 .saved-conversions-list input {
@@ -591,6 +632,16 @@ select, input:focus {
 
 /* Button row */
 .button-row {
+  display: flex;
+  align-items: center;
+}
+
+.button-row-present {
+  display: flex;
+  align-items: center;
+}
+
+.button-row-future {
   display: flex;
   align-items: center;
 }

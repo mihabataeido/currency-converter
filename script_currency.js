@@ -137,7 +137,7 @@ function saveConversion() {
   const amountVal = amount.value;
 
   if (amountVal === "" || isNaN(amountVal) || parseFloat(amountVal) <= 0) {
-    alert("Please Enter a valid amount");
+    alert("Invalid input. Please Enter a valid amount");
     return;
   }
 
