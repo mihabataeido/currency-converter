@@ -1,5 +1,5 @@
 /* Created by Tivotal */
-let dropList = document.querySelectorAll("form select");
+let dropList = document.querySelectorAll(".drop-list select");
 let fromCurrency = document.querySelector(".from select");
 let toCurrency = document.querySelector(".to select");
 let icon = document.querySelector(".reverse-convert");
@@ -53,7 +53,7 @@ getBtn.addEventListener("click", (e) => {
 });
 
 function getExchangeValue() {
-  const amount = document.querySelector("form input");
+  const amount = document.querySelector("#amount");
   let amountVal = amount.value;
 
   // Überprüfen, ob der Umrechnungs-Button geklickt wurde
@@ -133,7 +133,7 @@ function createCheckbox(i, isVisible) {
 
 // Function to save conversion in localStorage
 function saveConversion() {
-  const amount = document.querySelector("form input");
+  const amount = document.querySelector("#amount");
   const amountVal = amount.value;
 
   if (amountVal === "" || isNaN(amountVal) || parseFloat(amountVal) <= 0) {
@@ -164,6 +164,7 @@ function saveConversion() {
 // Function to display saved conversions
 function displaySavedConversions() {
   const savedConversions = JSON.parse(localStorage.getItem("savedConversions")) || [];
+  console.log(savedConversions);
   savedConversionsList.innerHTML = ""; // Clear the existing list
 
   if (savedConversions.length > 0) {

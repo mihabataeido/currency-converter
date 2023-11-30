@@ -404,7 +404,7 @@ select, input:focus {
 
 /*Input Feld Betrag eingeben*/
 .amount-container {
-  position: relative;
+  /*position: relative;*/
   margin: 7px;
   width: 400px;
   
@@ -421,7 +421,6 @@ select, input:focus {
 }
 
 .amount-container .label {
-  position: absolute;
   top: 18px;
   left: 10px;
   color: #ccc;

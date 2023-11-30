@@ -21,6 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
     validateNonNegativeInput(periodInput);
     validateNonNegativeInput(periodicDepositInput);
 
+    document.getElementById("compound-checkbox").addEventListener("change", ShowAndHide)
+    function ShowAndHide() {
+        var x = document.getElementById("periodic-deposit-section");
+        var y = document.getElementById("compound-period");
+
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "block";
+        } else {
+            x.style.display = "none";
+            y.style.display = "none";
+        }
+    }
+
     calculateButton.addEventListener("click", function () {
         const initialInvestment = parseFloat(initialInvestmentInput.value);
         const period = parseInt(periodInput.value);
