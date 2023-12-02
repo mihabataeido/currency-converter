@@ -39,14 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const initialInvestment = parseFloat(initialInvestmentInput.value);
         const period = parseInt(periodInput.value);
         const periodicDeposit = parseInt(periodicDepositInput.value);
-        let periodicInterestRateFuture; 
-
-        if (document.getElementById("manual-interest-rate").checked) {
-            periodicInterestRateFuture = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value/100);
-        } else {
-            // Handle automatic interest rate selection here
-            periodicInterestRateFuture = parseFloat(document.getElementById("automatic-interest-rate-select-future").value/100);
-        }
+        const periodicInterestRateFuture = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value/100);
 
         if (isNaN(initialInvestment) || isNaN(period) || isNaN(periodicInterestRateFuture)) {
             resultDiv.textContent = "Future Value: Invalid input";
@@ -55,11 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const futureValue = calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit);
             resultDiv.textContent = `Future Value: ${futureValue.toFixed(2)}`;
         }
-});
+})
+;
 
     // FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC periodic INTEREST RATE
     function calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit) {
-        const compoundFrequency = parseFloat(document.getElementById("compound-frequency-present").value);
+        const compoundFrequency = parseFloat(document.getElementById("compound-frequency-future").value);
         const periodicInterestRate = periodicInterestRateFuture / compoundFrequency;
         const periodicTime = period * compoundFrequency;
         const decrementPeriodicDepositEnd = period - 1;

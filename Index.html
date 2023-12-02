@@ -187,21 +187,10 @@
                     </div>
 
                     <label>Periodic Interest Rate:</label>
-                    <div id="interest-rate-input">
-                        <input type="radio" id="manual-interest-rate" name="interest-rate-type">
-                        <label for="manual-interest-rate">Manual Input:</label>
-                        <input type="number" id="periodic-interest-rate-manual-future" step="0.01">
-                        <span class="input-symbol">%</span>
-                        <input type="radio" id="automatic-interest-rate" name="interest-rate-type">
-                        <label for="automatic-interest-rate">Automatic Input (%):</label>
-                        <select id="automatic-interest-rate-select-future">
-                            <!-- You can add options here for automatic interest rates if needed -->
-                            <option value="1">1%</option>
-                            <option value="2">2%</option>
-                            <option value="3">3%</option>
-                            <!-- Add more options as needed --> -->
-                        </select>
-                    </div>
+                    <label for="periodic-interest-rate-manual-future">Manual Input:</label>
+                    <input type="number" id="periodic-interest-rate-manual-future" step="0.01">
+                    <span class="input-symbol">%</span>
+                    
 
                     <label for="period">Number of Period(s):</label>
                     <input type="number" id="period" required>
@@ -265,7 +254,7 @@
 
     <footer>
         <p>Autor: Mihabat Kheiri Aeido, Eunice Stacy Tiolamon, Tristan Erik Hein</p>
-        <p id="current-date">Datum: 2023</p>
+        <p id="current-date"> &copy; 2023</p>
     </footer>
 
     <script src="country_list.js"></script>
