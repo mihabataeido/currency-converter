@@ -146,16 +146,20 @@
                         <button class="share-present">Share</button>
                     </div>
                 </div>
-
-                <div id="saved-conversions-container-present">
-                    <p id="saved-conversions-present"></p>
-                </div>
             </div>
 
             <div id="saved-results-present">
                 <h3>Saved Results:</h3>
                 <ul id="results-list-present"></ul>
+                <button class="trash-bin-present">Trash Bin</button> 
             </div>
+            
+            <div class="favorite-results-present">
+                <h3>Favorite Results:</h3>
+                <ul class="favorite-list-present" id="favorite-list"></ul>
+                <button class="trash-bin-favorite-present">Trash Bin</button> 
+            </div>   
+                    
 
         <div id="menu-present">
             <ul>
@@ -187,10 +191,10 @@
                     </div>
 
                     <label>Periodic Interest Rate:</label>
-                    <label for="periodic-interest-rate-manual-future">Manual Input:</label>
-                    <input type="number" id="periodic-interest-rate-manual-future" step="0.01">
-                    <span class="input-symbol">%</span>
-                    
+                    <div class="input-wrapper">
+                        <input type="number" id="periodic-interest-rate-manual-future" step="0.01">
+                        <span class="input-symbol">%</span>
+                    </div>
 
                     <label for="period">Number of Period(s):</label>
                     <input type="number" id="period" required>
@@ -239,7 +243,14 @@
             <div id="saved-results-future">
                 <h3>Saved Results:</h3>
                 <ul id="results-list-future"></ul>
+                <button class="trash-bin-future">Trash Bin</button>
             </div>
+
+            <div class="favorite-results-future">
+                <h3>Favorite Results:</h3>
+                <ul class="favorite-list-future" id="favorite-list"></ul>
+                <button class="trash-bin-favorite-future">Trash Bin</button>
+            </div>            
 
             <div id="menu-future">
                 <ul>

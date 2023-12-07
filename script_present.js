@@ -76,31 +76,153 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Marked Conversions
-    const saveButton = document.querySelector('.save-present');
-    const favoriteButton = document.querySelector('.favorit-present');
-    const shareButton = document.querySelector('.share-present');
+    const saveButtonPresent = document.querySelector('.save-present');
+    const favoriteButtonPresent = document.querySelector('.favorit-present');
+    const shareButtonPresent = document.querySelector('.share-present');
 
-    // Event listener for the Save button
-    saveButton.addEventListener('click', function () {
-        // Save to local storage
-    });
-
-    // Event listener for the Favorite button
-    favoriteButton.addEventListener('click', function () {
-        // Add the result to the list of saved results
+    // Event listener for the Save button for present values
+    saveButtonPresent.addEventListener('click', function () {
+        // Add the result to the list of saved present results
         const resultPresent = document.getElementById("result-present").textContent;
-        if (resultPresent !== "Future Value: Invalid input") {
-            const savedResultsList = document.getElementById("results-list-present");
-            const newResult = document.createElement('li');
-            newResult.textContent = resultPresent;
-            savedResultsList.appendChild(newResult);
+        if (resultPresent !== "Present Value: Invalid input") {
+            const savedResultsListPresent = document.getElementById("results-list-present");
+            const newResultPresent = document.createElement('li');
+            newResultPresent.classList.add('result-item'); // Add a class to the list item
+            
+            // Create a checkbox
+            const checkboxPresent = document.createElement('input');
+            checkboxPresent.type = 'checkbox';
+            checkboxPresent.addEventListener('click', function(event) {
+                // Mark or unmark the list item when the checkbox is clicked
+                if (event.target.checked) {
+                    newResultPresent.classList.add('marked');
+                } else {
+                    newResultPresent.classList.remove('marked');
+                }
+                // Save the updated list to local storage when checkbox is clicked
+                saveResultsLocally(savedResultsListPresent, 'savedResultsPresent');
+            });
+
+            // Create a span to hold the resultPresent text
+            const resultTextPresent = document.createElement('span');
+            resultTextPresent.textContent = resultPresent;
+
+            // Append checkbox and resultText to the list item
+            newResultPresent.appendChild(checkboxPresent);
+            newResultPresent.appendChild(resultTextPresent);
+
+            // Append the new list item to the results list for present values
+            savedResultsListPresent.appendChild(newResultPresent);
+
+            // Save the updated list to local storage when new result is added for present values
+            saveResultsLocally(savedResultsListPresent, 'savedResultsPresent');
         } else {
             alert("Cannot save invalid input.");
         }
     });
 
+    // Function to save the results list to local storage for present values
+    function saveResultsLocally(resultsList, key) {
+        // Get the HTML content of the results list and store it in local storage with specific key
+        localStorage.setItem(key, resultsList.innerHTML);
+    }
+
+    // Function to load saved results from local storage for present values on page load
+    window.addEventListener('load', function () {
+        const savedResultsListPresent = document.getElementById('results-list-present');
+        // Get saved results from local storage and populate the results list for present values
+        savedResultsListPresent.innerHTML = localStorage.getItem('savedResultsPresent') || '';
+    });
+
+
+    // Function to save the results list to local storage for present values
+    function saveResultsLocally(resultsList, key) {
+        // Get the HTML content of the results list and store it in local storage with specific key
+        localStorage.setItem(key, resultsList.innerHTML);
+    }
+
+
+    // Event listener for the Favorite button for present values
+    favoriteButtonPresent.addEventListener('click', function () {
+        const savedResultsListPresent = document.getElementById("results-list-present");
+        const savedResultsPresent = savedResultsListPresent.querySelectorAll('li'); // Select all saved present results
+        
+        const favoriteListPresent = document.querySelector(".favorite-list-present"); // Select by class
+
+        savedResultsPresent.forEach(function(savedResultPresent) {
+            const checkboxPresent = savedResultPresent.querySelector('input[type="checkbox"]');
+            const resultTextPresent = savedResultPresent.querySelector('span');
+            
+            if (checkboxPresent.checked) {
+                const newFavoritePresent = document.createElement('li');
+
+                // Create a checkbox
+                const checkboxFavoritePresent = document.createElement('input');
+                checkboxFavoritePresent.type = 'checkbox';
+                checkboxFavoritePresent.className = 'favorite-checkbox'; // Add a class for styling purposes
+                checkboxFavoritePresent.addEventListener('change', function() {
+                    // Handle the checkbox change event if needed
+                });
+                newFavoritePresent.appendChild(checkboxFavoritePresent);
+
+                // Create a label for the favorite item
+                const label = document.createElement('label');
+                label.textContent = resultTextPresent.textContent;
+                newFavoritePresent.appendChild(label);
+
+                favoriteListPresent.appendChild(newFavoritePresent);
+            }
+        });
+
+        // Save the updated favorite list to local storage for present values
+        saveFavoritesLocally(favoriteItemsPresent, 'favoriteItemsPresent');
+    });
+
+
+    // Event listener for the Trash Bin button for present values
+    const trashBinButtonSavePresent = document.querySelector('.trash-bin-present');
+
+    trashBinButtonSavePresent.addEventListener('click', function () {
+        const savedResultsListPresent = document.getElementById("results-list-present");
+        const savedResultsPresent = savedResultsListPresent.querySelectorAll('li');
+
+        savedResultsPresent.forEach(function(savedResultPresent) {
+            const checkboxSavePresent = savedResultPresent.querySelector('input[type="checkbox"]');
+
+            if (checkboxSavePresent.checked) {
+                // Remove the selected result if the checkbox is checked
+                savedResultPresent.remove();
+            }
+        });
+
+        // Save the updated list to local storage after deletion
+        saveResultsLocally(savedResultsListPresent, 'savedResultsPresent');
+    });
+
+    // Event listener for the Trash Bin button for favorite values
+    const trashBinButtonFavoritePresent = document.querySelector('.trash-bin-favorite-present');
+
+    trashBinButtonFavoritePresent.addEventListener('click', function () {
+        const favoriteListPresent = document.querySelector(".favorite-list-present");
+        const favoriteResultsPresent = favoriteListPresent.querySelectorAll('li');
+
+        favoriteResultsPresent.forEach(function(favoriteResultPresent) {
+            const checkboxFavoritePresent = favoriteResultPresent.querySelector('input[type="checkbox"]');
+
+            if (checkboxFavoritePresent.checked) {
+                // Remove the selected result if the checkbox is checked
+                favoriteResultPresent.remove();
+            }
+        });
+
+        // Save the updated list to local storage after deletion
+        saveResultsLocally(favoriteListPresent, 'favoriteItemsPresent');
+    });
+
+
+    
     // Event listener for the Share button
-    shareButton.addEventListener('click', function () {
+    shareButtonPresent.addEventListener('click', function () {
         // Share to platforms
     });
 });

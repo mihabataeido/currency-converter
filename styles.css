@@ -706,6 +706,21 @@ button {
   width: 100px; /* Adjust as needed to set the width of the radio button */
 }
 
+.input-wrapper {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+/* Adjust the width of the input element */
+#periodic-interest-rate-manual-future {
+  width: 80px; /* You can adjust the width according to your preference */
+  margin-right: 5px; /* Adjust spacing between input and symbol */
+}
+
+.input-symbol {
+  font-size: 14px; /* Adjust font size of the symbol */
+}
+
 .compound-checkbox {
   align-items: center;
   margin-bottom: 10px;
@@ -779,6 +794,68 @@ button {
   vertical-align: middle; /* Align the span content vertically */
   margin: 0; /* Reset margin */
   padding: 0; /* Reset padding */
+}
+
+/* Style for the list items */
+#results-list-future li {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+}
+
+/* Style for the checkbox */
+#results-list-future li input[type="checkbox"] {
+  margin-right: 8px; /* Adjust the margin between checkbox and text */
+  width: 16px; /* Set the width of the checkbox */
+  height: 16px; /* Set the height of the checkbox */
+  padding: 0; /* Remove default padding */
+  margin-top: 2px; /* Adjust the top margin to align with the text */
+}
+
+/* Style for the list items */
+#results-list-present li {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+}
+
+/* Style for the checkbox */
+#results-list-present li input[type="checkbox"] {
+  margin-right: 8px; /* Adjust the margin between checkbox and text */
+  width: 16px; /* Set the width of the checkbox */
+  height: 16px; /* Set the height of the checkbox */
+  padding: 0; /* Remove default padding */
+  margin-top: 2px; /* Adjust the top margin to align with the text */
+}
+
+/* Style for the list items and checkboxes */
+.favorite-list-present li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.favorite-list-present li input[type="checkbox"] {
+  margin-right: 8px; /* Adjust the margin between checkbox and text */
+  width: 16px; /* Set the width of the checkbox */
+  height: 16px; /* Set the height of the checkbox */
+  padding: 0; /* Remove default padding */
+  margin-top: 2px; /* Adjust the top margin to align with the text */
+}
+
+/* Style for the list items and checkboxes */
+.favorite-list-future li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.favorite-list-future li input[type="checkbox"] {
+  margin-right: 8px; /* Adjust the margin between checkbox and text */
+  width: 16px; /* Set the width of the checkbox */
+  height: 16px; /* Set the height of the checkbox */
+  padding: 0; /* Remove default padding */
+  margin-top: 2px; /* Adjust the top margin to align with the text */
 }
 
 
