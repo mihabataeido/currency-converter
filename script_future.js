@@ -48,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const futureValue = calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit);
             resultDiv.textContent = `Future Value: ${futureValue.toFixed(2)}`;
         }
-})
-;
+    });
 
     // FIX THE CALCULATION BETWEEN THE MANUAL AND AUTOMATIC periodic INTEREST RATE
     function calculateFutureValue(initialInvestment, periodicInterestRateFuture, period, periodicDeposit) {
@@ -79,23 +78,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Marked Conversions
-    const saveButton = document.querySelector('.save-future');
-    const favoriteButton = document.querySelector('.favorit-future');
-    const shareButton = document.querySelector('.share-future');
+    const saveButtonFuture = document.querySelector('.save-future');
+    const favoriteButtonFuture = document.querySelector('.favorit-future');
+    const shareButtonFuture = document.querySelector('.share-future');
 
-    // Event listener for the Save button
-    saveButton.addEventListener('click', function () {
-        // Add the result to the list of saved results
-        const futureValue = document.getElementById("result-future").textContent;
-        if (futureValue !== "Future Value: Invalid input") {
+    // Event listener for the Save button for future values
+    saveButtonFuture.addEventListener('click', function () {
+        // Add the result to the list of saved future results
+        const resultFuture = document.getElementById("result-future").textContent;
+        if (resultFuture !== "Future Value: Invalid input") {
             const savedResultsListFuture = document.getElementById("results-list-future");
             const newResultFuture = document.createElement('li');
             newResultFuture.classList.add('result-item'); // Add a class to the list item
             
             // Create a checkbox
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.addEventListener('click', function(event) {
+            const checkboxFuture = document.createElement('input');
+            checkboxFuture.type = 'checkbox';
+            checkboxFuture.addEventListener('click', function(event) {
                 // Mark or unmark the list item when the checkbox is clicked
                 if (event.target.checked) {
                     newResultFuture.classList.add('marked');
@@ -103,63 +102,61 @@ document.addEventListener("DOMContentLoaded", function () {
                     newResultFuture.classList.remove('marked');
                 }
                 // Save the updated list to local storage when checkbox is clicked
-                saveResultsLocally(savedResultsListFuture);
+                saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
             });
 
-            // Create a span to hold the futureValue text
-            const resultText = document.createElement('span');
-            resultText.textContent = futureValue;
+            // Create a span to hold the resultFuture text
+            const resultTextFuture = document.createElement('span');
+            resultTextFuture.textContent = resultFuture;
 
             // Append checkbox and resultText to the list item
-            newResultFuture.appendChild(checkbox);
-            newResultFuture.appendChild(resultText);
+            newResultFuture.appendChild(checkboxFuture);
+            newResultFuture.appendChild(resultTextFuture);
 
-            // Append the new list item to the results list
+            // Append the new list item to the results list for future values
             savedResultsListFuture.appendChild(newResultFuture);
 
-            // Save the updated list to local storage when new result is added
-            saveResultsLocally(savedResultsListFuture);
+            // Save the updated list to local storage when new result is added for future values
+            saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
         } else {
             alert("Cannot save invalid input.");
         }
     });
 
-    // Function to save the results list to local storage
-    function saveResultsLocally(resultsListFuture) {
-        // Get the HTML content of the results list and store it in local storage
-        localStorage.setItem('savedResultsFuture', resultsListFuture.innerHTML);
-    }
-
-    // Function to load saved results from local storage on page load
-    window.addEventListener('load', function () {
-        const savedResultsListFuture = document.getElementById('results-list-future');
-        // Get saved results from local storage and populate the results list
-        savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
-    });
-
-    // // Save the updated favorite list to local storage for present values
-    // function saveFavoritesLocallyFuture(favoriteListFut, storageKey) {
-    //     localStorage.setItem(storageKey, favoriteListFut.innerHTML);
+    // // Save the updated list to local storage for future values
+    // function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
+    //     localStorage.setItem(storageKey, savedResultsListFuture.innerHTML);
     // }
 
-    // // Function to load saved favorite items from local storage on page load for present values
+    // // Function to load saved results from local storage on page load for future values
+    // window.addEventListener('load', function () {
+    //     const savedResultsListFuture = document.getElementById("results-list-future");
+    //     savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
+    // });
+
+    // // Save the updated favorite list to local storage for future values
+    // function saveFavoritesLocallyFuture(favoriteListPre, storageKey) {
+    //     localStorage.setItem(storageKey, favoriteListPre.innerHTML);
+    // }
+
+    // // Function to load saved favorite items from local storage on page load for future values
     // window.addEventListener('load', function () {
     //     const savedFavoriteListFuture = document.querySelector('.favorite-list-future');
     //     savedFavoriteListFuture.innerHTML = localStorage.getItem('favoriteItemsFuture') || '';
     // });
-       
+
     // Event listener for the Favorite button for future values
-    favoriteButton.addEventListener('click', function () {
+    favoriteButtonFuture.addEventListener('click', function () {
         const savedResultsListFuture = document.getElementById("results-list-future");
         const savedResultsFuture = savedResultsListFuture.querySelectorAll('li'); // Select all saved future results
         
         const favoriteListFuture = document.querySelector(".favorite-list-future"); // Select by class
 
-        savedResultsFuture.forEach(function(savedResult) {
-            const checkbox = savedResult.querySelector('input[type="checkbox"]');
-            const resultText = savedResult.querySelector('span');
+        savedResultsFuture.forEach(function(savedResultFuture) {
+            const checkboxFuture = savedResultFuture.querySelector('input[type="checkbox"]');
+            const resultTextFuture = savedResultFuture.querySelector('span');
             
-            if (checkbox.checked) {
+            if (checkboxFuture.checked) {
                 const newFavoriteFuture = document.createElement('li');
 
                 // Create a checkbox
@@ -173,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Create a label for the favorite item
                 const label = document.createElement('label');
-                label.textContent = resultText.textContent;
+                label.textContent = resultTextFuture.textContent;
                 newFavoriteFuture.appendChild(label);
 
                 favoriteListFuture.appendChild(newFavoriteFuture);
@@ -184,14 +181,13 @@ document.addEventListener("DOMContentLoaded", function () {
         saveFavoritesLocallyFuture(favoriteListFuture, 'favoriteItemsFuture');
     });
 
-    
 
     // Event listener for the Trash Bin button for future values
     const trashBinButtonSaveFuture = document.querySelector('.trash-bin-future');
 
     trashBinButtonSaveFuture.addEventListener('click', function () {
-        const savedResultsListFutureFuture = document.getElementById("results-list-future");
-        const savedResultsFuture = savedResultsListFutureFuture.querySelectorAll('li');
+        const savedResultsListFuture = document.getElementById("results-list-future");
+        const savedResultsFuture = savedResultsListFuture.querySelectorAll('li');
 
         savedResultsFuture.forEach(function(savedResultFuture) {
             const checkboxSaveFuture = savedResultFuture.querySelector('input[type="checkbox"]');
@@ -203,34 +199,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Save the updated list to local storage after deletion
-        saveResultsLocally(savedResultsListFutureFuture, 'savedResultsFuture');
+        saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
     });
 
     // Event listener for the Trash Bin button for future favorite values
     const trashBinButtonFavoriteFuture = document.querySelector('.trash-bin-favorite-future');
 
     trashBinButtonFavoriteFuture.addEventListener('click', function () {
-        const favoriteListFutureFuture = document.querySelector(".favorite-list-future");
-        const favoriteResultsFuture = favoriteListFutureFuture.querySelectorAll('li');
+        const favoriteListFuture = document.querySelector(".favorite-list-future");
+        const favoriteResultsFuture = favoriteListFuture.querySelectorAll('li');
 
         favoriteResultsFuture.forEach(function(favoriteResultFuture) {
-            const checkboxFavoriteFutureFuture = favoriteResultFuture.querySelector('input[type="checkbox"]');
+            const checkboxFavoriteFuture = favoriteResultFuture.querySelector('input[type="checkbox"]');
 
-            if (checkboxFavoriteFutureFuture.checked) {
+            if (checkboxFavoriteFuture.checked) {
                 // Remove the selected result if the checkbox is checked
                 favoriteResultFuture.remove();
             }
         });
 
         // Save the updated list to local storage after deletion
-        saveResultsLocally(favoriteListFutureFuture, 'favoriteItemsFuture');
+        saveFavoritesLocallyFuture(favoriteListFuture, 'favoriteItemsFuture');
     });
 
 
-
-
     // Event listener for the Share button
-    shareButton.addEventListener('click', function () {
+    shareButtonFuture.addEventListener('click', function () {
         // Share to platforms
         const futureValue = document.getElementById("result-future").textContent;
         if (futureValue !== "Future Value: Invalid input") {
