@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const initialInvestmentInput = document.getElementById("initial-investment");
     const periodInput = document.getElementById("period");
     const periodicDepositInput = document.getElementById("periodic-deposit-input");
+    const savedResultsListFuture = document.getElementById('results-list-future');
+    const favoriteListFuture = document.querySelector('.favorite-list-future');
 
     // Function to validate and allow only non-negative numbers
     function validateNonNegativeInput(inputElement) {
@@ -256,40 +258,42 @@ document.addEventListener("DOMContentLoaded", function () {
         saveFavoritesLocallyFuture(favoriteListFuture, 'favoriteItemsFuture');
     });
 
-    // Select All button for saved results list for future values
-    const selectAllSavedFuture = document.querySelector('.select-all-saved-future');
-    selectAllSavedFuture.addEventListener('click', function () {
-        const savedResultsFuture = document.querySelectorAll('#results-list-future .result-item input[type="checkbox"]');
-        savedResultsFuture.forEach(function (checkbox) {
-            checkbox.checked = true;
+    // Event listener for "Select All Saved" checkbox
+    const selectAllSavedCheckboxFuture = document.getElementById('select-all-saved-future');
+    selectAllSavedCheckboxFuture.addEventListener('change', function () {
+        const checkboxes = savedResultsListFuture.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = selectAllSavedCheckboxFuture.checked;
         });
     });
 
-    // Deselect All button for saved results list for future values
-    const deselectAllSavedFuture = document.querySelector('.deselect-all-saved-future');
-    deselectAllSavedFuture.addEventListener('click', function () {
-        const savedResultsFuture = document.querySelectorAll('#results-list-future .result-item input[type="checkbox"]');
-        savedResultsFuture.forEach(function (checkbox) {
-            checkbox.checked = false;
+    // Event listener for individual checkboxes (if you need any other functionality)
+    savedResultsListFuture.addEventListener('change', function (event) {
+        if (event.target.matches('input[type="checkbox"]')) {
+            const checkboxes = savedResultsListFuture.querySelectorAll('input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+            selectAllSavedCheckboxFuture.checked = allChecked;
+        }
+    });
+
+    // Event listener for "Select All" checkbox in favorite results
+    const selectAllFavoriteCheckboxFuture = document.getElementById('select-all-favorite-future');
+    selectAllFavoriteCheckboxFuture.addEventListener('change', function () {
+        
+        const favoriteCheckboxes = favoriteListFuture.querySelectorAll('input[type="checkbox"]');
+        favoriteCheckboxes.forEach(checkbox => {
+            checkbox.checked = selectAllFavoriteCheckboxFuture.checked;
         });
     });
 
-    // Select All button for favorite result list for future values
-    const selectAllFavoriteFuture = document.querySelector('.select-all-favorite-future');
-    selectAllFavoriteFuture.addEventListener('click', function () {
-        const favoriteResultsFuture = document.querySelectorAll('.favorite-list-future .favorite-checkbox');
-        favoriteResultsFuture.forEach(function (checkbox) {
-            checkbox.checked = true;
-        });
-    });
-
-    // Deselect All button for favorite result list for future values
-    const deselectAllFavoriteFuture = document.querySelector('.deselect-all-favorite-future');
-    deselectAllFavoriteFuture.addEventListener('click', function () {
-        const favoriteResultsFuture = document.querySelectorAll('.favorite-list-future .favorite-checkbox');
-        favoriteResultsFuture.forEach(function (checkbox) {
-            checkbox.checked = false;
-        });
+    // Event listener for individual checkboxes in favorite results
+    
+    favoriteListFuture.addEventListener('change', function (event) {
+        if (event.target.matches('input[type="checkbox"]')) {
+            const favoriteCheckboxes = favoriteListFuture.querySelectorAll('input[type="checkbox"]');
+            const allChecked = Array.from(favoriteCheckboxes).every(checkbox => checkbox.checked);
+            selectAllFavoriteCheckboxFuture.checked = allChecked;
+        }
     });
 
 
