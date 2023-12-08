@@ -82,6 +82,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const favoriteButtonFuture = document.querySelector('.favorit-future');
     const shareButtonFuture = document.querySelector('.share-future');
 
+
+    // function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
+    //     localStorage.setItem(storageKey, savedResultsListFuture.innerHTML);
+    //     console.log('Saved results to local storage:', savedResultsListFuture.innerHTML);
+    // }
+    
+    // window.addEventListener('load', function () {
+    //     const savedResultsListFuture = document.getElementById("results-list-future");
+    //     savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
+    //     console.log('Loaded saved results from local storage:', savedResultsListFuture.innerHTML);
+    // });
+        
+
     // Event listener for the Save button for future values
     saveButtonFuture.addEventListener('click', function () {
         // Add the result to the list of saved future results
@@ -122,17 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Cannot save invalid input.");
         }
     });
-
-    // // Save the updated list to local storage for future values
-    // function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
-    //     localStorage.setItem(storageKey, savedResultsListFuture.innerHTML);
-    // }
-
-    // // Function to load saved results from local storage on page load for future values
-    // window.addEventListener('load', function () {
-    //     const savedResultsListFuture = document.getElementById("results-list-future");
-    //     savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
-    // });
 
     // // Save the updated favorite list to local storage for future values
     // function saveFavoritesLocallyFuture(favoriteListPre, storageKey) {
@@ -221,6 +223,44 @@ document.addEventListener("DOMContentLoaded", function () {
         // Save the updated list to local storage after deletion
         saveFavoritesLocallyFuture(favoriteListFuture, 'favoriteItemsFuture');
     });
+
+    // Select All button for saved results list for future values
+    const selectAllSavedFuture = document.querySelector('.select-all-saved-future');
+    selectAllSavedFuture.addEventListener('click', function () {
+        const savedResultsFuture = document.querySelectorAll('#results-list-future .result-item input[type="checkbox"]');
+        savedResultsFuture.forEach(function (checkbox) {
+            checkbox.checked = true;
+        });
+    });
+
+    // Deselect All button for saved results list for future values
+    const deselectAllSavedFuture = document.querySelector('.deselect-all-saved-future');
+    deselectAllSavedFuture.addEventListener('click', function () {
+        const savedResultsFuture = document.querySelectorAll('#results-list-future .result-item input[type="checkbox"]');
+        savedResultsFuture.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+    });
+
+    // Select All button for favorite result list for future values
+    const selectAllFavoriteFuture = document.querySelector('.select-all-favorite-future');
+    selectAllFavoriteFuture.addEventListener('click', function () {
+        const favoriteResultsFuture = document.querySelectorAll('.favorite-list-future .favorite-checkbox');
+        favoriteResultsFuture.forEach(function (checkbox) {
+            checkbox.checked = true;
+        });
+    });
+
+    // Deselect All button for favorite result list for future values
+    const deselectAllFavoriteFuture = document.querySelector('.deselect-all-favorite-future');
+    deselectAllFavoriteFuture.addEventListener('click', function () {
+        const favoriteResultsFuture = document.querySelectorAll('.favorite-list-future .favorite-checkbox');
+        favoriteResultsFuture.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+    });
+
+
 
 
     // Event listener for the Share button

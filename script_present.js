@@ -220,6 +220,43 @@ document.addEventListener("DOMContentLoaded", function () {
         saveFavoritesLocallyPresent(favoriteListPresent, 'favoriteItemsPresent');
     });
 
+    // Select All button for saved results list for present values
+    const selectAllSavedPresent = document.querySelector('.select-all-saved-present');
+    selectAllSavedPresent.addEventListener('click', function () {
+        const savedResultsPresent = document.querySelectorAll('#results-list-present .result-item input[type="checkbox"]');
+        savedResultsPresent.forEach(function (checkbox) {
+            checkbox.checked = true;
+        });
+    });
+
+    // Deselect All button for saved results list for present values
+    const deselectAllSavedPresent = document.querySelector('.deselect-all-saved-present');
+    deselectAllSavedPresent.addEventListener('click', function () {
+        const savedResultsPresent = document.querySelectorAll('#results-list-present .result-item input[type="checkbox"]');
+        savedResultsPresent.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+    });
+
+    // Select All button for favorite result list for present values
+    const selectAllFavoritePresent = document.querySelector('.select-all-favorite-present');
+    selectAllFavoritePresent.addEventListener('click', function () {
+        const favoriteResultsPresent = document.querySelectorAll('.favorite-list-present .favorite-checkbox');
+        favoriteResultsPresent.forEach(function (checkbox) {
+            checkbox.checked = true;
+        });
+    });
+
+    // Deselect All button for favorite result list for present values
+    const deselectAllFavoritePresent = document.querySelector('.deselect-all-favorite-present');
+    deselectAllFavoritePresent.addEventListener('click', function () {
+        const favoriteResultsPresent = document.querySelectorAll('.favorite-list-present .favorite-checkbox');
+        favoriteResultsPresent.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+    });
+
+
 
     
     // Event listener for the Share button
