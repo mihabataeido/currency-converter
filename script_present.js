@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Invalid input. Please enter a valid amount.");
         } else {
             const presentValue = calculatePresentValue(futureValue, periodicInflationRate, period);
-            const equationText = `Present Value: ${presentValue.toFixed(2)}, Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
+            const equationText = `Present Value: ${presentValue.toFixed(2)} ---- Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
 
             // Check if the result already exists in the saved list
             const existingResults = savedResultsListPresent.querySelectorAll('.result-item');
@@ -185,11 +185,15 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const favoriteListPresent = document.querySelector(".favorite-list-present"); // Select by class
 
+        // Get existing favorite items
+        const existingFavoriteItems = favoriteListPresent.querySelectorAll('label');
+
         savedResultsPresent.forEach(function(savedResultPresent) {
             const checkboxPresent = savedResultPresent.querySelector('input[type="checkbox"]');
             const resultTextPresent = savedResultPresent.querySelector('span');
+            const isDuplicate = Array.from(existingFavoriteItems).some(favoriteItem => favoriteItem.textContent === resultTextPresent.textContent);
             
-            if (checkboxPresent.checked) {
+            if (checkboxPresent.checked && !isDuplicate) {
                 const newFavoritePresent = document.createElement('li');
 
                 // Create a checkbox
