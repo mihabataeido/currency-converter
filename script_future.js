@@ -83,16 +83,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const shareButtonFuture = document.querySelector('.share-future');
 
 
-    // function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
-    //     localStorage.setItem(storageKey, savedResultsListFuture.innerHTML);
-    //     console.log('Saved results to local storage:', savedResultsListFuture.innerHTML);
-    // }
+    function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
+        localStorage.setItem(storageKey, savedResultsListFuture.innerHTML);
+    }
     
-    // window.addEventListener('load', function () {
-    //     const savedResultsListFuture = document.getElementById("results-list-future");
-    //     savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
-    //     console.log('Loaded saved results from local storage:', savedResultsListFuture.innerHTML);
-    // });
+    window.addEventListener('load', function () {
+        const savedResultsListFuture = document.getElementById("results-list-future");
+        savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
+    });
         
 
     // Event listener for the Save button for future values
@@ -136,16 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // // Save the updated favorite list to local storage for future values
-    // function saveFavoritesLocallyFuture(favoriteListPre, storageKey) {
-    //     localStorage.setItem(storageKey, favoriteListPre.innerHTML);
-    // }
+    // Save the updated favorite list to local storage for future values
+    function saveFavoritesLocallyFuture(favoriteListFut, storageKey) {
+        localStorage.setItem(storageKey, favoriteListFut.innerHTML);
+    }
 
-    // // Function to load saved favorite items from local storage on page load for future values
-    // window.addEventListener('load', function () {
-    //     const savedFavoriteListFuture = document.querySelector('.favorite-list-future');
-    //     savedFavoriteListFuture.innerHTML = localStorage.getItem('favoriteItemsFuture') || '';
-    // });
+    // Function to load saved favorite items from local storage on page load for future values
+    window.addEventListener('load', function () {
+        const savedFavoriteListFuture = document.querySelector('.favorite-list-future');
+        savedFavoriteListFuture.innerHTML = localStorage.getItem('favoriteItemsFuture') || '';
+    });
 
     // Event listener for the Favorite button for future values
     favoriteButtonFuture.addEventListener('click', function () {
