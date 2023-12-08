@@ -51,27 +51,27 @@ document.addEventListener("DOMContentLoaded", function () {
     calculateButton.addEventListener("click", function () {
         const futureValue = parseFloat(futureValueInput.value);
         const period = parseInt(yearsInput.value);
-        let periodicInterestRatePresent;
+        let periodicInflationRate;
 
         if (document.getElementById("manual-inflation-rate").checked) {
-            periodicInterestRatePresent = parseFloat(document.getElementById("periodic-inflation-rate-manual-present").value/100);
+            periodicInflationRate = parseFloat(document.getElementById("periodic-inflation-rate-manual-present").value/100);
         } else {
             // Handle automatic interest rate selection here
-            periodicInterestRatePresent = parseFloat(document.getElementById("automatic-inflation-rate-select-present").value/100);
+            periodicInflationRate = parseFloat(document.getElementById("automatic-inflation-rate-select-present").value/100);
         }
 
-        if (isNaN(futureValue) || isNaN(periodicInterestRatePresent) || isNaN(period)) {
+        if (isNaN(futureValue) || isNaN(periodicInflationRate) || isNaN(period)) {
             presentValueResult.textContent = "Invalid input";
             alert("Invalid input. Please enter valid amount.");
         } else {
-            const presentValue = calculatePresentValue(futureValue, periodicInterestRatePresent, period);
+            const presentValue = calculatePresentValue(futureValue, periodicInflationRate, period);
             presentValueResult.textContent = presentValue.toFixed(2);
         }
     });
 
-    function calculatePresentValue(futureValue, periodicInterestRatePresent, period) {
+    function calculatePresentValue(futureValue, periodicInflationRate, period) {
         const compoundFrequency = parseFloat(document.getElementById("compound-frequency-present").value);
-        return futureValue / Math.pow(1 + periodicInterestRatePresent/compoundFrequency, period*compoundFrequency);
+        return futureValue / Math.pow(1 + periodicInflationRate/compoundFrequency, period*compoundFrequency);
     }
 
 
@@ -82,54 +82,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for the Save button for present values
     saveButtonPresent.addEventListener('click', function () {
+        const futureValue = parseFloat(futureValueInput.value);
+        const period = parseInt(yearsInput.value);
         const resultPresent = document.getElementById("result-present").textContent;
         const resultValue = parseFloat(resultPresent.replace("Present Value: ", ""));
         const savedResultsListPresent = document.getElementById("results-list-present");
+        const compoundFrequency = document.getElementById("compound-frequency-present").options[document.getElementById("compound-frequency-present").selectedIndex].textContent;
+        let periodicInflationRate;
 
-        // Check if the result already exists in the saved list
-        const existingResults = savedResultsListPresent.querySelectorAll('.result-item span');
-        let isDuplicate = false;
-        existingResults.forEach(function (existingResult) {
-            if (existingResult.textContent === resultPresent) {
-                isDuplicate = true;
-            }
-        });
-
-        if (isNaN(resultValue) || resultValue <= 0) {
-            alert("Cannot save invalid or zero input.");
-        } else if (isDuplicate) {
-            alert("Result already exists in the list.");
+        if (document.getElementById("manual-inflation-rate").checked) {
+            periodicInflationRate = parseFloat(document.getElementById("periodic-inflation-rate-manual-present").value / 100);
         } else {
-            const newResultPresent = document.createElement('li');
-            newResultPresent.classList.add('result-item'); // Add a class to the list item
-            
-            // Create a checkbox
-            const checkboxPresent = document.createElement('input');
-            checkboxPresent.type = 'checkbox';
-            checkboxPresent.addEventListener('click', function(event) {
-                // Mark or unmark the list item when the checkbox is clicked
-                if (event.target.checked) {
-                    newResultPresent.classList.add('marked');
-                } else {
-                    newResultPresent.classList.remove('marked');
+            // Handle automatic interest rate selection here
+            periodicInflationRate = parseFloat(document.getElementById("automatic-inflation-rate-select-present").value / 100);
+        }
+
+        if (isNaN(futureValue) || isNaN(periodicInflationRate) || isNaN(period)) {
+            presentValueResult.textContent = "Invalid input";
+            alert("Invalid input. Please enter a valid amount.");
+        } else {
+            const presentValue = calculatePresentValue(futureValue, periodicInflationRate, period);
+            const equationText = `Present Value: ${presentValue.toFixed(2)}, Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
+
+            // Check if the result already exists in the saved list
+            const existingResults = savedResultsListPresent.querySelectorAll('.result-item');
+            let isDuplicate = false;
+            existingResults.forEach(function (existingResult) {
+                const existingEquation = existingResult.querySelector('span').textContent;
+                if (existingEquation === equationText) {
+                    isDuplicate = true;
                 }
-                // Save the updated list to local storage when checkbox is clicked
-                saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
             });
 
-            // Create a span to hold the resultPresent text
-            const resultTextPresent = document.createElement('span');
-            resultTextPresent.textContent = resultPresent;
+            if (isNaN(resultValue) || resultValue <= 0 || isDuplicate) {
+                if (isNaN(resultValue) || resultValue <= 0) {
+                    alert("Cannot save invalid or zero input.");
+                } else if (isDuplicate) {
+                    alert("Result already exists in the list.");
+                }
+            } else {
+                const newResultPresent = document.createElement('li');
+                newResultPresent.classList.add('result-item'); // Add a class to the list item
+                
+                // Create a checkbox
+                const checkboxPresent = document.createElement('input');
+                checkboxPresent.type = 'checkbox';
+                checkboxPresent.addEventListener('click', function(event) {
+                    // Mark or unmark the list item when the checkbox is clicked
+                    if (event.target.checked) {
+                        newResultPresent.classList.add('marked');
+                    } else {
+                        newResultPresent.classList.remove('marked');
+                    }
+                    // Save the updated list to local storage when checkbox is clicked
+                    saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
+                });
 
-            // Append checkbox and resultText to the list item
-            newResultPresent.appendChild(checkboxPresent);
-            newResultPresent.appendChild(resultTextPresent);
+                // Create a span to hold the resultText with the equation
+                const resultTextPresent = document.createElement('span');
+                resultTextPresent.textContent = equationText;
 
-            // Append the new list item to the results list for present values
-            savedResultsListPresent.appendChild(newResultPresent);
+                // Append checkbox and resultText to the list item
+                newResultPresent.appendChild(checkboxPresent);
+                newResultPresent.appendChild(resultTextPresent);
 
-            // Save the updated list to local storage when new result is added for present values
-            saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
+                // Append the new list item to the results list for present values
+                savedResultsListPresent.appendChild(newResultPresent);
+
+                // Save the updated list to local storage when new result is added for present values
+                saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
+            }
         }
     });
 
