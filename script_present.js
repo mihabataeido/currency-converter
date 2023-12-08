@@ -1,9 +1,11 @@
 //Present Value 
 document.addEventListener("DOMContentLoaded", function () {
     const futureValueInput = document.getElementById("future-value");
-    const yearsInput = document.getElementById("period-present");
+    const periodPresent = document.getElementById("period-present");
     const calculateButton = document.getElementById("calculate-button-present");
     const presentValueResult = document.getElementById("present-value-result");
+    const savedResultsListPresent = document.getElementById('results-list-present');
+    const favoriteListPresent = document.querySelector('.favorite-list-present');
 
     // Function to validate and allow only non-negative numbers
     function validateNonNegativeInput(inputElement) {
@@ -44,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // Apply validation to futureValueInput and yearsInput
+    // Apply validation to futureValueInput and periodPresent
     validateNonNegativeInput(futureValueInput);
-    validateNonNegativeInput(yearsInput);
+    validateNonNegativeInput(periodPresent);
     
     calculateButton.addEventListener("click", function () {
         const futureValue = parseFloat(futureValueInput.value);
-        const period = parseInt(yearsInput.value);
+        const period = parseInt(periodPresent.value);
         let periodicInflationRate;
 
         if (document.getElementById("manual-inflation-rate").checked) {
@@ -83,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener for the Save button for present values
     saveButtonPresent.addEventListener('click', function () {
         const futureValue = parseFloat(futureValueInput.value);
-        const period = parseInt(yearsInput.value);
+        const period = parseInt(periodPresent.value);
         const resultPresent = document.getElementById("result-present").textContent;
         const resultValue = parseFloat(resultPresent.replace("Present Value: ", ""));
-        const savedResultsListPresent = document.getElementById("results-list-present");
+        
         const compoundFrequency = document.getElementById("compound-frequency-present").options[document.getElementById("compound-frequency-present").selectedIndex].textContent;
         let periodicInflationRate;
 
@@ -163,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to load saved results from local storage on page load for present values
     window.addEventListener('load', function () {
-        const savedResultsListPresent = document.getElementById("results-list-present");
+        
         savedResultsListPresent.innerHTML = localStorage.getItem('savedResultsPresent') || '';
     });
 
@@ -174,16 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to load saved favorite items from local storage on page load for present values
     window.addEventListener('load', function () {
-        const savedFavoriteListPresent = document.querySelector('.favorite-list-present');
-        savedFavoriteListPresent.innerHTML = localStorage.getItem('favoriteItemsPresent') || '';
+        favoriteListPresent.innerHTML = localStorage.getItem('favoriteItemsPresent') || '';
     });
 
     // Event listener for the Favorite button for present values
     favoriteButtonPresent.addEventListener('click', function () {
-        const savedResultsListPresent = document.getElementById("results-list-present");
         const savedResultsPresent = savedResultsListPresent.querySelectorAll('li'); // Select all saved present results
-        
-        const favoriteListPresent = document.querySelector(".favorite-list-present"); // Select by class
 
         // Get existing favorite items
         const existingFavoriteItems = favoriteListPresent.querySelectorAll('label');
@@ -223,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const trashBinButtonSavePresent = document.querySelector('.trash-bin-present');
 
     trashBinButtonSavePresent.addEventListener('click', function () {
-        const savedResultsListPresent = document.getElementById("results-list-present");
         const savedResultsPresent = savedResultsListPresent.querySelectorAll('li');
 
         savedResultsPresent.forEach(function(savedResultPresent) {
@@ -243,7 +240,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const trashBinButtonFavoritePresent = document.querySelector('.trash-bin-favorite-present');
 
     trashBinButtonFavoritePresent.addEventListener('click', function () {
-        const favoriteListPresent = document.querySelector(".favorite-list-present");
         const favoriteResultsPresent = favoriteListPresent.querySelectorAll('li');
 
         favoriteResultsPresent.forEach(function(favoriteResultPresent) {
@@ -259,40 +255,43 @@ document.addEventListener("DOMContentLoaded", function () {
         saveFavoritesLocallyPresent(favoriteListPresent, 'favoriteItemsPresent');
     });
 
-    // Select All button for saved results list for present values
-    const selectAllSavedPresent = document.querySelector('.select-all-saved-present');
-    selectAllSavedPresent.addEventListener('click', function () {
-        const savedResultsPresent = document.querySelectorAll('#results-list-present .result-item input[type="checkbox"]');
-        savedResultsPresent.forEach(function (checkbox) {
-            checkbox.checked = true;
+    // Event listener for "Select All Saved" checkbox
+    const selectAllSavedCheckboxPresent = document.getElementById('select-all-saved-present');
+    selectAllSavedCheckboxPresent.addEventListener('change', function () {
+        const savedResultsListPresent = document.getElementById('results-list-present');
+        const checkboxes = savedResultsListPresent.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = selectAllSavedCheckboxPresent.checked;
         });
     });
 
-    // Deselect All button for saved results list for present values
-    const deselectAllSavedPresent = document.querySelector('.deselect-all-saved-present');
-    deselectAllSavedPresent.addEventListener('click', function () {
-        const savedResultsPresent = document.querySelectorAll('#results-list-present .result-item input[type="checkbox"]');
-        savedResultsPresent.forEach(function (checkbox) {
-            checkbox.checked = false;
+    // Event listener for individual checkboxes (if you need any other functionality)
+    savedResultsListPresent.addEventListener('change', function (event) {
+        if (event.target.matches('input[type="checkbox"]')) {
+            const checkboxes = savedResultsListPresent.querySelectorAll('input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+            selectAllSavedCheckboxPresent.checked = allChecked;
+        }
+    });
+
+    // Event listener for "Select All" checkbox in favorite results
+    const selectAllFavoriteCheckboxPresent = document.getElementById('select-all-favorite-present');
+    selectAllFavoriteCheckboxPresent.addEventListener('change', function () {
+        
+        const favoriteCheckboxes = favoriteListPresent.querySelectorAll('input[type="checkbox"]');
+        favoriteCheckboxes.forEach(checkbox => {
+            checkbox.checked = selectAllFavoriteCheckboxPresent.checked;
         });
     });
 
-    // Select All button for favorite result list for present values
-    const selectAllFavoritePresent = document.querySelector('.select-all-favorite-present');
-    selectAllFavoritePresent.addEventListener('click', function () {
-        const favoriteResultsPresent = document.querySelectorAll('.favorite-list-present .favorite-checkbox');
-        favoriteResultsPresent.forEach(function (checkbox) {
-            checkbox.checked = true;
-        });
-    });
-
-    // Deselect All button for favorite result list for present values
-    const deselectAllFavoritePresent = document.querySelector('.deselect-all-favorite-present');
-    deselectAllFavoritePresent.addEventListener('click', function () {
-        const favoriteResultsPresent = document.querySelectorAll('.favorite-list-present .favorite-checkbox');
-        favoriteResultsPresent.forEach(function (checkbox) {
-            checkbox.checked = false;
-        });
+    // Event listener for individual checkboxes in favorite results
+    
+    favoriteListPresent.addEventListener('change', function (event) {
+        if (event.target.matches('input[type="checkbox"]')) {
+            const favoriteCheckboxes = favoriteListPresent.querySelectorAll('input[type="checkbox"]');
+            const allChecked = Array.from(favoriteCheckboxes).every(checkbox => checkbox.checked);
+            selectAllFavoriteCheckboxPresent.checked = allChecked;
+        }
     });
 
 

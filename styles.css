@@ -827,14 +827,14 @@ button {
 }
 
 /* Style for the list items and checkboxes */
-.favorite-list-present li {
+.favorite-list-present li, .favorite-list-future li, label {
   list-style: none;
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
 
-.favorite-list-present li input[type="checkbox"] {
+.favorite-list-present li input[type="checkbox"], .favorite-list-future li input[type="checkbox"], input[type="checkbox"] {
   margin-right: 8px; /* Adjust the margin between checkbox and text */
   width: 16px; /* Set the width of the checkbox */
   height: 16px; /* Set the height of the checkbox */
@@ -842,21 +842,6 @@ button {
   margin-top: 2px; /* Adjust the top margin to align with the text */
 }
 
-/* Style for the list items and checkboxes */
-.favorite-list-future li {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.favorite-list-future li input[type="checkbox"] {
-  margin-right: 8px; /* Adjust the margin between checkbox and text */
-  width: 16px; /* Set the width of the checkbox */
-  height: 16px; /* Set the height of the checkbox */
-  padding: 0; /* Remove default padding */
-  margin-top: 2px; /* Adjust the top margin to align with the text */
-}
 
 
 /* CSS for radio buttons and input elements */
