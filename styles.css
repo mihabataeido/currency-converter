@@ -857,3 +857,24 @@ button {
 .radio-buttons input[type="radio"] {
   margin-right: 5px;
 }
+
+
+
+
+.input-container-future {
+  display: flex;
+}
+
+.input-column-future {
+  flex: 1;
+}
+
+.input-wrapper-future {
+  display: flex;
+  align-items: center;
+}
+
+.two-column {
+  display: flex;
+  text-align: right;
+}
