@@ -98,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const compoundFrequency = document.getElementById("compound-frequency-future").options[document.getElementById("compound-frequency-future").selectedIndex].textContent;
         const periodicInterestRate = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value) / 100;
         const periods = parseInt(periodInput.value);
+        const periodicDeposit = parseInt(periodicDepositInput.value);
+        let equationText;
     
         const resultFuture = document.getElementById("result-future").textContent;
         const resultValue = parseFloat(resultFuture.replace("Future Value: ", ""));
@@ -117,8 +119,16 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (isDuplicate) {
             alert("Result already exists in the list.");
         } else {
-            const equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods`;
-    
+            if (periodicDeposit > 0 && document.getElementById("beginning-of-period").checked){
+                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
+            } else if (periodicDeposit > 0 && document.getElementById("end-of-period").checked){
+                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the end of each period`;
+            } else if (periodicDeposit > 0) {
+                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
+            } else {
+                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods`;
+            }
+
             const newResultFuture = document.createElement('li');
             newResultFuture.classList.add('result-item'); // Add a class to the list item
             
