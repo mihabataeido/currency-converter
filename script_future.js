@@ -163,14 +163,18 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const favoriteListFuture = document.querySelector(".favorite-list-future"); // Select by class
 
+        // Get existing favorite items for future values
+        const existingFavoriteItemsFuture = favoriteListFuture.querySelectorAll('label');
+
         savedResultsFuture.forEach(function(savedResultFuture) {
             const checkboxFuture = savedResultFuture.querySelector('input[type="checkbox"]');
             const resultTextFuture = savedResultFuture.querySelector('span');
+            const isDuplicateFuture = Array.from(existingFavoriteItemsFuture).some(favoriteItem => favoriteItem.textContent === resultTextFuture.textContent);
             
-            if (checkboxFuture.checked) {
+            if (checkboxFuture.checked && !isDuplicateFuture) {
                 const newFavoriteFuture = document.createElement('li');
 
-                // Create a checkbox
+                // Create a checkbox for future values
                 const checkboxFavoriteFuture = document.createElement('input');
                 checkboxFavoriteFuture.type = 'checkbox';
                 checkboxFavoriteFuture.className = 'favorite-checkbox'; // Add a class for styling purposes
@@ -179,10 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 newFavoriteFuture.appendChild(checkboxFavoriteFuture);
 
-                // Create a label for the favorite item
-                const label = document.createElement('label');
-                label.textContent = resultTextFuture.textContent;
-                newFavoriteFuture.appendChild(label);
+                // Create a label for the favorite item for future values
+                const labelFuture = document.createElement('label');
+                labelFuture.textContent = resultTextFuture.textContent;
+                newFavoriteFuture.appendChild(labelFuture);
 
                 favoriteListFuture.appendChild(newFavoriteFuture);
             }
@@ -191,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Save the updated favorite list to local storage for future values
         saveFavoritesLocallyFuture(favoriteListFuture, 'favoriteItemsFuture');
     });
+
 
 
     // Event listener for the Trash Bin button for future values
