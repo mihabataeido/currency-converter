@@ -94,6 +94,11 @@ document.addEventListener("DOMContentLoaded", function () {
         
 
     saveButtonFuture.addEventListener('click', function () {
+        const initialInvestment = parseFloat(initialInvestmentInput.value);
+        const compoundFrequency = document.getElementById("compound-frequency-future").options[document.getElementById("compound-frequency-future").selectedIndex].textContent;
+        const periodicInterestRate = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value) / 100;
+        const periods = parseInt(periodInput.value);
+    
         const resultFuture = document.getElementById("result-future").textContent;
         const resultValue = parseFloat(resultFuture.replace("Future Value: ", ""));
         const savedResultsListFuture = document.getElementById("results-list-future");
@@ -112,6 +117,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (isDuplicate) {
             alert("Result already exists in the list.");
         } else {
+            const equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods`;
+    
             const newResultFuture = document.createElement('li');
             newResultFuture.classList.add('result-item'); // Add a class to the list item
             
@@ -129,13 +136,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
             });
     
-            // Create a span to hold the resultFuture text
-            const resultTextFuture = document.createElement('span');
-            resultTextFuture.textContent = resultFuture;
+            // Create a span to hold the equation text
+            const equationSpan = document.createElement('span');
+            equationSpan.textContent = equationText;
     
-            // Append checkbox and resultText to the list item
+            // Append checkbox and equationSpan to the list item
             newResultFuture.appendChild(checkboxFuture);
-            newResultFuture.appendChild(resultTextFuture);
+            newResultFuture.appendChild(equationSpan);
     
             // Append the new list item to the results list for future values
             savedResultsListFuture.appendChild(newResultFuture);
@@ -143,7 +150,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Save the updated list to local storage when new result is added for future values
             saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
         }
-    });    
+    });
+
 
     // Save the updated favorite list to local storage for future values
     function saveFavoritesLocallyFuture(favoriteListFut, storageKey) {

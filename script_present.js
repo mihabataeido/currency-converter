@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Invalid input. Please enter a valid amount.");
         } else {
             const presentValue = calculatePresentValue(futureValue, periodicInflationRate, period);
-            const equationText = `Present Value: ${presentValue.toFixed(2)} ---- Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
+            const equationText = `Present Value: ${presentValue.toFixed(2)} ---- Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
 
             // Check if the result already exists in the saved list
             const existingResults = savedResultsListPresent.querySelectorAll('.result-item');
