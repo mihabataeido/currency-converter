@@ -82,10 +82,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for the Save button for present values
     saveButtonPresent.addEventListener('click', function () {
-        // Add the result to the list of saved present results
         const resultPresent = document.getElementById("result-present").textContent;
-        if (resultPresent !== "Present Value: Invalid input") {
-            const savedResultsListPresent = document.getElementById("results-list-present");
+        const resultValue = parseFloat(resultPresent.replace("Present Value: ", ""));
+        const savedResultsListPresent = document.getElementById("results-list-present");
+
+        // Check if the result already exists in the saved list
+        const existingResults = savedResultsListPresent.querySelectorAll('.result-item span');
+        let isDuplicate = false;
+        existingResults.forEach(function (existingResult) {
+            if (existingResult.textContent === resultPresent) {
+                isDuplicate = true;
+            }
+        });
+
+        if (isNaN(resultValue) || resultValue <= 0) {
+            alert("Cannot save invalid or zero input.");
+        } else if (isDuplicate) {
+            alert("Result already exists in the list.");
+        } else {
             const newResultPresent = document.createElement('li');
             newResultPresent.classList.add('result-item'); // Add a class to the list item
             
@@ -116,10 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Save the updated list to local storage when new result is added for present values
             saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
-        } else {
-            alert("Cannot save invalid input.");
         }
     });
+
 
     // Save the updated list to local storage for present values
     function saveResultsLocallyPresent(savedResultsListPresent, storageKey) {

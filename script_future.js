@@ -93,12 +93,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
         
 
-    // Event listener for the Save button for future values
     saveButtonFuture.addEventListener('click', function () {
-        // Add the result to the list of saved future results
         const resultFuture = document.getElementById("result-future").textContent;
-        if (resultFuture !== "Future Value: Invalid input") {
-            const savedResultsListFuture = document.getElementById("results-list-future");
+        const resultValue = parseFloat(resultFuture.replace("Future Value: ", ""));
+        const savedResultsListFuture = document.getElementById("results-list-future");
+    
+        // Check if the result already exists in the saved list
+        const existingResults = savedResultsListFuture.querySelectorAll('.result-item span');
+        let isDuplicate = false;
+        existingResults.forEach(function (existingResult) {
+            if (existingResult.textContent === resultFuture) {
+                isDuplicate = true;
+            }
+        });
+    
+        if (isNaN(resultValue) || resultValue <= 0) {
+            alert("Cannot save invalid or zero input.");
+        } else if (isDuplicate) {
+            alert("Result already exists in the list.");
+        } else {
             const newResultFuture = document.createElement('li');
             newResultFuture.classList.add('result-item'); // Add a class to the list item
             
@@ -115,24 +128,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Save the updated list to local storage when checkbox is clicked
                 saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
             });
-
+    
             // Create a span to hold the resultFuture text
             const resultTextFuture = document.createElement('span');
             resultTextFuture.textContent = resultFuture;
-
+    
             // Append checkbox and resultText to the list item
             newResultFuture.appendChild(checkboxFuture);
             newResultFuture.appendChild(resultTextFuture);
-
+    
             // Append the new list item to the results list for future values
             savedResultsListFuture.appendChild(newResultFuture);
-
+    
             // Save the updated list to local storage when new result is added for future values
             saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
-        } else {
-            alert("Cannot save invalid input.");
         }
-    });
+    });    
 
     // Save the updated favorite list to local storage for future values
     function saveFavoritesLocallyFuture(favoriteListFut, storageKey) {
