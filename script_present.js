@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     newResultPresent.classList.remove('marked');
                 }
                 // Save the updated list to local storage when checkbox is clicked
-                saveResultsLocally(savedResultsListPresent, 'savedResultsPresent');
+                saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
             });
 
             // Create a span to hold the resultPresent text
@@ -115,32 +115,33 @@ document.addEventListener("DOMContentLoaded", function () {
             savedResultsListPresent.appendChild(newResultPresent);
 
             // Save the updated list to local storage when new result is added for present values
-            saveResultsLocally(savedResultsListPresent, 'savedResultsPresent');
+            saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
         } else {
             alert("Cannot save invalid input.");
         }
     });
 
-    // Function to save the results list to local storage for present values
-    function saveResultsLocally(resultsList, key) {
-        // Get the HTML content of the results list and store it in local storage with specific key
-        localStorage.setItem(key, resultsList.innerHTML);
+    // Save the updated list to local storage for present values
+    function saveResultsLocallyPresent(savedResultsListPresent, storageKey) {
+        localStorage.setItem(storageKey, savedResultsListPresent.innerHTML);
     }
 
-    // Function to load saved results from local storage for present values on page load
+    // Function to load saved results from local storage on page load for present values
     window.addEventListener('load', function () {
-        const savedResultsListPresent = document.getElementById('results-list-present');
-        // Get saved results from local storage and populate the results list for present values
+        const savedResultsListPresent = document.getElementById("results-list-present");
         savedResultsListPresent.innerHTML = localStorage.getItem('savedResultsPresent') || '';
     });
 
-
-    // Function to save the results list to local storage for present values
-    function saveResultsLocally(resultsList, key) {
-        // Get the HTML content of the results list and store it in local storage with specific key
-        localStorage.setItem(key, resultsList.innerHTML);
+    // Save the updated favorite list to local storage for present values
+    function saveFavoritesLocallyPresent(favoriteListPre, storageKey) {
+        localStorage.setItem(storageKey, favoriteListPre.innerHTML);
     }
 
+    // Function to load saved favorite items from local storage on page load for present values
+    window.addEventListener('load', function () {
+        const savedFavoriteListPresent = document.querySelector('.favorite-list-present');
+        savedFavoriteListPresent.innerHTML = localStorage.getItem('favoriteItemsPresent') || '';
+    });
 
     // Event listener for the Favorite button for present values
     favoriteButtonPresent.addEventListener('click', function () {
@@ -175,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Save the updated favorite list to local storage for present values
-        saveFavoritesLocally(favoriteItemsPresent, 'favoriteItemsPresent');
+        saveFavoritesLocallyPresent(favoriteListPresent, 'favoriteItemsPresent');
     });
 
 
@@ -196,10 +197,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Save the updated list to local storage after deletion
-        saveResultsLocally(savedResultsListPresent, 'savedResultsPresent');
+        saveResultsLocallyPresent(savedResultsListPresent, 'savedResultsPresent');
     });
 
-    // Event listener for the Trash Bin button for favorite values
+    // Event listener for the Trash Bin button for present favorite values
     const trashBinButtonFavoritePresent = document.querySelector('.trash-bin-favorite-present');
 
     trashBinButtonFavoritePresent.addEventListener('click', function () {
@@ -216,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Save the updated list to local storage after deletion
-        saveResultsLocally(favoriteListPresent, 'favoriteItemsPresent');
+        saveFavoritesLocallyPresent(favoriteListPresent, 'favoriteItemsPresent');
     });
 
 
