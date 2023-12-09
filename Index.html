@@ -33,8 +33,70 @@
     <div class="tab-content">
         <section id="home">
             <h2>Home</h2>
+
+            <div class="home-buttons">
+                <button onclick="scrollToElement('currency-conversion')">Währungsumrechnung</button>
+                <button onclick="scrollToElement('present-value')">Present Value of Future Money</button>
+                <button onclick="scrollToElement('future-prediction')">Future Value Calculator</button>
+            </div>
+            
+
+            <div class="function-description">
+                <div id="currency-conversion">
+                    <p>ㅤ</p><p>ㅤ</p><p>ㅤ</p>
+                    <h3>Währungsumrechnung</h3>
+                    <p>Hier können Sie Währungen miteinander umrechnen. Wählen Sie die Ausgangs- und Zielwährung aus, geben Sie den Betrag ein und klicken Sie auf "Umrechnen". Die Anwendung verwendet aktuelle Wechselkurse von der Europäischen Zentralbank, um genaue Ergebnisse zu liefern.</p>
+                    <p>Die Anwendung ist ideal für Reisende, Geschäftsleute und alle, die Währungen umrechnen müssen. Sie ist einfach zu bedienen und bietet eine Reihe von Funktionen, die sie zu einem wertvollen Werkzeug machen.</p>
+                    <p>Zusätzlich zu den oben genannten Funktionen bietet die Anwendung auch eine Historie der Umrechnungen, sodass Sie frühere Umrechnungen leicht nachschlagen können. Außerdem enthält die Anwendung eine Währungsumrechnungstabelle, die Ihnen eine schnelle Übersicht über die aktuellen Wechselkurse bietet.</p>
+                    <p>Die Anwendung ist kostenlos  verfügbar.</p>
+                    <a href="#currency-conversion" class="home-link">Zur Währungsumrechnung</a>
+                </div>
+
+                <div id="present-value"></div>
+                    <p>ㅤ</p><p>ㅤ</p><p>ㅤ</p>
+                    <h3>Present Value of Future Money</h3>
+                    <p>Der gegenwärtige Wert (PV) eines zukünftigen Geldbetrags ist der Wert, den dieser heute hätte, wenn er sofort ausgezahlt würde. Er kann verwendet werden, um die Kosten von langfristigen Investitionen oder die Erträge von Sparplänen zu bewerten.</p>
+                    <p>Die Berechnung des PV erfolgt mit der folgenden Formel:</p>
+                    <p>PV = FV / (1 + r)^t</p>
+                    <p>wobei:</p>
+                    <p>PV = gegenwärtiger Wert</p>
+                    <p>FV = zukünftiger Wert</p>
+                    <p>r = Zinssatz</p>
+                    <p>t = Anzahl der Zeitperioden</p>
+                    <p>Angenommen, Sie möchten wissen, wie viel Geld Sie heute sparen müssen, um 10.000 € in 10 Jahren zu haben, wenn der Zinssatz 5 % pro Jahr beträgt. Die Berechnung würde wie folgt aussehen:</p>
+                    <p>PV = 10.000 / (1 + 0,05)^10</p>
+                    <p>PV = 10.000 / 1,62889</p>
+                    <p>PV = 6,1445 €</p>
+                    <p>Das bedeutet, dass Sie heute 6.144,50 € sparen müssten, um 10.000 € in 10 Jahren zu haben.</p>
+                    <a href="#present-value" class="home-link">Zum Present Value Calculator</a>
+                </div>
+
+                <div id="future-prediction">
+                    <p>ㅤ</p><p>ㅤ</p><p>ㅤ</p>
+                    <h3>Future Value Calculator</h3>
+                    <p>Schätzung des zukünftigen Wertes einer Investition</p>
+                    <p>Die Schätzung des zukünftigen Wertes einer Investition ist ein wichtiger Schritt bei der finanziellen Planung. Mit dieser Funktion können Sie verschiedene Szenarien analysieren und die optimale Vorgehensweise für Ihre langfristigen finanziellen Ziele planen.</p>
+                    <p>Die Berechnung des zukünftigen Wertes einer Investition erfolgt mit der folgenden Formel:</p>
+                    <p>FV = PV * (1 + r)^t + (A * (1 + r)^n)</p>
+                    <p>wobei:</p>
+                    <p>FV = zukünftiger Wert</p>
+                    <p>PV = gegenwärtiger Wert</p>
+                    <p>r = Zinssatz</p>
+                    <p>t = Anzahl der Zeitperioden</p>
+                    <p>A = regelmäßige Einzahlung</p>
+                    <p>n = Anzahl der regelmäßigen Einzahlungen</p>
+                    <p>Beispiel</p>
+                    <p>Angenommen, Sie möchten 10.000 € sparen, um eine Immobilie zu kaufen. Sie möchten monatlich 500 € sparen und erwarten einen Zinssatz von 5 % pro Jahr. Wenn Sie die Berechnung durchführen, erhalten Sie folgende Ergebnisse:</p>
+                    <p>FV = 10.000 * (1 + 0,05)^12 + (500 * (1 + 0,05)^12)</p>
+                    <p>FV = 27.068,74 €</p>
+                    <p>Das bedeutet, dass Sie nach 12 Jahren 27.068,74 € haben werden, wenn Sie monatlich 500 € sparen und einen Zinssatz von 5 % pro Jahr erwarten.</p>
+                    <a href="#future-prediction" class="home-link">Zum Future Value Calculator</a>
+                </div>
+            </div>
+            </div>
             <!-- Hier steht eine Große Lehre platz für eine Kurze Text  -->
         </section>
+        
 
         <section id="currency-conversion">
             <div class="wrapper">
@@ -283,6 +345,7 @@
         <p id="current-date"> &copy; 2023</p>
     </footer>
 
+    <script src="home.js"></script>
     <script src="country_list.js"></script>
     <script src="script_currency.js"></script>
     <script src="script_present.js"></script>

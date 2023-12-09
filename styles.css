@@ -247,6 +247,23 @@ h3 {
     height: 0;
   }
 
+/* home */
+.home-link {
+    background-color: rgb(10, 6, 119);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none; /* Remove underline */
+}
+.home-link:hover {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
+}
+  
 /* Currency converter styles App */
 .converter {
     background-color: #f4f4f4;
