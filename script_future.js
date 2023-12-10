@@ -88,9 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
         localStorage.setItem(storageKey, savedResultsListFuture.innerHTML);
     }
-    
+
     window.addEventListener('load', function () {
-        const savedResultsListFuture = document.getElementById("results-list-future");
         savedResultsListFuture.innerHTML = localStorage.getItem('savedResultsFuture') || '';
     });
         
@@ -102,67 +101,78 @@ document.addEventListener("DOMContentLoaded", function () {
         const periods = parseInt(periodInput.value);
         const periodicDeposit = parseInt(periodicDepositInput.value);
         let equationText;
-    
+
         const resultFuture = document.getElementById("result-future").textContent;
-        const resultValue = parseFloat(resultFuture.replace("Future Value: ", ""));
-        const savedResultsListFuture = document.getElementById("results-list-future");
-    
-        // Check if the result already exists in the saved list
-        const existingResults = savedResultsListFuture.querySelectorAll('.result-item span');
-        let isDuplicate = false;
-        existingResults.forEach(function (existingResult) {
-            if (existingResult.textContent === resultFuture) {
-                isDuplicate = true;
-            }
-        });
-    
-        if (isNaN(resultValue) || resultValue <= 0) {
-            alert("Cannot save invalid or zero input.");
-        } else if (isDuplicate) {
-            alert("Result already exists in the list.");
+        const resultValueFuture = parseFloat(resultFuture.replace("Future Value: ", ""));
+
+        if (isNaN(initialInvestment) || isNaN(periodicInterestRate) || isNaN(periods)) {
+            resultFuture.textContent = "Invalid input";
+            alert("Invalid input. Please enter a valid amount.");
         } else {
             if (periodicDeposit > 0 && document.getElementById("beginning-of-period").checked){
-                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
             } else if (periodicDeposit > 0 && document.getElementById("end-of-period").checked){
-                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the end of each period`;
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the end of each period`;
             } else if (periodicDeposit > 0) {
-                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
             } else {
-                equationText = `Future Value: ${resultValue.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods`;
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods`;
             }
 
-            const newResultFuture = document.createElement('li');
-            newResultFuture.classList.add('result-item'); // Add a class to the list item
-            
-            // Create a checkbox
-            const checkboxFuture = document.createElement('input');
-            checkboxFuture.type = 'checkbox';
-            checkboxFuture.addEventListener('click', function(event) {
-                // Mark or unmark the list item when the checkbox is clicked
-                if (event.target.checked) {
-                    newResultFuture.classList.add('marked');
-                } else {
-                    newResultFuture.classList.remove('marked');
+            // Check if the result already exists in the saved list
+            const existingResults = savedResultsListFuture.querySelectorAll('.result-item');
+            let isDuplicate = false;
+
+            existingResults.forEach(function (existingResult) {
+                const existingEquation = existingResult.querySelector('span').textContent;
+                if (existingEquation === equationText) {
+                    isDuplicate = true;
+                    return; // Exit the loop early if a duplicate is found
                 }
-                // Save the updated list to local storage when checkbox is clicked
-                saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
             });
-    
-            // Create a span to hold the equation text
-            const equationSpan = document.createElement('span');
-            equationSpan.textContent = equationText;
-    
-            // Append checkbox and equationSpan to the list item
-            newResultFuture.appendChild(checkboxFuture);
-            newResultFuture.appendChild(equationSpan);
-    
-            // Append the new list item to the results list for future values
-            savedResultsListFuture.appendChild(newResultFuture);
-    
-            // Save the updated list to local storage when new result is added for future values
-            saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
+
+            if (isNaN(resultValueFuture) || resultValueFuture <= 0 || isDuplicate) {
+                if (isNaN(resultValueFuture) || resultValueFuture <= 0) {
+                    alert("Cannot save invalid or zero input.");
+                } else if (isDuplicate) {
+                    alert("Result already exists in the list.");
+                }
+            } else {
+                // Create a new list item for the result
+                const newResultFuture = document.createElement('li');
+                newResultFuture.classList.add('result-item'); // Add a class to the list item
+
+                // Create a checkbox
+                const checkboxFuture = document.createElement('input');
+                checkboxFuture.type = 'checkbox';
+                checkboxFuture.addEventListener('click', function(event) {
+                    // Mark or unmark the list item when the checkbox is clicked
+                    if (event.target.checked) {
+                        newResultFuture.classList.add('marked');
+                    } else {
+                        newResultFuture.classList.remove('marked');
+                    }
+                    // Save the updated list to local storage when checkbox is clicked
+                    saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
+                });
+
+                // Create a span to hold the equation text
+                const equationSpan = document.createElement('span');
+                equationSpan.textContent = equationText;
+
+                // Append checkbox and equationSpan to the list item
+                newResultFuture.appendChild(checkboxFuture);
+                newResultFuture.appendChild(equationSpan);
+
+                // Append the new list item to the results list for future values
+                savedResultsListFuture.appendChild(newResultFuture);
+
+                // Save the updated list to local storage when new result is added for future values
+                saveResultsLocallyFuture(savedResultsListFuture, 'savedResultsFuture');
+            }
         }
-    });
+    }
+    );
 
 
     // Save the updated favorite list to local storage for future values
