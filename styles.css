@@ -269,6 +269,57 @@ h3 {
     font-weight: bold; /* Set font weight to bold */
     text-decoration: none; /* Remove underline (optional, adjust as needed) */
 }
+
+#share-container span {
+  display: inline-block;
+  margin: 3rem auto;
+  font-size: 50px;
+  padding: 1rem;
+  margin: 1rem;
+}
+#share-buttons i {
+  font-size: 100px;
+  margin: 20px;
+}
+.facebook {
+  color: #3b5998;
+}
+.twitter {
+  color: #55acee;
+}
+.linkedin {
+  color: #0077b5;
+}
+.reddit {
+  color: #cb2027;
+}
+.whatsapp {
+  color: #25D366;
+}
+.telegram {
+  color: #229ED9;
+}
+.facebook, .twitter, .linkedin, .reddit, .whatsapp, .telegram {
+  opacity: 0.6;
+}
+.facebook:hover, .twitter:hover, .linkedin:hover, .reddit:hover, .whatsapp:hover, .telegram:hover {
+  opacity: 0.9;
+}
+.share-container {
+  display: inline-block;
+  position: relative;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+}
   
 /* Currency converter styles App */
 .converter {
