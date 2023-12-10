@@ -263,6 +263,12 @@ h3 {
   box-shadow: 0 0 0 5px #3b83f65f;
   color: #fff;
 }
+
+.info-link {
+    color: black;      /* Set text color to black */
+    font-weight: bold; /* Set font weight to bold */
+    text-decoration: none; /* Remove underline (optional, adjust as needed) */
+}
   
 /* Currency converter styles App */
 .converter {
