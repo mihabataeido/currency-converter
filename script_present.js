@@ -295,7 +295,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Querying the share button and adding a click event listener
     const shareButtonPresent = document.querySelector('.share-button-present');
+
     shareButtonPresent.addEventListener('click', function (event) {
+        const futureValue = parseFloat(futureValueInput.value);
+        const period = parseInt(periodPresent.value);
+        
+        const compoundFrequency = document.getElementById("compound-frequency-present").options[document.getElementById("compound-frequency-present").selectedIndex].textContent;
+        let periodicInflationRate;
+
+        if (document.getElementById("manual-inflation-rate").checked) {
+            periodicInflationRate = parseFloat(document.getElementById("periodic-inflation-rate-manual-present").value / 100);
+        } else {
+            // Handle automatic interest rate selection here
+            periodicInflationRate = parseFloat(document.getElementById("automatic-inflation-rate-select-present").value / 100);
+        }
+
+        let equationText = ''; // Declare the variable outside the conditional block
+
+        if (isNaN(futureValue) || isNaN(periodicInflationRate) || isNaN(period)) {
+            presentValueResult.textContent = "Invalid input";
+            alert("Invalid input. Please enter a valid amount.");
+        } else {
+            const presentValue = calculatePresentValue(futureValue, periodicInflationRate, period);
+            equationText = `Present Value: ${presentValue.toFixed(2)} ---- Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
+        }
+        
         const button = event.currentTarget;
         const container = button.nextElementSibling; // Using nextElementSibling assuming the popup-present div is the immediate sibling
         
@@ -307,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
             container.innerHTML = '';
 
             // Add your present button logic here
-            const msg = encodeURIComponent('This is the present content');
+            const msg = encodeURIComponent(equationText);
 
             const presentMedia = [
                 { name: 'Facebook', icon: 'fab fa-facebook', url: `https://www.facebook.com/share.php?u=${msg}` },
@@ -336,6 +360,5 @@ document.addEventListener("DOMContentLoaded", function () {
             container.style.display = 'block';
         }
     });
-
 
 });
