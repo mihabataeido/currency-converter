@@ -308,7 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
     // Event listener for the Share button
     shareButtonFuture.addEventListener('click', function () {
         // Share to platforms
