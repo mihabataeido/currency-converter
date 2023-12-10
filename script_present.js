@@ -333,28 +333,57 @@ document.addEventListener("DOMContentLoaded", function () {
             // Add your present button logic here
             const msg = encodeURIComponent(equationText);
 
+            const twitterURL = `http://twitter.com/share?text=${msg}&url=${msg}&hashtags=javascript,programming`;
+            const linkedInURL = `https://www.linkedin.com/sharing/share-offsite/?url=${msg}`;
+            const redditURL = `http://www.reddit.com/submit?url=${msg}&title=${msg}`;
+            const telegramURL = `https://web.telegram.org/a//share/url?url=${msg}&text=${msg}`;
+            const whatsAppURL = `https://api.whatsapp.com/send?text=${msg}`;
+            const emailURL = `mailto:?subject=Check%20out%20this%20link&body=${msg}`;
+            const smsURL = `sms:?body=${msg}`;
+            const messengerURL = `fb-messenger://share/?link=${msg}`;
+            const viberURL = `viber://forward?text=${msg}`;
+            
+            function copyToClipboard() {
+              navigator.clipboard.writeText(msg)
+                .then(() => {
+                  alert("Link copied to clipboard: " + msg);
+                })
+                .catch(err => {
+                  console.error('Failed to copy:', err);
+                  alert("Failed to copy the link to clipboard");
+                });
+            }
+            
             const presentMedia = [
-                { name: 'Facebook', icon: 'fab fa-facebook', url: `https://www.facebook.com/share.php?u=${msg}` },
-                { name: 'Twitter', icon: 'fab fa-twitter', url: `http://twitter.com/share?&text=${msg}&hashtags=javascript,programming` },
-                { name: 'LinkedIn', icon: 'fab fa-linkedin', url: `https://www.linkedin.com/sharing/share-offsite/?text=${msg}` },
-                { name: 'Reddit', icon: 'fab fa-reddit', url: `http://www.reddit.com/submit?title=${msg}` },
-                { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: `https://api.whatsapp.com/send?text=${msg}` },
-                { name: 'Telegram', icon: 'fab fa-telegram', url: `https://telegram.me/share/url?text=${msg}` },
+              { name: 'Twitter', icon: 'fab fa-twitter', url: twitterURL },
+              { name: 'LinkedIn', icon: 'fab fa-linkedin', url: linkedInURL },
+              { name: 'Reddit', icon: 'fab fa-reddit', url: redditURL },
+              { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: whatsAppURL },
+              { name: 'Telegram', icon: 'fab fa-telegram', url: telegramURL },
+              { name: 'Email', icon: 'fas fa-envelope', url: emailURL },
+              { name: 'Copy Link', icon: 'fas fa-link', onclick: copyToClipboard },
+              { name: 'SMS', icon: 'fas fa-sms', url: smsURL },
+              { name: 'Messenger', icon: 'fab fa-facebook-messenger', url: messengerURL },
+              { name: 'Viber', icon: 'fab fa-viber', url: viberURL },
             ];
-
+            
             presentMedia.forEach(function (platform) {
-                const shareLink = document.createElement('a');
-                shareLink.href = platform.url;
-                shareLink.className = platform.name.toLowerCase();
-                shareLink.target = '_blank';
-
-                const icon = document.createElement('i');
-                icon.className = platform.icon;
-                icon.style.fontSize = '40px'; // Increase icon size
-
-                shareLink.appendChild(icon);
-                container.appendChild(shareLink);
-            });
+              const shareLink = document.createElement('a');
+              shareLink.href = platform.url;
+              shareLink.className = platform.name.toLowerCase();
+              shareLink.target = '_blank';
+            
+              const icon = document.createElement('i');
+              icon.className = platform.icon;
+              icon.style.fontSize = '40px'; // Increase icon size
+            
+              shareLink.appendChild(icon);
+              container.appendChild(shareLink);
+            
+              if (platform.onclick) {
+                shareLink.addEventListener('click', platform.onclick);
+              }
+            });            
 
             // Show the popup-present
             container.style.display = 'block';
