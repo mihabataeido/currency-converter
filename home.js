@@ -1,8 +1,9 @@
-// myscript.js
-
-function scrollToElement(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+function scrollToSection(sectionId, targetIndex) {
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        const scrollTargets = targetSection.querySelectorAll('.scroll-target');
+        if (scrollTargets.length > targetIndex) {
+            scrollTargets[targetIndex].scrollIntoView({ behavior: 'smooth' });
+        }
     }
 }
