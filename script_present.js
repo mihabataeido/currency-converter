@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Marked Conversions
     const saveButtonPresent = document.querySelector('.save-present');
     const favoriteButtonPresent = document.querySelector('.favorit-present');
-    const shareButtonPresent = document.querySelector('.share-present');
 
     // Event listener for the Save button for present values
     saveButtonPresent.addEventListener('click', function () {
@@ -294,11 +293,101 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Querying the share button and adding a click event listener
+    const shareButtonPresent = document.querySelector('.share-button-present');
 
+    shareButtonPresent.addEventListener('click', function (event) {
+        const futureValue = parseFloat(futureValueInput.value);
+        const period = parseInt(periodPresent.value);
+        
+        const compoundFrequency = document.getElementById("compound-frequency-present").options[document.getElementById("compound-frequency-present").selectedIndex].textContent;
+        let periodicInflationRate;
 
-    
-    // Event listener for the Share button
-    shareButtonPresent.addEventListener('click', function () {
-        // Share to platforms
+        if (document.getElementById("manual-inflation-rate").checked) {
+            periodicInflationRate = parseFloat(document.getElementById("periodic-inflation-rate-manual-present").value / 100);
+        } else {
+            // Handle automatic interest rate selection here
+            periodicInflationRate = parseFloat(document.getElementById("automatic-inflation-rate-select-present").value / 100);
+        }
+
+        let equationText = ''; // Declare the variable outside the conditional block
+
+        if (isNaN(futureValue) || isNaN(periodicInflationRate) || isNaN(period)) {
+            presentValueResult.textContent = "Invalid input";
+            alert("Invalid input. Please enter a valid amount.");
+        } else {
+            const presentValue = calculatePresentValue(futureValue, periodicInflationRate, period);
+            equationText = `Present Value: ${presentValue.toFixed(2)} ---- Future Value: ${futureValue.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Inflation Rate: ${(periodicInflationRate * 100).toFixed(2)}%, ${period} Periods`;
+        }
+        
+        const button = event.currentTarget;
+        const container = button.nextElementSibling; // Using nextElementSibling assuming the popup-present div is the immediate sibling
+        
+        if (container.style.display === 'block') {
+            // If container is already visible, hide it
+            container.style.display = 'none';
+        } else {
+            // Clear previous content
+            container.innerHTML = '';
+
+            // Add your present button logic here
+            const msg = encodeURIComponent(equationText);
+
+            const twitterURL = `http://twitter.com/share?text=${msg}&url=${msg}&hashtags=javascript,programming`;
+            const linkedInURL = `https://www.linkedin.com/sharing/share-offsite/?url=${msg}`;
+            const redditURL = `http://www.reddit.com/submit?url=${msg}&title=${msg}`;
+            const telegramURL = `https://web.telegram.org/a//share/url?url=${msg}&text=${msg}`;
+            const whatsAppURL = `https://api.whatsapp.com/send?text=${msg}`;
+            const emailURL = `mailto:?subject=Check%20out%20this%20link&body=${msg}`;
+            const smsURL = `sms:?body=${msg}`;
+            const messengerURL = `fb-messenger://share/?link=${msg}`;
+            const viberURL = `viber://forward?text=${msg}`;
+            
+            function copyToClipboard() {
+              navigator.clipboard.writeText(msg)
+                .then(() => {
+                  alert("Link copied to clipboard: " + msg);
+                })
+                .catch(err => {
+                  console.error('Failed to copy:', err);
+                  alert("Failed to copy the link to clipboard");
+                });
+            }
+            
+            const presentMedia = [
+              { name: 'Twitter', icon: 'fab fa-twitter', url: twitterURL },
+              { name: 'LinkedIn', icon: 'fab fa-linkedin', url: linkedInURL },
+              { name: 'Reddit', icon: 'fab fa-reddit', url: redditURL },
+              { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: whatsAppURL },
+              { name: 'Telegram', icon: 'fab fa-telegram', url: telegramURL },
+              { name: 'Email', icon: 'fas fa-envelope', url: emailURL },
+              { name: 'Copy Link', icon: 'fas fa-link', onclick: copyToClipboard },
+              { name: 'SMS', icon: 'fas fa-sms', url: smsURL },
+              { name: 'Messenger', icon: 'fab fa-facebook-messenger', url: messengerURL },
+              { name: 'Viber', icon: 'fab fa-viber', url: viberURL },
+            ];
+            
+            presentMedia.forEach(function (platform) {
+              const shareLink = document.createElement('a');
+              shareLink.href = platform.url;
+              shareLink.className = platform.name.toLowerCase();
+              shareLink.target = '_blank';
+            
+              const icon = document.createElement('i');
+              icon.className = platform.icon;
+              icon.style.fontSize = '40px'; // Increase icon size
+            
+              shareLink.appendChild(icon);
+              container.appendChild(shareLink);
+            
+              if (platform.onclick) {
+                shareLink.addEventListener('click', platform.onclick);
+              }
+            });            
+
+            // Show the popup-present
+            container.style.display = 'block';
+        }
     });
+
 });

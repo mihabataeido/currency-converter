@@ -311,3 +311,49 @@ function removeItemFromFavoritList(result) {
       }
   }
 }
+
+// make a share button 
+const shareButtonCurrency = document.querySelector('.share-button-currency');
+
+shareButtonCurrency.addEventListener('click', function (event) {
+  const button = event.currentTarget;
+  const container = button.nextElementSibling;
+
+  
+  let equationText = exchangeTxt.innerText;
+
+  if (container.style.display === 'block') {
+    // If container is already visible, hide it
+    container.style.display = 'none';
+  } else {
+    container.innerHTML = '';
+
+    const msg = encodeURIComponent(equationText);
+
+    const presentMedia = [
+      { name: 'Facebook', icon: 'fab fa-facebook', url: `https://www.facebook.com/share.php?u=${msg}` },
+      { name: 'Twitter', icon: 'fab fa-twitter', url: `http://twitter.com/share?&text=${msg}&hashtags=javascript,programming` },
+      { name: 'LinkedIn', icon: 'fab fa-linkedin', url: `https://www.linkedin.com/sharing/share-offsite/?text=${msg}` },
+      { name: 'Reddit', icon: 'fab fa-reddit', url: `http://www.reddit.com/submit?title=${msg}` },
+      { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: `https://api.whatsapp.com/send?text=${msg}` },
+      { name: 'Telegram', icon: 'fab fa-telegram', url: `https://telegram.me/share/url?text=${msg}` },
+  ];
+
+  presentMedia.forEach(function (platform) {
+      const shareLink = document.createElement('a');
+      shareLink.href = platform.url;
+      shareLink.className = platform.name.toLowerCase();
+      shareLink.target = '_blank';
+
+      const icon = document.createElement('i');
+      icon.className = platform.icon;
+      icon.style.fontSize = '40px'; // Increase icon size
+
+      shareLink.appendChild(icon);
+      container.appendChild(shareLink);
+  });
+
+  // Show the popup-present
+  container.style.display = 'block';
+}
+});

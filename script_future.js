@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Marked Conversions
     const saveButtonFuture = document.querySelector('.save-future');
     const favoriteButtonFuture = document.querySelector('.favorit-future');
-    const shareButtonFuture = document.querySelector('.share-future');
 
 
     function saveResultsLocallyFuture(savedResultsListFuture, storageKey) {
@@ -308,23 +307,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // Event listener for the Share button
-    shareButtonFuture.addEventListener('click', function () {
-        // Share to platforms
-        const futureValue = document.getElementById("result-future").textContent;
-        if (futureValue !== "Future Value: Invalid input") {
-            const shareText = `Check out this future value I calculated using the Financial Calculator: ${futureValue}`;
-            const shareUrl = 'https://financial-calculator-website.github.io/';
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-            const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=&summary=${shareText}&source=`;
-            window.open(twitterUrl, '_blank');
-            window.open(facebookUrl, '_blank');
-            window.open(linkedinUrl, '_blank');
+
+    const shareButtonFuture = document.querySelector('.share-button-future');
+
+    shareButtonFuture.addEventListener('click', function (event) {
+        const initialInvestment = parseFloat(initialInvestmentInput.value);
+        const compoundFrequency = document.getElementById("compound-frequency-future").options[document.getElementById("compound-frequency-future").selectedIndex].textContent;
+        const periodicInterestRate = parseFloat(document.getElementById("periodic-interest-rate-manual-future").value) / 100;
+        const periods = parseInt(periodInput.value);
+        const periodicDeposit = parseInt(periodicDepositInput.value);
+        let equationText = '';
+
+        const resultFuture = document.getElementById("result-future").textContent;
+        const resultValueFuture = parseFloat(resultFuture.replace("Future Value: ", ""));
+
+        if (isNaN(initialInvestment) || isNaN(periodicInterestRate) || isNaN(periods)) {
+            resultFuture.textContent = "Invalid input";
+            alert("Invalid input. Please enter a valid amount.");
         } else {
-            alert("Cannot share invalid input.");
+            if (periodicDeposit > 0 && document.getElementById("beginning-of-period").checked){
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
+            } else if (periodicDeposit > 0 && document.getElementById("end-of-period").checked){
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the end of each period`;
+            } else if (periodicDeposit > 0) {
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods, Periodic Deposit: ${periodicDeposit.toFixed(2)} made at the beginning of each period`;
+            } else {
+                equationText = `Future Value: ${resultValueFuture.toFixed(2)} ---- Initial Investment: ${initialInvestment.toFixed(2)}, Compounded ${compoundFrequency}, Periodic Interest Rate: ${(periodicInterestRate * 100).toFixed(2)}%, ${periods} Periods`;
+            }
+        }
+        
+        const button = event.currentTarget;
+        const container = button.nextElementSibling; // Using nextElementSibling assuming the popup-future div is the immediate sibling
+        
+        if (container.style.display === 'block') {
+            // If container is already visible, hide it
+            container.style.display = 'none';
+        } else {
+            // Clear previous content
+            container.innerHTML = '';
+
+            // Add your future button logic here
+            const msg = encodeURIComponent(equationText);
+
+            const futureMedia = [
+                { name: 'Facebook', icon: 'fab fa-facebook', url: `https://www.facebook.com/share.php?u=${msg}` },
+                { name: 'Twitter', icon: 'fab fa-twitter', url: `http://twitter.com/share?&text=${msg}&hashtags=javascript,programming` },
+                { name: 'LinkedIn', icon: 'fab fa-linkedin', url: `https://www.linkedin.com/sharing/share-offsite/?text=${msg}` },
+                { name: 'Reddit', icon: 'fab fa-reddit', url: `http://www.reddit.com/submit?title=${msg}` },
+                { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: `https://api.whatsapp.com/send?text=${msg}` },
+                { name: 'Telegram', icon: 'fab fa-telegram', url: `https://telegram.me/share/url?text=${msg}` },
+            ];
+
+            futureMedia.forEach(function (platform) {
+                const shareLink = document.createElement('a');
+                shareLink.href = platform.url;
+                shareLink.className = platform.name.toLowerCase();
+                shareLink.target = '_blank';
+
+                const icon = document.createElement('i');
+                icon.className = platform.icon;
+                icon.style.fontSize = '40px'; // Increase icon size
+
+                shareLink.appendChild(icon);
+                container.appendChild(shareLink);
+            });
+
+            // Show the popup-future
+            container.style.display = 'block';
         }
     });
+
 });
 
 
