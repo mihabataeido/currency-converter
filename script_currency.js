@@ -321,53 +321,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listener for the Save button for currency values
   saveButtonCurrency.addEventListener('click', function () {
-          const equationText = exchangeTxt.innerText;
+    const equationText = exchangeTxt.innerText;
 
-          // Check if the result already exists in the saved list
-          const existingResults = savedResultsListCurrency.querySelectorAll('.result-item');
-          let isDuplicate = false;
-          existingResults.forEach(function (existingResult) {
-              const existingEquation = existingResult.querySelector('span').textContent;
-              if (existingEquation === equationText) {
-                  isDuplicate = true;
-              }
-          });
+    // Check if the result already exists in the saved list
+    const existingResults = savedResultsListCurrency.querySelectorAll('.result-item');
+    let isDuplicate = false;
 
-          if (equationText === "Getting exchange rate...") {
-              alert("Cannot save invalid or zero input.");
-          } else {
-              const newResultCurrency = document.createElement('li');
-              newResultCurrency.classList.add('result-item'); // Add a class to the list item
-              
-              // Create a checkbox
-              const checkboxCurrency = document.createElement('input');
-              checkboxCurrency.type = 'checkbox';
-              checkboxCurrency.addEventListener('click', function(event) {
-                  // Mark or unmark the list item when the checkbox is clicked
-                  if (event.target.checked) {
-                      newResultCurrency.classList.add('marked');
-                  } else {
-                      newResultCurrency.classList.remove('marked');
-                  }
-                  // Save the updated list to local storage when checkbox is clicked
-                  saveResultsLocallyCurrency(savedResultsListCurrency, 'savedResultsCurrency');
-              });
+    existingResults.forEach(function (existingResult) {
+      const existingEquation = existingResult.querySelector('span').textContent;
+      if (existingEquation === equationText) {
+        isDuplicate = true;
+        alert('This result is already saved.'); // Alert if the result is already in the list
+      }
+    });
 
-              // Create a span to hold the resultText with the equation
-              const resultTextCurrency = document.createElement('span');
-              resultTextCurrency.textContent = equationText;
+    if (!isDuplicate && equationText !== 'Getting exchange rate...') {
+      const newResultCurrency = document.createElement('li');
+      newResultCurrency.classList.add('result-item'); // Add a class to the list item
 
-              // Append checkbox and resultText to the list item
-              newResultCurrency.appendChild(checkboxCurrency);
-              newResultCurrency.appendChild(resultTextCurrency);
+      // Create a checkbox
+      const checkboxCurrency = document.createElement('input');
+      checkboxCurrency.type = 'checkbox';
+      checkboxCurrency.addEventListener('click', function (event) {
+        // Mark or unmark the list item when the checkbox is clicked
+        if (event.target.checked) {
+          newResultCurrency.classList.add('marked');
+        } else {
+          newResultCurrency.classList.remove('marked');
+        }
+        // Save the updated list to local storage when checkbox is clicked
+        saveResultsLocallyCurrency(savedResultsListCurrency, 'savedResultsCurrency');
+      });
 
-              // Append the new list item to the results list for currency values
-              savedResultsListCurrency.appendChild(newResultCurrency);
+      // Create a span to hold the resultText with the equation
+      const resultTextCurrency = document.createElement('span');
+      resultTextCurrency.textContent = equationText;
 
-              // Save the updated list to local storage when new result is added for currency values
-              saveResultsLocallyCurrency(savedResultsListCurrency, 'savedResultsCurrency');
-          }
+      // Append checkbox and resultText to the list item
+      newResultCurrency.appendChild(checkboxCurrency);
+      newResultCurrency.appendChild(resultTextCurrency);
+
+      // Append the new list item to the results list for currency values
+      savedResultsListCurrency.appendChild(newResultCurrency);
+
+      // Save the updated list to local storage when a new result is added for currency values
+      saveResultsLocallyCurrency(savedResultsListCurrency, 'savedResultsCurrency');
+    } else if (equationText === 'Getting exchange rate...') {
+      alert('Cannot save invalid or zero input.');
+    }
   });
+
 
   // Save the updated list to local storage for currency values
   function saveResultsLocallyCurrency(savedResultsListCurrency, storageKey) {
