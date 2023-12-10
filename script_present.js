@@ -80,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Marked Conversions
     const saveButtonPresent = document.querySelector('.save-present');
     const favoriteButtonPresent = document.querySelector('.favorit-present');
-    const shareButtonPresent = document.querySelector('.share-present');
 
     // Event listener for the Save button for present values
     saveButtonPresent.addEventListener('click', function () {
@@ -294,11 +293,49 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Querying the share button and adding a click event listener
+    const shareButtonPresent = document.querySelector('.share-button-present');
+    shareButtonPresent.addEventListener('click', function (event) {
+        const button = event.currentTarget;
+        const container = button.nextElementSibling; // Using nextElementSibling assuming the popup-present div is the immediate sibling
+        
+        if (container.style.display === 'block') {
+            // If container is already visible, hide it
+            container.style.display = 'none';
+        } else {
+            // Clear previous content
+            container.innerHTML = '';
 
+            // Add your present button logic here
+            const msg = encodeURIComponent('This is the present content');
 
-    
-    // Event listener for the Share button
-    shareButtonPresent.addEventListener('click', function () {
-        // Share to platforms
+            const presentMedia = [
+                { name: 'Facebook', icon: 'fab fa-facebook', url: `https://www.facebook.com/share.php?u=${msg}` },
+                { name: 'Twitter', icon: 'fab fa-twitter', url: `http://twitter.com/share?&text=${msg}&hashtags=javascript,programming` },
+                { name: 'LinkedIn', icon: 'fab fa-linkedin', url: `https://www.linkedin.com/sharing/share-offsite/?text=${msg}` },
+                { name: 'Reddit', icon: 'fab fa-reddit', url: `http://www.reddit.com/submit?title=${msg}` },
+                { name: 'WhatsApp', icon: 'fab fa-whatsapp', url: `https://api.whatsapp.com/send?text=${msg}` },
+                { name: 'Telegram', icon: 'fab fa-telegram', url: `https://telegram.me/share/url?text=${msg}` },
+            ];
+
+            presentMedia.forEach(function (platform) {
+                const shareLink = document.createElement('a');
+                shareLink.href = platform.url;
+                shareLink.className = platform.name.toLowerCase();
+                shareLink.target = '_blank';
+
+                const icon = document.createElement('i');
+                icon.className = platform.icon;
+                icon.style.fontSize = '40px'; // Increase icon size
+
+                shareLink.appendChild(icon);
+                container.appendChild(shareLink);
+            });
+
+            // Show the popup-present
+            container.style.display = 'block';
+        }
     });
+
+
 });
