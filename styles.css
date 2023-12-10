@@ -916,6 +916,37 @@ button {
   margin-top: 2px; /* Adjust the top margin to align with the text */
 }
 
+#results-list-currency {
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+#results-list-currency li {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 5px; /* Add margin between list items */
+}
+
+#results-list-currency li input[type="checkbox"] {
+  margin-right: 10px; /* Adjust the spacing between the checkbox and list item content */
+}
+
+#favorite-list-currency {
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+#favorite-list-currency li {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Align items vertically */
+  margin-bottom: 5px; /* Add margin between list items */
+}
+
+#favorite-list-currency li input[type="checkbox"] {
+  margin-right: 10px; /* Adjust the spacing between the checkbox and list item content */
+}
+
+
 
 
 /* CSS for radio buttons and input elements */

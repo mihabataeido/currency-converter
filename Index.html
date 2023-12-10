@@ -138,8 +138,7 @@
                             <div class="exchange_rate">Getting exchange rate...</div>
                         </div>
                         <div class="button-row">
-                            <button class="save">Speichern</button>
-                            <button class="Favorit">Favorit</button>
+                            <button class="save-currency">Speichern</button>
                             <div class="share-container-currency">
                                 <button class="share-button-currency">Share on following platforms</button>
                                 <div class="popup-currency">
@@ -149,15 +148,27 @@
                         </div>
                     </div>                    
                       
-              </div>
+            </div>
 
-            <div class="saved-conversions-container">
-                <ul class="saved-conversions-list"></ul>
+            <div id="saved-results-currency">
+                <h3>Saved Results:</h3>
+                <label>
+                    <input type="checkbox" id="select-all-saved-currency"> Select All
+                </label>
+                <ul id="results-list-currency"></ul>
+                <button class="trash-bin-currency">Trash Bin</button>
+                <button class="favorit-currency">Favorite</button>
+            </div>            
+
+            <div class="favorite-results-currency">
+                <h3>Favorite List:</h3>
+                <label>
+                    <input type="checkbox" id="select-all-favorite-currency"> Select All
+                </label>
+                <ul class="favorite-list-currency" id="favorite-list-currency"></ul>
+                <button class="trash-bin-favorite-currency">Trash Bin</button>
             </div>
             
-            <div class="Favorit_conversions-container">
-                <ul class="Favorit_conversions-list"></ul>
-            </div>
             <div id="menu-present">
                 <ul>
                     <li id="download-button-present">Download</li>
