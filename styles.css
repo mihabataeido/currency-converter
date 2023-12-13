@@ -987,25 +987,23 @@ button {
   text-align: right;
 }
 
-/*Language*/
 .language {
   position: relative;
   width: 200px;
   margin-left: 40px;
   font-weight: bold;
 }
-.laguage-selected{
+.language-selected {
   display: flex;
   align-items: center;
   color: #fff;
   cursor: pointer;
 }
-.language-selected::before{
+.language-selected::before {
   content: '';
   display: inline-block;
   width: 30px;
   height: 30px;
-  background-image: url(https://flagcdn.com/48x36/de.png);
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 20px;
