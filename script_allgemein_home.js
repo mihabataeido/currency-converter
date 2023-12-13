@@ -44,19 +44,18 @@ function saveLanguagePreference(language) {
 
 function changeLanguage(language) {
     const languageSelected = document.querySelector('.language-selected');
-    const flagElement = languageSelected.style;
-
-    // Reset the background image before assigning a new one
-    flagElement.backgroundImage = 'none';
-
+  
+    // Remove existing flag classes
+    languageSelected.classList.remove('change-en', 'change-de');
+  
     if (language === 'en') {
-        flagElement.backgroundImage = "url('https://flagcdn.com/48x36/us.png')";
-        // Update other translations for English if needed
+      languageSelected.classList.add('change-en');
+      // Update other translations for English if needed
     } else if (language === 'de') {
-        flagElement.backgroundImage = "url('https://flagcdn.com/48x36/de.png')";
-        // Update other translations for German if needed
+      languageSelected.classList.add('change-de');
+      // Update other translations for German if needed
     }
-}
+  }  
 
 $(document).ready(function() {
     let preferredLanguage = localStorage.getItem('preferredLanguage');
@@ -64,17 +63,20 @@ $(document).ready(function() {
     // Hide .en-translation initially
     $('.en-translation').hide();
 
-    // If preferred language is not set, or if it's set to 'de' by default
+    // Initialize language preference
     if (!preferredLanguage || preferredLanguage === 'de') {
-        preferredLanguage = 'de'; // Set default language to 'de'
-        saveLanguagePreference('de'); // Save the default language preference
-        changeLanguage('de'); // Change the flag based on language
-        toggleLanguage('de'); // Toggle the translations
+        preferredLanguage = 'de';
+        saveLanguagePreference('de');
+        changeLanguage('de');
+        toggleLanguage('de');
     } else if (preferredLanguage === 'en') {
-        saveLanguagePreference('en'); // Ensure 'en' preference is saved
-        changeLanguage('en'); // Change the flag based on language
-        toggleLanguage('en'); // Toggle the translations
+        saveLanguagePreference('en');
+        changeLanguage('en');
+        toggleLanguage('en');
     }
+
+    // Ensure event handlers are attached only once
+    $(".de, .en").off('click');
 
     $(".de").click(function(event) {
         event.preventDefault();

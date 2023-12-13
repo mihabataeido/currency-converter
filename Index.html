@@ -21,7 +21,7 @@
         <nav>
             <ul class="tab-container">
                 <li class="en-translation"><a href="#home">Home</a></li>
-                <li class="de-translation"><a href="#home">Zuhause</a></li>
+                <li class="de-translation"><a href="#home">Startseite</a></li>
                 <li class="en-translation"><a href="#currency-conversion">Currency Conversion</a></li>
                 <li class="de-translation"><a href="#currency-conversion">Währungsumrechnung</a></li>
                 <li class="en-translation"><a href="#present-value">Present Value Calculator</a></li>
@@ -42,14 +42,15 @@
             <div class="language-selected"></div>
             <ul>
                 <li><a href='#' class='de' onclick="changeFlag('de')">Deutsch</a></li>
-                <li><a href='#' class='en' onclick="changeFlag('en')">Englisch</a></li>
+                <li><a href='#' class='en' onclick="changeFlag('en')">English</a></li>
             </ul>
         </div>
     </header>
 
     <div class="tab-content">
         <section id="home">
-            <h2>Home</h2>
+            <h2 class="en-translation">Home</h2>
+            <h2 class="de-translation">Startseite</h2>
             
             <div class="home-buttons">
                 <button onclick="scrollToSection('home', 0)">Währungsumrechnung</button>
@@ -61,18 +62,28 @@
 
                 <h4 class="scroll-target">ㅤ</h4>
                 <p>ㅤ</p><p>ㅤ</p>
-                <h3 id="translate">Währungsumrechnung</h3>
-                <p id="translate22">Hier können Sie Währungen miteinander umrechnen. Wählen Sie die Ausgangs- und Zielwährung aus, geben Sie den Betrag ein und klicken Sie auf "Umrechnen". Die Anwendung verwendet aktuelle Wechselkurse von der Europäischen Zentralbank, um genaue Ergebnisse zu liefern.</p>
-                <p>Die Anwendung ist ideal für Reisende, Geschäftsleute und alle, die Währungen umrechnen müssen. Sie ist einfach zu bedienen und bietet eine Reihe von Funktionen, die sie zu einem wertvollen Werkzeug machen.</p>
-                <p>Zusätzlich zu den oben genannten Funktionen bietet die Anwendung auch eine Historie der Umrechnungen, sodass Sie frühere Umrechnungen leicht nachschlagen können. Außerdem enthält die Anwendung eine Währungsumrechnungstabelle, die Ihnen eine schnelle Übersicht über die aktuellen Wechselkurse bietet.</p>
-                <p>Die Anwendung ist kostenlos  verfügbar.</p>
+                <h3 class="de-translation">Währungsumrechnung</h3>
+                <h3 class="en-translation">Currency Conversion</h3>
+
+                <p class="de-translation">Hier können Sie Währungen miteinander umrechnen. Wählen Sie die Ausgangs- und Zielwährung aus, geben Sie den Betrag ein und klicken Sie auf "Umrechnen". Die Anwendung verwendet aktuelle Wechselkurse von der Europäischen Zentralbank, um genaue Ergebnisse zu liefern.</p>
+                <p class="de-translation">Die Anwendung ist ideal für Reisende, Geschäftsleute und alle, die Währungen umrechnen müssen. Sie ist einfach zu bedienen und bietet eine Reihe von Funktionen, die sie zu einem wertvollen Werkzeug machen.</p>
+                <p class="de-translation">Zusätzlich zu den oben genannten Funktionen bietet die Anwendung auch eine Historie der Umrechnungen, sodass Sie frühere Umrechnungen leicht nachschlagen können. Außerdem enthält die Anwendung eine Währungsumrechnungstabelle, die Ihnen eine schnelle Übersicht über die aktuellen Wechselkurse bietet.</p>
+                <p class="de-translation">Die Anwendung ist kostenlos  verfügbar.</p>
+
+                <p class="en-translation">Here you can convert currencies. Select the source and target currency, enter the amount and click "Convert". The application uses current exchange rates from the European Central Bank to provide accurate results.</p>
+                <p class="en-translation">The application is ideal for travelers, business people and anyone who needs to convert currencies. It is easy to use and offers a range of features that make it a valuable tool.</p>
+                <p class="en-translation">In addition to the above features, the application also provides a history of conversions, so you can easily look up previous conversions. In addition, the application includes a currency conversion table that provides you with a quick overview of current exchange rates.</p>
+                <p class="en-translation">The application is available for free.</p>
                 <a href="#currency-conversion" class="home-link">Zur Währungsumrechnung</a>
 
 
                 <h4 class="scroll-target">ㅤ</h4>
                 <p>ㅤ</p><p>ㅤ</p>
-                <h3>Present Value of Future Money</h3>
-                <p>Die Berechnung des gegenwärtigen Werts (PV) eines zukünftigen Geldbetrags erfolgt mit der folgenden Formel:</p>
+                <h3 class="en-translation">Present Value of Future Money</h3>
+                <h3 class="de-translation">Barwertrechner</h3>
+
+                <p class="de-translation">Die Berechnung des gegenwärtigen Werts (PV) eines zukünftigen Geldbetrags erfolgt mit der folgenden Formel:</p>
+                
                 <img src="present_value.png" alt="Present Value Image" style="width: 100%; max-width: 600px;">
                 <p>wo:</p>
                 <ul>
@@ -92,7 +103,8 @@
 
                 <h4 class="scroll-target">ㅤ</h4>
                 <p>ㅤ</p><p>ㅤ</p>
-                <h3>Future Value Calculator</h3>
+                <h3 class="en-translation">Future Value Calculator</h3>
+                <h3 class="de-translation">Zukunftswertrechner</h3>
                 <img src="future_value.jpg" alt="Future Value Image" style="width: 100%; max-width: 600px;">
                 <p>Schätzung des zukünftigen Wertes einer Investition</p>
                 <p>Die Berechnung des zukünftigen Wertes einer Investition erfolgt mit der folgenden Formel:</p>
@@ -119,7 +131,8 @@
 
         <section id="currency-conversion">
             <div class="wrapper">
-                <h2>Währungsumrechnung</h2>
+                <h2 class="en-translation">Currency Convertor</h2>
+                <h2 class="de-translation">Währungsumrechnung</h2>
                   <div class="drop-list">
                     <div class="from">
                       <p>Von Währung</p>
@@ -145,7 +158,7 @@
                     <div class="amount-container">
                         <input type="number" id="amount" required="">                    
                         <label for="input" class="label">Betrag eingeben</label> 
-                        <button class="convert">Umrechnen</button>
+                        <button class="convert">Calculate / Berechnen</button>
                     </div>
                     
                     <div class="result">
@@ -224,11 +237,13 @@
                     <label>Periodic Inflation Rate:</label>
                     <div id="periodic-inflation-rate">
                         <input type="radio" id="manual-inflation-rate" name="inflation-rate-type-present">
-                        <label for="manual-inflation-rate">Manual Input:</label>
+                        <label for="manual-inflation-rate" class="en-translation">Manual Input:</label>
+                        <label for="manual-inflation-rate" class="de-translation">Manuelle Eingabe:</label>
                         <input type="number" id="periodic-inflation-rate-manual-present" step="0.01">
                         <span class="input-symbol">%</span>
                         <input type="radio" id="automatic-inflation-rate" name="inflation-rate-type-present">
-                        <label for="automatic-inflation-rate">Automatic Input (%):</label>
+                        <label for="automatic-inflation-rate" class="en-translation">Automatic Input (%):</label>
+                        <label for="automatic-inflation-rate" class="de-translation">Automatische Eingabe (%):</label>
                         <select id="automatic-inflation-rate-select-present"></select>
                     </div>
 
@@ -238,7 +253,7 @@
                     
                     <input type="number" id="period-present">
             
-                    <button type="button" id="calculate-button-present">Calculate</button>
+                    <button type="button" id="calculate-button-present">Calculate / Berechnen</button>
             
                     <div id="result-present">
                         Present Value: <span id="present-value-result">...</span>
@@ -351,7 +366,7 @@
                         
                     <!-- End of Compound Interest section -->
 
-                    <button type="button" id="calculate-button-future">Calculate</button>
+                    <button type="button" id="calculate-button-future">Calculate / Berechnen</button>
                     <div id="result-future">
                         Future Value: <span id="result-future">...</span>
                     </div>

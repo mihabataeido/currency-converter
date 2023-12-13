@@ -987,18 +987,26 @@ button {
   text-align: right;
 }
 
+
+
+
+
 .language {
   position: relative;
   width: 200px;
   margin-left: 40px;
   font-weight: bold;
 }
+
 .language-selected {
   display: flex;
   align-items: center;
   color: #fff;
   cursor: pointer;
+  padding-left: 50px; /* Added padding for the flag */
+  position: relative; /* Add relative positioning */
 }
+
 .language-selected::before {
   content: '';
   display: inline-block;
@@ -1006,28 +1014,30 @@ button {
   height: 30px;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-right: 20px;
+  position: absolute;
+  left: 0;
+  top: 50%; /* Center the flag vertically */
+  transform: translateY(-50%);
 }
 
-/*Class*/
-
-.laguage-selected.change-de::before{
+.change-de.language-selected::before {
   background-image: url(https://flagcdn.com/48x36/de.png);
 }
-.laguage-selected.change-en::before{
+
+.change-en.language-selected::before {
   background-image: url(https://flagcdn.com/48x36/us.png);
 }
 
-
-.language ul{
+.language ul {
   position: absolute;
   width: 200px;
   background-color: #fff;
   border: 1px solid #f8f8f8;
   padding-top: 10px;
-  box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.5);
   display: none;
-  top: +10px
+  top: -10px; /* Adjust dropdown position */
+  left: 0; /* Align with the left side of the parent */
 }
 
 .language ul li {
@@ -1037,14 +1047,14 @@ button {
 .language ul li a {
   display: block;
   color: #252525;
-  padding-top: 5px 10px;
+  padding: 5px 10px; /* Adjust padding */
 }
 
-.language ul li:hover{
+.language ul li:hover {
   background-color: #f8f8f8;
 }
 
-.language ul li a::before{
+.language ul li a::before {
   content: '';
   display: inline-block;
   width: 25px;
@@ -1055,15 +1065,14 @@ button {
   margin-right: 20px;
 }
 
-a.en::before{
+a.en::before {
   background-image: url(https://flagcdn.com/48x36/us.png);
-} 
+}
 
-a.de::before{
+a.de::before {
   background-image: url(https://flagcdn.com/48x36/de.png);
-} 
+}
 
-
-.language:hover ul{
+.language:hover ul {
   display: block;
 }
