@@ -85,9 +85,12 @@ footer {
   color: white;
   text-align: center;
   padding: 10px 0;
-
-
 }
+
+/*footer span {
+  color:rgb(10, 6, 119) ;
+  font-size: large;
+}*/
 
 .info-button-currency {
 
@@ -982,4 +985,93 @@ button {
 .two-column {
   display: flex;
   text-align: right;
+}
+
+/*Language*/
+.language {
+  position: relative;
+  width: 200px;
+  margin-left: 40px;
+  font-weight: bold;
+}
+.laguage-selected{
+  display: flex;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+}
+.language-selected::before{
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(https://flagcdn.com/48x36/br.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+}
+
+/*Class*/
+
+.laguage-selected.change-br::before{
+  background-image: url(https://flagcdn.com/48x36/br.png);
+}
+.laguage-selected.change-en::before{
+  background-image: url(https://flagcdn.com/48x36/us.png);
+}
+.laguage-selected.change-es::before{
+  background-image: url(https://flagcdn.com/48x36/es.png);
+}
+
+.language ul{
+  position: absolute;
+  width: 200px;
+  background-color: #fff;
+  border: 1px solid #f8f8f8;
+  padding-top: 10px;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
+  display: none;
+}
+
+.language ul li {
+  list-style: none;
+}
+
+.language ul li a {
+  display: block;
+  color: #252525;
+  padding-top: 5px 10px;
+}
+
+.language ul li:hover{
+  background-color: #f8f8f8;
+}
+
+.language ul li a::before{
+  content: '';
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+a.en::before{
+  background-image: url(https://flagcdn.com/48x36/us.png);
+} 
+
+a.br::before{
+  background-image: url(https://flagcdn.com/48x36/br.png);
+} 
+
+
+a.es::before{
+  background-image: url(https://flagcdn.com/48x36/es.png);
+}
+
+
+.language:hover ul{
+  display: block;
 }

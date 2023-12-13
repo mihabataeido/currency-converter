@@ -1,0 +1,20 @@
+$(document).ready(function() {
+    // deutsch
+    $(".br").click(function() {
+        $('.language-selected').text('pt-BR');
+        $('.language-selected').addClass('change-language-br');
+        // id und class namen hier machen und überzetzung
+        $('.translate').text('Währungsumrechnung');
+        $('.translate22').text("Hier können Sie Währungen miteinander umrechnen. Wählen Sie die Ausgangs- und Zielwährung aus, geben Sie den Betrag ein und klicken Sie auf 'Umrechnen'. Die Anwendung verwendet aktuelle Wechselkurse von der Europäischen Zentralbank, um genaue Ergebnisse zu liefern.");
+    });
+
+    // english
+    $(".en").click(function() {
+        $('.language-selected').text('pt-BR');
+        $('.language-selected').addClass('change-language-en');
+        // id und class namen hier machen und überzetzung
+        $('.translate').text('Currency conversion');
+        $('.translate22').text("Here you can convert currencies with each other. Select the source and target currency, enter the amount and click on 'Convert'. The application uses current exchange rates from the European Central Bank to provide accurate results.");
+    });
+});
+
