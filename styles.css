@@ -1005,7 +1005,7 @@ button {
   display: inline-block;
   width: 30px;
   height: 30px;
-  background-image: url(https://flagcdn.com/48x36/br.png);
+  background-image: url(https://flagcdn.com/48x36/de.png);
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 20px;
@@ -1013,15 +1013,13 @@ button {
 
 /*Class*/
 
-.laguage-selected.change-br::before{
-  background-image: url(https://flagcdn.com/48x36/br.png);
+.laguage-selected.change-de::before{
+  background-image: url(https://flagcdn.com/48x36/de.png);
 }
 .laguage-selected.change-en::before{
   background-image: url(https://flagcdn.com/48x36/us.png);
 }
-.laguage-selected.change-es::before{
-  background-image: url(https://flagcdn.com/48x36/es.png);
-}
+
 
 .language ul{
   position: absolute;
@@ -1031,6 +1029,7 @@ button {
   padding-top: 10px;
   box-shadow: 0px 1px 10px rgba(0,0,0,0.5);
   display: none;
+  top: +10px
 }
 
 .language ul li {
@@ -1062,14 +1061,9 @@ a.en::before{
   background-image: url(https://flagcdn.com/48x36/us.png);
 } 
 
-a.br::before{
-  background-image: url(https://flagcdn.com/48x36/br.png);
+a.de::before{
+  background-image: url(https://flagcdn.com/48x36/de.png);
 } 
-
-
-a.es::before{
-  background-image: url(https://flagcdn.com/48x36/es.png);
-}
 
 
 .language:hover ul{
