@@ -76,7 +76,8 @@ $(document).ready(function() {
         toggleLanguage('en'); // Toggle the translations
     }
 
-    $(".de").click(function() {
+    $(".de").click(function(event) {
+        event.preventDefault();
         saveLanguagePreference('de');
         $('#language-selected').text('de').addClass('dn').removeClass('en');
         toggleLanguage('de');
@@ -84,7 +85,8 @@ $(document).ready(function() {
         $('.language-selected').text('de');
     });
 
-    $(".en").click(function() {
+    $(".en").click(function(event) {
+        event.preventDefault();
         saveLanguagePreference('en');
         $('#language-selected').text('en').addClass('en').removeClass('de');
         toggleLanguage('en');
