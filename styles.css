@@ -20,7 +20,10 @@ h2 {
     padding-top: 20px;
     color: #000;
 }
-
+body.dark h2 {
+  color: #fff; /* Light text color for dark mode */
+  /* Add any additional styling you want for dark mode here */
+}
 
 
 /*Head*/
@@ -179,6 +182,13 @@ h3 {
   border-radius: 10px;
 
 }
+/* Dark mode specific styles */
+body.dark h3 {
+  color: #fff; /* Light text color for dark mode */
+  background-color: #333; /* Darker background for h3 in dark mode */
+  /* Add any additional styling you want for dark mode here */
+}
+
 .li {
   margin: 30px;
 }
@@ -282,11 +292,25 @@ h3 {
   box-shadow: 0 0 0 5px #3b83f65f;
   color: #fff;
 }
+/* Dark mode specific styles for .home-link */
+body.dark .home-link {
+  background-color: rgb(6, 5, 29); /* Dark background for dark mode */
+  /* Other styles remain the same unless you want to change them */
+}
 
+body.dark .home-link:hover {
+  background-color: #3b83f65f; /* Blue background on hover for dark mode */
+  /* Other hover styles remain the same unless you want to change them */
+}
 .info-link {
     color: black;      /* Set text color to black */
     font-weight: bold; /* Set font weight to bold */
     text-decoration: none; /* Remove underline (optional, adjust as needed) */
+}
+
+body.dark .info-link {
+  color: #fff; /* Light text color for dark mode */
+  /* Add any additional styling you want for dark mode here */
 }
 
 #share-container span {
@@ -584,6 +608,12 @@ select, input:focus {
   justify-content: center;
 }
 
+body.dark .wrapper {
+  background-color: #2a2a2a; /* Dark background for dark mode */
+  color: #ffffff; /* Light text color for contrast */
+  box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.2); /* Adjusted shadow for visibility in dark mode */
+  /* Add any additional styling you want for dark mode here */
+}
 
 .wrapper form {
   margin: 50px 0 20px 0;
@@ -696,6 +726,7 @@ select, input:focus {
   color:  rgb(10, 6, 119);
   border: 2px solid rgb(63, 59, 204);
 }
+
 
 
 .amount-container {
