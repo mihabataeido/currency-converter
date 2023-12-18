@@ -106,6 +106,13 @@ footer {
   padding: 10px 0;
 }
 
+/* Dark Mode Specific Styles for Footer */
+body.dark footer {
+  background-color: rgb(6, 5, 29); /* Dark mode background color */
+  color: #fff; /* Light text color for contrast in dark mode */
+  /* Add any additional styling for dark mode here */
+}
+
 /*footer span {
   color:rgb(10, 6, 119) ;
   font-size: large;
