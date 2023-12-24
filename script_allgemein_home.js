@@ -20,11 +20,9 @@ checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
         body_dark.classList.add("dark");
         header_dark.classList.add("dark");
-        wrapper_dark.classList.add("dark");
     } else {
         body_dark.classList.remove("dark");
         header_dark.classList.remove("dark");
-        wrapper_dark.classList.remove("dark");
     }
 });
 
@@ -72,6 +70,7 @@ function changeLanguage(language) {
         $('.future-value').text('Future Value: ')
         $('#calculate-button-present').text('Calculate')
         $('#result-present').text('Present Value: ')
+        $("#result-future").text("Future Value: ")
         $(".save-present").text("Add to list");
         $('.share-button-present').text('Share on following platforms')
         $('.trash-bin-present').text('Delete')
@@ -97,6 +96,7 @@ function changeLanguage(language) {
         $('.future-value').text('Zukünftiger Wert: ')
         $('#calculate-button-present').text('Berechnen')
         $('#result-present').text('Gegenwartswert: ')
+        $("#result-future").text("Zukünftiger Wert:")
         $(".save-present").text("Zu liste hinzufügen")
         $('.share-button-present').text('Auf folgenden Plattformen teilen')
         $('.trash-bin-present').text('Löschen');

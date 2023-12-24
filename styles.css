@@ -145,27 +145,28 @@ h3 {
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
+}
+
+/* Dark mode specific styles */
+body.dark h3 {
+color: #fff; 
+background-color: #333; 
+}
   
-  }
-  /* Dark mode specific styles */
-  body.dark h3 {
-  color: #fff; 
-  background-color: #333; 
-  }
-  
-  h2 {
-    background-color:  #e0dbdb;
-    width: 700px;
-    padding: 10px 10px 10px 10px; 
-    border-radius: 5px; 
-    padding-right:  1px; 
-    top: 12px;	
-    }
-    /* Dark mode specific styles */
-    body.dark h2 {
-    color: #fff; 
-    background-color: #333; 
-    }
+h2 {
+background-color:  #e0dbdb;
+width: 700px;
+padding: 10px 10px 10px 10px; 
+border-radius: 5px; 
+padding-right:  1px; 
+top: 12px;	
+}
+
+/* Dark mode specific styles */
+body.dark h2 {
+color: #fff; 
+background-color: #333; 
+}
 
 /*Currency Conversion*/
 .currency-input {
