@@ -57,6 +57,62 @@ function changeLanguage(language) {
     }
   }  
 
+
+  function toggleLanguage(language) {
+    if (language === 'en') {
+        $('.en-translation').show();
+        $('.de-translation').hide();
+        $('.convert').text('Calculate'); // Übersetzung für den Button in Englisch
+        $('.exchange_rate').text('Getting exchange rate...')
+        $('.save-currency').text('Add to list')
+        $('.share-button-currency').text('Share on following platforms')
+        $('.trash-bin-currency').text('Delete')
+        $('.favorit-currency').text('Favorite')
+        $('.trash-bin-favorite-currency').text('Delete')
+        $('.future-value').text('Future Value: ')
+        $('#calculate-button-present').text('Calculate')
+        $('#result-present').text('Present Value: ')
+        $(".save-present").text("Add to list");
+        $('.share-button-present').text('Share on following platforms')
+        $('.trash-bin-present').text('Delete')
+        $('.favorit-present').text('Favorite')
+        $('.trash-bin-favorite-present').text('Delete')
+        /**/
+    } else if (language === 'de') {
+        $('.en-translation').hide();
+        $('.de-translation').show();
+        $('.convert').text('Berechnen'); // Übersetzung für den Button in Deutsch
+        $('.exchange_rate').text('Wechselkurs wird geladen...')
+        $('.save-currency').text('Zu liste hinzufügen')
+        $('.share-button-currency').text('Auf folgenden Plattformen teilen')
+        $('.trash-bin-currency').text('Löschen')
+        $('.favorit-currency').text('Lieblings')
+        $('.trash-bin-favorite-currency').text('Löschen')
+        $('.future-value').text('Zukünftiger Wert: ')
+        $('#calculate-button-present').text('Berechnen')
+        $('#result-present').text('Gegenwartswert: ')
+        $(".save-present").text("Zu liste hinzufügen")
+        $('.share-button-present').text('Auf folgenden Plattformen teilen');
+        $('.trash-bin-present').text('Löschen');
+        $('.favorit-present').text('Lieblings');
+        $('.trash-bin-favorite-present').text('Löschen');
+
+
+
+    }
+}
+
+function translateCheckboxLabel(language) {
+    const checkboxLabel = $('label[for="select-all-favorite-currency"]');
+    if (language === 'en') {
+        checkboxLabel.text('Select All');
+    } else if (language === 'de') {
+        checkboxLabel.text('Alles auswählen');
+    }
+    // Füge weitere Übersetzungen für andere Labels hinzu, falls erforderlich
+}
+
+
 $(document).ready(function() {
     let preferredLanguage = localStorage.getItem('preferredLanguage');
 
@@ -75,6 +131,7 @@ $(document).ready(function() {
         toggleLanguage('en');
     }
 
+    
     // Ensure event handlers are attached only once
     $(".de, .en").off('click');
 
@@ -109,3 +166,4 @@ function scrollToSection(sectionId, targetIndex) {
         }
     }
 }
+

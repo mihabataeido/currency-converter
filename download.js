@@ -98,9 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Existing currency conversion logic
-    // ...
-  
+
     // Event listener for download buttons
     const downloadButtonsCurrency = document.querySelectorAll('#download-button-currency-de, #download-button-currency-en');
     downloadButtonsCurrency.forEach(button => {
@@ -138,8 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 0); 
         }
     }
-  
-    // Rest of your existing currency conversion JavaScript logic
-    // ...
+
+    
   });
   

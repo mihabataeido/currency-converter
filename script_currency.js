@@ -6,10 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let icon = document.querySelector(".reverse-convert");
   let exchangeTxt = document.querySelector(".exchange_rate");
   let getBtn = document.querySelector(".convert");
-  const savedConversionsContainer = document.querySelector(".saved-conversions-container");
-  const savedConversionsList = document.querySelector(".saved-conversions-list");
-  const favoritButton = document.querySelector(".Favorit");
-  const saveButton = document.querySelector(".save");
 
 
 
@@ -67,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    exchangeTxt.innerText = "Getting exchange rate...";
+    exchangeTxt.innerText = "Wechselkurs wird ermittelt...";
 
     let url = `https://v6.exchangerate-api.com/v6/6952d78d34e3cce8590cdec0/latest/${fromCurrency.value}`;
     
@@ -92,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("load", () => {
     // Initialer Text bei Seitenladung
-    exchangeTxt.innerText = "Getting exchange rate...";
+    exchangeTxt.innerText = "Wechselkurs wird ermittelt...";
     // Führe die Umrechnung aus, wenn das Dokument geladen wird (optional)
     getExchangeValue();
   });
@@ -386,5 +382,9 @@ document.addEventListener("DOMContentLoaded", function () {
     container.style.display = 'block';
   }
   });
+  
+
 
 });
+
+
