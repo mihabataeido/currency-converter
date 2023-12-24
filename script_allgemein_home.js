@@ -14,15 +14,18 @@ const checkbox = document.getElementById("custom-switch");
 const body_dark = document.body;
 const header_dark = document.querySelector("header");
 const wrapper_dark = document.getElementById("wrapper");
+const result_dark = document.getElementById("result");
 
 // Dark Mode Button
 checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
         body_dark.classList.add("dark");
         header_dark.classList.add("dark");
+        result_dark.classList.add("dark");
     } else {
         body_dark.classList.remove("dark");
         header_dark.classList.remove("dark");
+        result_dark.classList.remove("dark");
     }
 });
 

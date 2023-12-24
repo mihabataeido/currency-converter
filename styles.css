@@ -218,7 +218,7 @@ margin: 30px;
   border-radius: 999px;
   position: relative;
   cursor: pointer;
-  left: 140px; 
+  left: 130px; 
   
 }
 
@@ -556,6 +556,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 margin-top: 15px;
+;
 }
 
 .drop-list .select-box{
@@ -571,6 +572,7 @@ margin-top: 15px;
 .select-box select{
   width: 100%;
 }
+
 
 .Currency input {
   width: 100%;
@@ -1085,6 +1087,10 @@ select:focus {
     font-size: 20px;
     font-weight: 400;
     text-align: center;
+}
+
+#result.dark {
+    color: #fff;
 }
 
 #fromCurrency {
