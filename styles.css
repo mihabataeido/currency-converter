@@ -49,13 +49,13 @@ color: #fff;
 }
 
 .tab-container {
-list-style-type: none;
-display: flex;
-justify-content: space-between;
-color: #fff;
-position: absolute;
-top: 10px;
-left: 240px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  color: #fff;
+  top: 10px;
+  left: 10%;
 }
 
 .tab-container a {
