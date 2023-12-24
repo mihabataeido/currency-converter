@@ -77,6 +77,12 @@ function changeLanguage(language) {
         $('.trash-bin-present').text('Delete')
         $('.favorit-present').text('Favorite')
         $('.trash-bin-favorite-present').text('Delete')
+        $('#calculate-button-future').text('Calculate')
+        $(".save-future").text("Add to list");
+        $('.share-button-future').text('Share on following platforms')
+        $('.trash-bin-future').text('Delete')
+        $('.favorit-future').text('Favorite')
+        $('.trash-bin-favorite-future').text('Delete')
         /**/
     } else if (language === 'de') {
         $('.en-translation').hide();
@@ -92,13 +98,16 @@ function changeLanguage(language) {
         $('#calculate-button-present').text('Berechnen')
         $('#result-present').text('Gegenwartswert: ')
         $(".save-present").text("Zu liste hinzufügen")
-        $('.share-button-present').text('Auf folgenden Plattformen teilen');
+        $('.share-button-present').text('Auf folgenden Plattformen teilen')
         $('.trash-bin-present').text('Löschen');
         $('.favorit-present').text('Lieblings');
         $('.trash-bin-favorite-present').text('Löschen');
-
-
-
+        $('#calculate-button-future').text('Berechnen')
+        $(".save-future").text("Zu liste hinzufügen")
+        $('.share-button-future').text('Auf folgenden Plattformen teilen')
+        $('.trash-bin-future').text('Löschen');
+        $('.favorit-future').text('Lieblings');
+        $('.trash-bin-favorite-future').text('Löschen');
     }
 }
 
