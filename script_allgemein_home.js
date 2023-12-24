@@ -81,7 +81,13 @@ function changeLanguage(language) {
         $('.trash-bin-future').text('Delete')
         $('.favorit-future').text('Favorite')
         $('.trash-bin-favorite-future').text('Delete')
-        /**/
+        $('.label').text('Enter amount: ')
+        $('.primary-btn').text('Calculate')
+        $('.save-crypto').text('Add to list')
+        $('.trash-bin-crypto').text('Delete')
+        $('.favorit-crypto').text('Favorite')
+        $('.trash-bin-favorite-crypto').text('Delete')
+
     } else if (language === 'de') {
         $('.en-translation').hide();
         $('.de-translation').show();
@@ -106,6 +112,13 @@ function changeLanguage(language) {
         $('.trash-bin-future').text('Löschen');
         $('.favorit-future').text('Lieblings');
         $('.trash-bin-favorite-future').text('Löschen');
+        $('.label').text('Betrag eingeben: ')
+        $('.primary-btn').text('Berechnen')
+        $('.save-crypto').text('Zu liste hinzufügen')
+        $('.trash-bin-crypto').text('Löschen')
+        $('.favorit-crypto').text('Lieblings')
+        $('.trash-bin-favorite-crypto').text('Löschen')
+
     }
 }
 
@@ -174,3 +187,6 @@ function scrollToSection(sectionId, targetIndex) {
     }
 }
 
+
+
+  

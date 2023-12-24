@@ -54,8 +54,9 @@ color: #fff;
   justify-content: space-between;
   position: relative;
   color: #fff;
-  top: 10px;
-  left: 10%;
+  margin-left: 0%;
+  padding-left: 155px;
+  
 }
 
 .tab-container a {
@@ -158,7 +159,7 @@ background-color:  #e0dbdb;
 width: 700px;
 padding: 10px 10px 10px 10px; 
 border-radius: 5px; 
-padding-right:  1px; 
+padding-right:  0px; 
 top: 12px;	
 }
 
@@ -217,7 +218,7 @@ margin: 30px;
   border-radius: 999px;
   position: relative;
   cursor: pointer;
-  left: 200px; 
+  left: 140px; 
   
 }
 
@@ -515,7 +516,7 @@ font-size: 17px;
 .amount-container input[type="number"]:valid ~ .label {
 top: -30px;
 font-size: 19px;
-color: #333;
+color:black;
 }
 
 .amount-container .underline {
@@ -582,13 +583,21 @@ margin-top: 15px;
   transition: all 0.5s;
 }
 
+
 .select-box, .Currency:hover,
 .select-box, .Currency,select {
 border: 3px solid  rgb(255, 255, 255);
 box-shadow: 0px 0px 0px 7px rgba(255, 255, 255, 0.2);
+border-color: rgb(0, 113, 235);
 background-color: white;
 border: 1.5px solid #999;
 }
+
+
+.select-box, .Currency:focus {
+  border-color: rgb(0, 113, 235);
+}
+  
 
 .select-box img{
 max-width: 50px;
@@ -632,7 +641,7 @@ align-items: center;
 
 /* Result text */
 #result_text {
-font-size: 16px;
+font-size: 18px;
 font-weight: bold;
 margin-right: 10px; /* Fügt Abstand zwischen "Ergebnis" und "Getting exchange rate..." hinzu */
 }
@@ -759,7 +768,7 @@ width: 50px; /* Adjust as needed to set the width of the checkbox */
 display: flex;
 align-items: center;
 width: 100px;
-margin-right: 100%;
+margin-left: -595px;
 }
 
 #compound-period label {
@@ -927,7 +936,7 @@ text-align: right;
 .language {
 position: relative;
 font-weight: bold;
-right: 120px;
+right: 130px;
 }
 
 .language-selected {
@@ -1012,7 +1021,83 @@ right: -1px;
 top: 15px;	
 }
 
+/*Cryptocurrency*/
 
+
+input[type=text] {
+    width: 87%;
+    margin: auto;
+    display: block;
+    font-size: 1rem;
+    background: none;
+    line-height: 1.5;
+    padding: 12px;
+    border-radius: 6px;
+    color: #141e37;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+input[type=text]:focus {
+    border-color: rgb(0, 113, 235);
+}
+
+#select-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+#fromCurrencyName {
+    margin-top: 0;
+    font-size: 16px;
+    color: #667c99;
+    font-weight: 600;
+    display: inline-block;
+    margin: 15px 40px 7.5px;
+}
+
+#fromCurrency {
+    width: 40%;
+}
+
+::placeholder {
+    font-size: 1rem;
+    color: rgb(20, 30, 55);
+}
+
+select {
+    margin: auto;
+    display: block;
+    font-size: 1rem;
+    padding: 12px;
+    background: none;
+    border-radius: 6px;
+    color: rgb(20, 30, 55);
+    border: 1px solid rgb(221, 221, 221);
+}
+
+select:focus {
+    border-color: rgb(0, 113, 235);
+}
+
+#result {
+    color: #141e37;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#fromCurrency {
+  width: 38%;
+}
+
+select {
+  width: 38%;
+}
+
+#fromCurrencyName {
+  margin: 15px 22px 7.5px;
+}
 /* Footer */
 footer {
   background-color:  rgb(10, 6, 119);
