@@ -69,7 +69,6 @@ function changeLanguage(language) {
         $('.trash-bin-favorite-currency').text('Delete')
         $('.future-value').text('Future Value: ')
         $('#calculate-button-present').text('Calculate')
-        $('#result-present').text('Present Value: ')
         $("#result-future").text("Future Value: ")
         $(".save-present").text("Add to list");
         $('.share-button-present').text('Share on following platforms')
@@ -95,7 +94,6 @@ function changeLanguage(language) {
         $('.trash-bin-favorite-currency').text('Löschen')
         $('.future-value').text('Zukünftiger Wert: ')
         $('#calculate-button-present').text('Berechnen')
-        $('#result-present').text('Gegenwartswert: ')
         $("#result-future").text("Zukünftiger Wert:")
         $(".save-present").text("Zu liste hinzufügen")
         $('.share-button-present').text('Auf folgenden Plattformen teilen')
